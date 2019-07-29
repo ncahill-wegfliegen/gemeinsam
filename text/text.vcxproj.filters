@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="module">
+      <UniqueIdentifier>{ce6cacc8-7bee-4df8-a1d3-c2e93e2fb5a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="code">
+      <UniqueIdentifier>{53b3681b-ba1e-4b0c-ac78-73b54a40f1ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="abbreviation">
+      <UniqueIdentifier>{db6736d5-1456-4117-acc1-1a6eb814556a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="string">
+      <UniqueIdentifier>{a8bae6b9-aef5-46a3-ba9a-edc935fd8ee6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="label">
+      <UniqueIdentifier>{fc844d2c-a71f-4edc-a802-0bbb6b6d2240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="description">
+      <UniqueIdentifier>{6aa99c92-3d71-4ca6-888d-44371c23ca7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="name">
+      <UniqueIdentifier>{81455884-ae89-417b-8b97-9c0aa7e39966}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="title">
+      <UniqueIdentifier>{8021334c-397f-4c6f-ae20-fd89a73f44df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="bundle">
+      <UniqueIdentifier>{7aa17baa-22c0-4294-a517-4782b6800810}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="code.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="coded.cpp">
+      <Filter>code</Filter>
+    </ClCompile>
+    <ClCompile Include="abbreviated.cpp">
+      <Filter>abbreviation</Filter>
+    </ClCompile>
+    <ClCompile Include="abbreviation.cpp">
+      <Filter>abbreviation</Filter>
+    </ClCompile>
+    <ClCompile Include="label.cpp">
+      <Filter>label</Filter>
+    </ClCompile>
+    <ClCompile Include="labeled.cpp">
+      <Filter>label</Filter>
+    </ClCompile>
+    <ClCompile Include="described.cpp">
+      <Filter>description</Filter>
+    </ClCompile>
+    <ClCompile Include="description.cpp">
+      <Filter>description</Filter>
+    </ClCompile>
+    <ClCompile Include="string.cpp">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="stringed.cpp">
+      <Filter>string</Filter>
+    </ClCompile>
+    <ClCompile Include="name.cpp">
+      <Filter>name</Filter>
+    </ClCompile>
+    <ClCompile Include="named.cpp">
+      <Filter>name</Filter>
+    </ClCompile>
+    <ClCompile Include="string_getable.cpp" />
+    <ClCompile Include="string_setable.cpp" />
+    <ClCompile Include="title.cpp">
+      <Filter>title</Filter>
+    </ClCompile>
+    <ClCompile Include="titled.cpp">
+      <Filter>title</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="abbreviated.h">
+      <Filter>abbreviation</Filter>
+    </ClInclude>
+    <ClInclude Include="abbreviation.h">
+      <Filter>abbreviation</Filter>
+    </ClInclude>
+    <ClInclude Include="code.h">
+      <Filter>code</Filter>
+    </ClInclude>
+    <ClInclude Include="coded.h">
+      <Filter>code</Filter>
+    </ClInclude>
+    <ClInclude Include="described.h">
+      <Filter>description</Filter>
+    </ClInclude>
+    <ClInclude Include="description.h">
+      <Filter>description</Filter>
+    </ClInclude>
+    <ClInclude Include="label.h">
+      <Filter>label</Filter>
+    </ClInclude>
+    <ClInclude Include="labeled.h">
+      <Filter>label</Filter>
+    </ClInclude>
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="name.h">
+      <Filter>name</Filter>
+    </ClInclude>
+    <ClInclude Include="named.h">
+      <Filter>name</Filter>
+    </ClInclude>
+    <ClInclude Include="string.h">
+      <Filter>string</Filter>
+    </ClInclude>
+    <ClInclude Include="stringed.h">
+      <Filter>string</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>title</Filter>
+    </ClInclude>
+    <ClInclude Include="titled.h">
+      <Filter>title</Filter>
+    </ClInclude>
+    <ClInclude Include="string_getable.h" />
+    <ClInclude Include="string_setable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="text.rc">
+      <Filter>module</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

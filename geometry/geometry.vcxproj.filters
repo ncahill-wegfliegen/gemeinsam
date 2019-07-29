@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="module">
+      <UniqueIdentifier>{9a31c21f-3a0f-4efa-8834-c29732bf5a6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="angle">
+      <UniqueIdentifier>{83a3b30f-aab1-464e-b142-d97e546c9060}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="interval">
+      <UniqueIdentifier>{6573b74b-5702-4ea0-b38e-f63ea849ea34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="point">
+      <UniqueIdentifier>{a084639d-52fe-40f0-9a6c-afd1fcbed150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vector">
+      <UniqueIdentifier>{1103b3cb-f5ab-4c50-8187-edad618b5e45}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rectangle">
+      <UniqueIdentifier>{34cbac89-fb96-4372-ba84-34438c27b0f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="line">
+      <UniqueIdentifier>{25d37384-df52-4252-91fe-5cb5a21a8d6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="polygon">
+      <UniqueIdentifier>{98d3ca02-c3d8-4c59-bdd7-da0b0d1c14f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="geographic coords">
+      <UniqueIdentifier>{8145555a-1d90-4ef7-b472-2d436321f2ae}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="angle.cpp">
+      <Filter>angle</Filter>
+    </ClCompile>
+    <ClCompile Include="arcminute.cpp">
+      <Filter>angle</Filter>
+    </ClCompile>
+    <ClCompile Include="milliarcsecond.cpp">
+      <Filter>angle</Filter>
+    </ClCompile>
+    <ClCompile Include="sangle.cpp">
+      <Filter>angle</Filter>
+    </ClCompile>
+    <ClCompile Include="uangle.cpp">
+      <Filter>angle</Filter>
+    </ClCompile>
+    <ClCompile Include="latitude.cpp">
+      <Filter>geographic coords</Filter>
+    </ClCompile>
+    <ClCompile Include="longitude.cpp">
+      <Filter>geographic coords</Filter>
+    </ClCompile>
+    <ClCompile Include="convert.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="angle.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="arcdegree.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="arcminute.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="arcsecond.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="degree.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="milliarcsecond.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="radian.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="sangle.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="uangle.h">
+      <Filter>angle</Filter>
+    </ClInclude>
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="convert.h" />
+    <ClInclude Include="endpoint.h">
+      <Filter>interval</Filter>
+    </ClInclude>
+    <ClInclude Include="interval.h">
+      <Filter>interval</Filter>
+    </ClInclude>
+    <ClInclude Include="interval_helper.h">
+      <Filter>interval</Filter>
+    </ClInclude>
+    <ClInclude Include="interval_interface.h">
+      <Filter>interval</Filter>
+    </ClInclude>
+    <ClInclude Include="magnitude.h" />
+    <ClInclude Include="pnt.h">
+      <Filter>point</Filter>
+    </ClInclude>
+    <ClInclude Include="polar.h">
+      <Filter>point</Filter>
+    </ClInclude>
+    <ClInclude Include="convert_pnt.h">
+      <Filter>point</Filter>
+    </ClInclude>
+    <ClInclude Include="convert_vector.h">
+      <Filter>vector</Filter>
+    </ClInclude>
+    <ClInclude Include="vector_polar.h">
+      <Filter>vector</Filter>
+    </ClInclude>
+    <ClInclude Include="rect.h">
+      <Filter>rectangle</Filter>
+    </ClInclude>
+    <ClInclude Include="rect_container.h">
+      <Filter>rectangle</Filter>
+    </ClInclude>
+    <ClInclude Include="vector_algebra.h">
+      <Filter>vector</Filter>
+    </ClInclude>
+    <ClInclude Include="line_cartesian.h">
+      <Filter>line</Filter>
+    </ClInclude>
+    <ClInclude Include="line_polar.h">
+      <Filter>line</Filter>
+    </ClInclude>
+    <ClInclude Include="Line_param.h">
+      <Filter>line</Filter>
+    </ClInclude>
+    <ClInclude Include="polygon.h">
+      <Filter>polygon</Filter>
+    </ClInclude>
+    <ClInclude Include="polygon_container.h">
+      <Filter>polygon</Filter>
+    </ClInclude>
+    <ClInclude Include="latitude.h">
+      <Filter>geographic coords</Filter>
+    </ClInclude>
+    <ClInclude Include="longitude.h">
+      <Filter>geographic coords</Filter>
+    </ClInclude>
+    <ClInclude Include="pnt3.h">
+      <Filter>point</Filter>
+    </ClInclude>
+    <ClInclude Include="spherical.h">
+      <Filter>point</Filter>
+    </ClInclude>
+    <ClInclude Include="cylindrical.h">
+      <Filter>point</Filter>
+    </ClInclude>
+    <ClInclude Include="vector.h">
+      <Filter>vector</Filter>
+    </ClInclude>
+    <ClInclude Include="vector3.h">
+      <Filter>vector</Filter>
+    </ClInclude>
+    <ClInclude Include="pnt_container.h">
+      <Filter>point</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

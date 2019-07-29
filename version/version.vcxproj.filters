@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="module">
+      <UniqueIdentifier>{e3f9b69d-5bec-48ce-b5e0-c1d6470693f7}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="info.h" />
+    <ClInclude Include="info_item.h" />
+    <ClInclude Include="string_table.h" />
+    <ClInclude Include="translation.h" />
+    <ClInclude Include="version.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="info.cpp" />
+    <ClCompile Include="string_table.cpp" />
+    <ClCompile Include="translation.cpp" />
+    <ClCompile Include="version.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="version.rc">
+      <Filter>module</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

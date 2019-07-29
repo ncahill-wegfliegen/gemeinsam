@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{b2923f73-84cd-4b34-8924-298274771a4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\text">
+      <UniqueIdentifier>{df38be12-56df-4729-b773-d00564c7ef90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="module">
+      <UniqueIdentifier>{281bd23c-fbcb-49a7-9486-d18745e398e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="math">
+      <UniqueIdentifier>{0707900d-d695-41b3-9898-77671423bfe2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="core\text\bundle.h">
+      <Filter>core\text</Filter>
+    </ClInclude>
+    <ClInclude Include="core\text\bundle_container.h">
+      <Filter>core\text</Filter>
+    </ClInclude>
+    <ClInclude Include="core\text\methods.h">
+      <Filter>core\text</Filter>
+    </ClInclude>
+    <ClInclude Include="core\text\stream_in.h">
+      <Filter>core\text</Filter>
+    </ClInclude>
+    <ClInclude Include="core\text\stream_out.h">
+      <Filter>core\text</Filter>
+    </ClInclude>
+    <ClInclude Include="core\increment.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\int.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\text.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\values.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="math\coord_cart2.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\coord_cart3.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\coord_cyl.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\coord_polar.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="math\coord_spher.h">
+      <Filter>math</Filter>
+    </ClInclude>
+    <ClInclude Include="delim.h" />
+    <ClInclude Include="delimiter.h" />
+    <ClInclude Include="log_level.h" />
+    <ClInclude Include="month.h" />
+    <ClInclude Include="product.h" />
+    <ClInclude Include="province.h" />
+    <ClInclude Include="province_container.h" />
+    <ClInclude Include="sort_order.h" />
+    <ClInclude Include="survey_system.h" />
+    <ClInclude Include="som.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="delim.cpp" />
+    <ClCompile Include="month.cpp" />
+    <ClCompile Include="product.cpp" />
+    <ClCompile Include="sort_order.cpp" />
+    <ClCompile Include="survey_system.cpp" />
+    <ClCompile Include="province.cpp" />
+    <ClCompile Include="math\coord_cart2.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\coord_cart3.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\coord_cyl.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\coord_polar.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="math\coord_spher.cpp">
+      <Filter>math</Filter>
+    </ClCompile>
+    <ClCompile Include="log_level.cpp" />
+    <ClCompile Include="core\text\bundle.cpp">
+      <Filter>core\text</Filter>
+    </ClCompile>
+    <ClCompile Include="som.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="enum.rc">
+      <Filter>module</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

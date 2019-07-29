@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="module">
+      <UniqueIdentifier>{2eb03a86-b636-4d3a-bc5c-7fa702e231f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="temp">
+      <UniqueIdentifier>{f1978b47-9a55-480c-a99f-c30c9514909f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="convert.h" />
+    <ClInclude Include="prefix.h" />
+    <ClInclude Include="puom.h" />
+    <ClInclude Include="puom_tmplt.h" />
+    <ClInclude Include="quantity.h" />
+    <ClInclude Include="temp.h" />
+    <ClInclude Include="temp\puom.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="temp\puom_def.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="temp\puomc.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="temp\quantity.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="temp\quantity_def.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="temp\temp_convert.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="temp\temp_convert_primitive.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="temp\puom_tmplt.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="puomc.h" />
+    <ClInclude Include="temp\quantity_tmplt.h">
+      <Filter>temp</Filter>
+    </ClInclude>
+    <ClInclude Include="quantity_tmplt.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="temp\temp.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="prefix.cpp" />
+    <ClCompile Include="temp\temp_convert.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="temp\temp_convert_primitive.cpp">
+      <Filter>temp</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

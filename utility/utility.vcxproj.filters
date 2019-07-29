@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="ini.cpp" />
+    <ClCompile Include="color_helper.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="module">
+      <UniqueIdentifier>{a7291ebe-061c-4c25-ad5d-67d2da708088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="exception">
+      <UniqueIdentifier>{1876badc-255b-40a9-ba94-fc019c2a9d5a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="array.h" />
+    <ClInclude Include="array_const_iterator.h" />
+    <ClInclude Include="array_iterator.h" />
+    <ClInclude Include="browse.h" />
+    <ClInclude Include="browse_container.h" />
+    <ClInclude Include="browse_iter.h" />
+    <ClInclude Include="chr.h" />
+    <ClInclude Include="color.h" />
+    <ClInclude Include="color_helper.h" />
+    <ClInclude Include="colora.h" />
+    <ClInclude Include="compare.h" />
+    <ClInclude Include="enable_if.h" />
+    <ClInclude Include="event_args.h" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="ini.h" />
+    <ClInclude Include="link_library.h" />
+    <ClInclude Include="object.h" />
+    <ClInclude Include="port.h" />
+    <ClInclude Include="property.h" />
+    <ClInclude Include="range.h" />
+    <ClInclude Include="size.h" />
+    <ClInclude Include="str.h" />
+    <ClInclude Include="type.h" />
+    <ClInclude Include="unique_ptr.h" />
+    <ClInclude Include="value.h" />
+    <ClInclude Include="exception\file_not_found.h">
+      <Filter>exception</Filter>
+    </ClInclude>
+    <ClInclude Include="exception\invalid_path.h">
+      <Filter>exception</Filter>
+    </ClInclude>
+    <ClInclude Include="exception\message.h">
+      <Filter>exception</Filter>
+    </ClInclude>
+    <ClInclude Include="exception\not_implemented.h">
+      <Filter>exception</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="utility.rc">
+      <Filter>module</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
