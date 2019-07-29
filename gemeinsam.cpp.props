@@ -5,7 +5,7 @@
   <PropertyGroup>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>G:\bemühen\GSL-master\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\GSL-master\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>

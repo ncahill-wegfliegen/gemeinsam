@@ -7,6 +7,15 @@
     <Filter Include="temp">
       <UniqueIdentifier>{f1978b47-9a55-480c-a99f-c30c9514909f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="len">
+      <UniqueIdentifier>{4de809ee-bd6d-4ee0-81ef-52baf58c7256}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="press">
+      <UniqueIdentifier>{308e929f-2c97-4b50-ac17-049f1540d541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="time">
+      <UniqueIdentifier>{4d048d6c-55a6-49f4-8c38-55b81652c60b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -47,6 +56,87 @@
       <Filter>temp</Filter>
     </ClInclude>
     <ClInclude Include="quantity_tmplt.h" />
+    <ClInclude Include="len\len_convert.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\len_convert_primitive.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\puom.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\puom_def.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\puom_tmplt.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\puomc.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\quantity.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\quantity_def.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len\quantity_tmplt.h">
+      <Filter>len</Filter>
+    </ClInclude>
+    <ClInclude Include="len.h" />
+    <ClInclude Include="press.h" />
+    <ClInclude Include="press\press_convert.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\press_convert_primitive.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\puom.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\puom_def.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\puom_tmplt.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\puomc.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\quantity.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\quantity_def.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="press\quantity_tmplt.h">
+      <Filter>press</Filter>
+    </ClInclude>
+    <ClInclude Include="time.h" />
+    <ClInclude Include="time\puom_def.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\puom_tmplt.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\puomc.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\quantity.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\quantity_def.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\quantity_tmplt.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\time_convert.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time\time_convert_primitive.h">
+      <Filter>time</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="temp\temp.cpp">
@@ -58,6 +148,33 @@
     </ClCompile>
     <ClCompile Include="temp\temp_convert_primitive.cpp">
       <Filter>temp</Filter>
+    </ClCompile>
+    <ClCompile Include="len\len.cpp">
+      <Filter>len</Filter>
+    </ClCompile>
+    <ClCompile Include="len\len_convert.cpp">
+      <Filter>len</Filter>
+    </ClCompile>
+    <ClCompile Include="len\len_convert_primitive.cpp">
+      <Filter>len</Filter>
+    </ClCompile>
+    <ClCompile Include="press\press.cpp">
+      <Filter>press</Filter>
+    </ClCompile>
+    <ClCompile Include="press\press_convert.cpp">
+      <Filter>press</Filter>
+    </ClCompile>
+    <ClCompile Include="press\press_convert_primitive.cpp">
+      <Filter>press</Filter>
+    </ClCompile>
+    <ClCompile Include="time\time.cpp">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="time\time_convert.cpp">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="time\time_convert_primitive.cpp">
+      <Filter>time</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

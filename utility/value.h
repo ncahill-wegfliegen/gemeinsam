@@ -31,7 +31,7 @@ struct Value_validator
 };
 
 template<typename T>
-struct Value_validator_non_negative : publice Value_validator<T>
+struct Value_validator_non_negative : public Value_validator<T>
 {
 	bool is_valid( T value ) const override;
 	void invalid( T value ) const override;

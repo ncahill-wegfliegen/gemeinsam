@@ -36,8 +36,28 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="convert.h" />
+    <ClInclude Include="len.h" />
+    <ClInclude Include="len\len_convert.h" />
+    <ClInclude Include="len\len_convert_primitive.h" />
+    <ClInclude Include="len\puom.h" />
+    <ClInclude Include="len\puomc.h" />
+    <ClInclude Include="len\puom_def.h" />
+    <ClInclude Include="len\puom_tmplt.h" />
+    <ClInclude Include="len\quantity.h" />
+    <ClInclude Include="len\quantity_def.h" />
+    <ClInclude Include="len\quantity_tmplt.h" />
     <ClInclude Include="port.h" />
     <ClInclude Include="prefix.h" />
+    <ClInclude Include="press.h" />
+    <ClInclude Include="press\press_convert.h" />
+    <ClInclude Include="press\press_convert_primitive.h" />
+    <ClInclude Include="press\puom.h" />
+    <ClInclude Include="press\puomc.h" />
+    <ClInclude Include="press\puom_def.h" />
+    <ClInclude Include="press\puom_tmplt.h" />
+    <ClInclude Include="press\quantity.h" />
+    <ClInclude Include="press\quantity_def.h" />
+    <ClInclude Include="press\quantity_tmplt.h" />
     <ClInclude Include="puom.h" />
     <ClInclude Include="puomc.h" />
     <ClInclude Include="puom_tmplt.h" />
@@ -53,12 +73,30 @@
     <ClInclude Include="temp\quantity_tmplt.h" />
     <ClInclude Include="temp\temp_convert.h" />
     <ClInclude Include="temp\temp_convert_primitive.h" />
+    <ClInclude Include="time.h" />
+    <ClInclude Include="time\puomc.h" />
+    <ClInclude Include="time\puom_def.h" />
+    <ClInclude Include="time\puom_tmplt.h" />
+    <ClInclude Include="time\quantity.h" />
+    <ClInclude Include="time\quantity_def.h" />
+    <ClInclude Include="time\quantity_tmplt.h" />
+    <ClInclude Include="time\time_convert.h" />
+    <ClInclude Include="time\time_convert_primitive.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="len\len.cpp" />
+    <ClCompile Include="len\len_convert.cpp" />
+    <ClCompile Include="len\len_convert_primitive.cpp" />
     <ClCompile Include="prefix.cpp" />
+    <ClCompile Include="press\press.cpp" />
+    <ClCompile Include="press\press_convert.cpp" />
+    <ClCompile Include="press\press_convert_primitive.cpp" />
     <ClCompile Include="temp\temp.cpp" />
     <ClCompile Include="temp\temp_convert.cpp" />
     <ClCompile Include="temp\temp_convert_primitive.cpp" />
+    <ClCompile Include="time\time.cpp" />
+    <ClCompile Include="time\time_convert.cpp" />
+    <ClCompile Include="time\time_convert_primitive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\enum\enum.vcxproj">

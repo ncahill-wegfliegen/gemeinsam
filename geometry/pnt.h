@@ -15,6 +15,10 @@ struct Pnt
    static_assert(std::is_arithmetic_v<T>, "The template parameter must be an arithmetic type (i.e., either integral or floating point type).");
 
    using value_type = T;
+   using ptr = Pnt<T>*;
+   using cptr = const Pnt<T>*;
+   using ref = Pnt<T> &;
+   using cref = const Pnt<T> &;
 
    T x; // Cartesian x-component
    T y; // Cartesian y-component

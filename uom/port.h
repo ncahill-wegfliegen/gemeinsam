@@ -39,6 +39,9 @@
 #   ifndef NHILL_UOM_PORT_TEMPLATE
 #       define NHILL_UOM_PORT_TEMPLATE
 #   endif
+#   ifndef NHILL_UOM_PORT_PARAMETER
+#       define NHILL_UOM_PORT_PARAMETER
+#   endif
 #elif defined(NHILL_UOM_EXPORT)
 #   ifndef NHILL_UOM_PORT_CLASS
 #       define NHILL_UOM_PORT_CLASS __declspec(dllexport)
@@ -52,6 +55,9 @@
 #   ifndef NHILL_UOM_PORT_TEMPLATE
 #       define NHILL_UOM_PORT_TEMPLATE
 #   endif
+#   ifndef NHILL_UOM_PORT_PARAMETER
+#       define NHILL_UOM_PORT_PARAMETER __declspec(dllexport)
+#   endif
 #else
 #   ifndef NHILL_UOM_PORT_CLASS
 #       define NHILL_UOM_PORT_CLASS __declspec(dllimport)
@@ -64,5 +70,8 @@
 #   endif
 #   ifndef NHILL_UOM_PORT_TEMPLATE
 #       define NHILL_UOM_PORT_TEMPLATE extern
+#   endif
+#   ifndef NHILL_UOM_PORT_PARAMETER
+#       define NHILL_UOM_PORT_PARAMETER __declspec(dllimport)
 #   endif
 #endif
