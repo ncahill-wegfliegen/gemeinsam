@@ -8,8 +8,8 @@ namespace nhill
 namespace uom
 {
 
-template<Prefix prefix, Time uom>
-using Quantity_time_template = Quantity_template<Time, prefix, uom>;
+template<Prefix prefix, Time uom, typename T = double>
+using Quantity_time_template = Quantity_template<Time, prefix, uom, T>;
 
 }
 }

@@ -16,28 +16,18 @@ struct Value_validator
 {
    static_assert(std::is_arithmetic_v<T>, "The template parameter must be an arithmetic type (integral or floating point).");
 
-   virtual bool is_valid( T value ) const = 0;
-   virtual void invalid( T value ) const = 0;
-   virtual T adjust( T value ) const = 0;
+	virtual T operator()( T value ) const = 0;
 
    struct Default : public Value_validator<T>
    {
-      bool is_valid( T value ) const override;
-      void invalid( T value ) const override;
-      T adjust( T value ) const override;
+		T operator()( T value ) const override
+		{
+			return value;
+		}
    };
 
    using default_type = Default;
 };
-
-template<typename T>
-struct Value_validator_non_negative : public Value_validator<T>
-{
-	bool is_valid( T value ) const override;
-	void invalid( T value ) const override;
-	T adjust( T value ) const override;
-};
-
 
 template<typename T, typename Validator = typename Value_validator<T>::default_type >
 class Value
@@ -49,7 +39,6 @@ public:
    using value_type = T;
    using validator_type = Validator;
 
-
    Value( T = 0 );
    Value& operator=( T );
 
@@ -59,7 +48,7 @@ public:
    Value( Value&& );
    Value& operator=( Value&& );
 
-   ~Value();
+   virtual ~Value();
 
    operator T() const;
 
@@ -77,8 +66,8 @@ private:
 }
 }
 
-
-namespace nhill
+#pragma region Operators
+namespace nhill 
 {
 namespace utility
 {
@@ -94,26 +83,9 @@ std::istream & operator>>( std::istream & is, Value<T, Validator> & value )
 
 }
 }
+#pragma endregion
 
-template<typename T>
-inline bool nhill::utility::Value_validator<T>::Default::is_valid( T ) const
-{
-   return true;
-}
-
-template<typename T>
-inline void nhill::utility::Value_validator<T>::Default::invalid( T  ) const
-{
-}
-
-template<typename T>
-inline T nhill::utility::Value_validator<T>::Default::adjust( T value ) const
-{
-   return value;
-}
-
-
-
+#pragma region Definitions
 template<typename T, typename Validator>
 inline nhill::utility::Value<T, Validator>::Value( T val )
 {
@@ -158,15 +130,7 @@ template<typename T, typename Validator>
 inline void nhill::utility::Value<T, Validator>::value( T value )
 {
    Validator validator;
-   if( validator.is_valid( value ) )
-   {
-      value_ = value;
-   }
-   else
-   {
-      validator.invalid( value );
-      value_ = validator.adjust( value );
-   }
+	value_ = validator( value );
 }
 
 template<typename T, typename Validator>
@@ -184,4 +148,4 @@ inline bool nhill::utility::Value<T, Validator>::parse( std::string_view str )
    iss << str;
    iss >> *this;
 }
-
+#pragma endregion

@@ -3,6 +3,7 @@
   <ItemGroup>
     <ClCompile Include="ini.cpp" />
     <ClCompile Include="color_helper.cpp" />
+    <ClCompile Include="convert_file_bin_to_ascii.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="module">
@@ -53,6 +54,7 @@
     <ClInclude Include="exception\not_implemented.h">
       <Filter>exception</Filter>
     </ClInclude>
+    <ClInclude Include="convert_file_bin_to_ascii.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="utility.rc">

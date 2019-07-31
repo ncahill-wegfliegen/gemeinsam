@@ -8,12 +8,12 @@ namespace nhill
 namespace uom
 {
 
-template<typename T>
-using Quantity_time = Quantity<T, Time>;
+template<typename T = double>
+using Quantity_time = Quantity<Time, T>;
 
 namespace time
 {
-template<typename T>
+template<typename T = double>
 using quantity = Quantity_time<T>;
 }
 

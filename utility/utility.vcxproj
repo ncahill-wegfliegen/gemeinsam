@@ -36,6 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="color_helper.cpp" />
+    <ClCompile Include="convert_file_bin_to_ascii.cpp" />
     <ClCompile Include="ini.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +51,7 @@
     <ClInclude Include="colora.h" />
     <ClInclude Include="color_helper.h" />
     <ClInclude Include="compare.h" />
+    <ClInclude Include="convert_file_bin_to_ascii.h" />
     <ClInclude Include="enable_if.h" />
     <ClInclude Include="event_args.h" />
     <ClInclude Include="exception\file_not_found.h" />

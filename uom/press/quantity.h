@@ -8,12 +8,12 @@ namespace nhill
 namespace uom
 {
 
-template<typename T>
-using Quantity_press = Quantity<T, Pressure>;
+template<typename T = double>
+using Quantity_press = Quantity<Pressure, T>;
 
 namespace press
 {
-template<typename T>
+template<typename T = double>
 using quantity = Quantity_press<T>;
 }
 

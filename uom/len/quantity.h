@@ -8,12 +8,12 @@ namespace nhill
 namespace uom
 {
 
-template<typename T>
-using Quantity_len = Quantity<T, Length>;
+template<typename T = double>
+using Quantity_len = Quantity<Length, T>;
 
 namespace len
 {
-template<typename T>
+template<typename T = double>
 using quantity = Quantity_len<T>;
 }
 

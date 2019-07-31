@@ -9,14 +9,18 @@ namespace uom
 namespace temp
 {
 /// <summary>SI temperature: kelvin</summary>
-using v_K = Quantity_temp_template<Prefix::none, Temp::K>;
+template<typename T = double>
+using v_K = Quantity_temp_template<Prefix::none, Temp::K, T>;
 
 /// <summary>API temperature: degree Celsius</summary>
-using v_degC = Quantity_temp_template<Prefix::none, Temp::degC>;
+template<typename T = double>
+using v_degC = Quantity_temp_template<Prefix::none, Temp::degC, T>;
 /// <summary>API temperature: degree Fahrenheit</summary>
-using v_degF = Quantity_temp_template<Prefix::none, Temp::degF>;
+template<typename T = double>
+using v_degF = Quantity_temp_template<Prefix::none, Temp::degF, T>;
 /// <summary>API temperature: degree Rankine</summary>
-using v_degR = Quantity_temp_template<Prefix::none, Temp::degR>;
+template<typename T = double>
+using v_degR = Quantity_temp_template<Prefix::none, Temp::degR, T>;
 }
 }
 }

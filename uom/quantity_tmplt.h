@@ -7,67 +7,65 @@ namespace nhill
 namespace uom
 {
 
-template<typename Uom, Prefix prefix_, Uom uom_>
-class Quantity_template : public Quantity<Uom>
+template<typename Uom, Prefix prefix_, Uom uom_, typename T = double>
+class Quantity_template : public Quantity<Uom, T>
 {
-   static_assert(std::is_enum_v<Uom>, "The template parameter must be a strongly typed enumeration.");
-
 public:
-   using base = Quantity<Uom>;
+   using base = Quantity<Uom, T>;
 
-   Quantity_template( double value = {} );
+   Quantity_template( T value = {} );
    Quantity_template( const Quantity_template& other );
    Quantity_template( Quantity_template&& other );
    virtual ~Quantity_template();
 
    virtual Quantity_template& operator=( const Quantity_template& other );
    virtual Quantity_template& operator=( Quantity_template&& other );
-   virtual Quantity_template& operator=( double value ); // Assign the value: no conversion
+   virtual Quantity_template& operator=( T value ); // Assign the value: no conversion
 };
 
 }
 }
 
 #pragma region Definitions
-template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_>
-nhill::uom::Quantity_template<Uom, prefix_, uom_>::Quantity_template( double value /*= {}*/ )
+template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_, typename T>
+nhill::uom::Quantity_template<Uom, prefix_, uom_, T>::Quantity_template( T value /*= {}*/ )
    : base{prefix_, uom_, value}
 {
 }
 
-template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_>
-nhill::uom::Quantity_template<Uom, prefix_, uom_>::Quantity_template( const Quantity_template& other )
+template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_, typename T>
+nhill::uom::Quantity_template<Uom, prefix_, uom_, T>::Quantity_template( const Quantity_template& other )
    : base{other}
 {
 }
 
-template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_>
-nhill::uom::Quantity_template<Uom, prefix_, uom_>::Quantity_template( Quantity_template&& other )
+template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_, typename T>
+nhill::uom::Quantity_template<Uom, prefix_, uom_, T>::Quantity_template( Quantity_template&& other )
    : base{std::move(other)}
 {
 }
 
-template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_>
-nhill::uom::Quantity_template<Uom, prefix_, uom_>::~Quantity_template()
+template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_, typename T>
+nhill::uom::Quantity_template<Uom, prefix_, uom_, T>::~Quantity_template()
 {
 }
 
-template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_>
-auto nhill::uom::Quantity_template<Uom, prefix_, uom_>::operator=( const Quantity_template& other )->Quantity_template&
+template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_, typename T>
+auto nhill::uom::Quantity_template<Uom, prefix_, uom_, T>::operator=( const Quantity_template& other )->Quantity_template&
 {
    base::operator=( other );
    return *this;
 }
 
-template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_>
-auto nhill::uom::Quantity_template<Uom, prefix_, uom_>::operator=( Quantity_template&& other )->Quantity_template&
+template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_, typename T>
+auto nhill::uom::Quantity_template<Uom, prefix_, uom_, T>::operator=( Quantity_template&& other )->Quantity_template&
 {
    base::operator=( std::move(other) );
    return *this;
 }
 
-template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_>
-auto nhill::uom::Quantity_template<Uom, prefix_, uom_>::operator=( double value )->Quantity_template&
+template<typename Uom, nhill::uom::Prefix prefix_, Uom uom_, typename T>
+auto nhill::uom::Quantity_template<Uom, prefix_, uom_, T>::operator=( T value )->Quantity_template&
 {
    base::operator=( value );
    return *this;

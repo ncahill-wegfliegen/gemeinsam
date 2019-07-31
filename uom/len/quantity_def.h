@@ -9,22 +9,30 @@ namespace uom
 namespace len
 {
 /// <summary>SI length: millimetre</summary>
-using v_mm = Quantity_len_template<Prefix::milli, Len::m>;
+template<typename T = double>
+using v_mm = Quantity_len_template<Prefix::milli, Len::m, T>;
 /// <summary>SI length: centimetre</summary>
-using v_cm = Quantity_len_template<Prefix::centi, Len::m>;
+template<typename T = double>
+using v_cm = Quantity_len_template<Prefix::centi, Len::m, T>;
 /// <summary>SI length: metre</summary>
-using v_m = Quantity_len_template<Prefix::none, Len::m>;
+template<typename T = double>
+using v_m = Quantity_len_template<Prefix::none, Len::m, T>;
 /// <summary>SI length: kilometre</summary>
-using v_km = Quantity_len_template<Prefix::kilo, Len::m>;
+template<typename T = double>
+using v_km = Quantity_len_template<Prefix::kilo, Len::m, T>;
 
 /// <summary>API length: inch</summary>
-using v_in = Quantity_len_template<Prefix::none, Len::in>;
+template<typename T = double>
+using v_in = Quantity_len_template<Prefix::none, Len::in, T>;
 /// <summary>API length: foot</summary>
-using v_ft = Quantity_len_template<Prefix::none, Len::ft>;
+template<typename T = double>
+using v_ft = Quantity_len_template<Prefix::none, Len::ft, T>;
 /// <summary>API length: yard</summary>
-using v_yd = Quantity_len_template<Prefix::none, Len::yd>;
+template<typename T = double>
+using v_yd = Quantity_len_template<Prefix::none, Len::yd, T>;
 /// <summary>API length: mile</summary>
-using v_mi = Quantity_len_template<Prefix::none, Len::mi>;
+template<typename T = double>
+using v_mi = Quantity_len_template<Prefix::none, Len::mi, T>;
 }
 }
 }

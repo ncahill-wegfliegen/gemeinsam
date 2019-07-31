@@ -9,19 +9,26 @@ namespace uom
 namespace time
 {
 /// <summary>Quantity of time: second</summary>
-using v_s = Quantity_time_template<Prefix::none, Time::s>;
+template<typename T = double>
+using v_s = Quantity_time_template<Prefix::none, Time::s, T>;
 /// <summary>Quantity of time: minute</summary>
-using v_min = Quantity_time_template<Prefix::none, Time::min>;
+template<typename T = double>
+using v_min = Quantity_time_template<Prefix::none, Time::min, T>;
 /// <summary>Quantity of time: hour</summary>
-using v_h = Quantity_time_template<Prefix::none, Time::h>;
+template<typename T = double>
+using v_h = Quantity_time_template<Prefix::none, Time::h, T>;
 /// <summary>Quantity of time: day</summary>
-using v_d = Quantity_time_template<Prefix::none, Time::d>;
+template<typename T = double>
+using v_d = Quantity_time_template<Prefix::none, Time::d, T>;
 /// <summary>Quantity of time: week</summary>
-using v_wk = Quantity_time_template<Prefix::none, Time::wk>;
+template<typename T = double>
+using v_wk = Quantity_time_template<Prefix::none, Time::wk, T>;
 /// <summary>Quantity of time: month</summary>
-using v_mo = Quantity_time_template<Prefix::none, Time::mo>;
+template<typename T = double>
+using v_mo = Quantity_time_template<Prefix::none, Time::mo, T>;
 /// <summary>Quantity of time: year</summary>
-using v_yr = Quantity_time_template<Prefix::none, Time::yr>;
+template<typename T = double>
+using v_yr = Quantity_time_template<Prefix::none, Time::yr, T>;
 }
 }
 }

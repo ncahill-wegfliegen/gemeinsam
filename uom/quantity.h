@@ -8,17 +8,16 @@ namespace nhill
 namespace uom
 {
 
-template<typename T, typename Uom> inline
+template<typename Uom> inline
 double convert( Prefix dst_prefix, Uom dst_uom, double src_value, Prefix src_prefix, Uom src_uom );
 
 
-template<typename T, typename Uom>
+template<typename Uom, typename T = double>
 class Quantity : public utility::Value<T>, Prefixed_uom<Uom>
 {
 public:
    using base_value = utility::Value<T>;
    using base_puom  = Prefixed_uom<Uom>;
-   using uom_type = Uom;
 
    Quantity( Prefix prefix, Uom uom, T value = {} );
    Quantity( const Prefixed_uom<Uom>& puom, T value = {} );
@@ -39,46 +38,58 @@ public:
 }
 
 #pragma region Definitions
-template<typename T, typename Uom>
-nhill::uom::Quantity<T, Uom>::Quantity( Prefix prefix, Uom uom, T value /*= 0*/ )
+template<typename Uom, typename T>
+nhill::uom::Quantity<Uom, T>::Quantity( Prefix prefix, Uom uom, T value /*= 0*/ )
    : base_value{value}
    , base_puom{prefix, uom}
 {
 
 }
 
-template<typename T, typename Uom>
-nhill::uom::Quantity<T, Uom>::Quantity( const Prefixed_uom<Uom>& puom, T value /*= 0*/ )
+template<typename Uom, typename T>
+nhill::uom::Quantity<Uom, T>::Quantity( const Prefixed_uom<Uom>& puom, T value /*= 0*/ )
    : base_value{value}
    , base_puom{puom}
 {
 
 }
 
-template<typename T, typename Uom>
-auto nhill::uom::Quantity<T, Uom>::operator=( T value )->Quantity &
+template<typename Uom, typename T>
+auto nhill::uom::Quantity<Uom, T>::operator=( T value )->Quantity &
 {
    base_value::operator=( value );
    return *this;
 }
 
-template<typename T, typename Uom>
-nhill::uom::Quantity<T, Uom>::Quantity( const Quantity& ) = default;
+template<typename Uom, typename T>
+nhill::uom::Quantity<Uom, T>::Quantity( const Quantity& ) = default;
 
-template<typename T, typename Uom>
-auto nhill::uom::Quantity<T, Uom>::operator=( const Quantity& )->Quantity & = default;
+template<typename Uom, typename T>
+auto nhill::uom::Quantity<Uom, T>::operator=( const Quantity& other)->Quantity &
+{
+   double other_value{static_cast<double>(other.value())};
+   double value{nhill::uom::convert( prefix, uom, other_value, other.prefix, other.uom )};
+   base_value::operator=( static_cast<T>(value) );
+   return *this;
+}
 
-template<typename T, typename Uom>
-nhill::uom::Quantity<T, Uom>::Quantity( Quantity&& ) = default;
+template<typename Uom, typename T>
+nhill::uom::Quantity<Uom, T>::Quantity( Quantity&& ) = default;
 
-template<typename T, typename Uom>
-auto nhill::uom::Quantity<T, Uom>::operator=( Quantity&& other )->Quantity & = default;
+template<typename Uom, typename T>
+auto nhill::uom::Quantity<Uom, T>::operator=( Quantity&& other )->Quantity & 
+{
+   double other_value{static_cast<double>(other.value())};
+   double value{nhill::uom::convert( prefix, uom, other_value, other.prefix, other.uom )};
+   base_value::operator=( static_cast<T>(value) );
+   return *this;
+}
 
-template<typename T, typename Uom>
-nhill::uom::Quantity<T, Uom>::~Quantity() = default;
+template<typename Uom, typename T>
+nhill::uom::Quantity<Uom, T>::~Quantity() = default;
 
-template<typename T, typename Uom>
-std::string nhill::uom::Quantity<T, Uom>::to_string() const
+template<typename Uom, typename T>
+std::string nhill::uom::Quantity<Uom, T>::to_string() const
 {
    std::ostringstream oss;
    oss << base_value::to_string() << " " << base_puom::to_string();
