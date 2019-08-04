@@ -61,6 +61,7 @@
     <ClInclude Include="file.h" />
     <ClInclude Include="ini.h" />
     <ClInclude Include="link_library.h" />
+    <ClInclude Include="multi_pnt.h" />
     <ClInclude Include="object.h" />
     <ClInclude Include="port.h" />
     <ClInclude Include="property.h" />

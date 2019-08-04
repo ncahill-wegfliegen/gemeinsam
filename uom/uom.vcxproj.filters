@@ -16,6 +16,18 @@
     <Filter Include="time">
       <UniqueIdentifier>{4d048d6c-55a6-49f4-8c38-55b81652c60b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vol">
+      <UniqueIdentifier>{d87397c4-21c8-4f17-a15b-1564e9e7da2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="a2d">
+      <UniqueIdentifier>{4a94bcf2-9673-4ffe-936f-0a20aa1411eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rate">
+      <UniqueIdentifier>{eedfb891-25cc-4f5d-8a8a-b5d572c40ddb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rate\vol">
+      <UniqueIdentifier>{5a5a3ead-f8db-414a-85b2-45d35ec3ad22}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -137,6 +149,90 @@
     <ClInclude Include="time\time_convert_primitive.h">
       <Filter>time</Filter>
     </ClInclude>
+    <ClInclude Include="vol.h" />
+    <ClInclude Include="vol\puom.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\puom_def.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\puomc.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\quantity.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\quantity_def.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\vol_convert.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\vol_convert_primitive.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\puom_tmplt.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="vol\quantity_tmplt.h">
+      <Filter>vol</Filter>
+    </ClInclude>
+    <ClInclude Include="prefix_category.h" />
+    <ClInclude Include="prefix_values.h" />
+    <ClInclude Include="a2d.h" />
+    <ClInclude Include="a2d\a2d_convert.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\a2d_convert_primitive.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\puom.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\puom_def.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\puom_tmplt.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\puomc.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\quantity.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\quantity_def.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="a2d\quantity_tmplt.h">
+      <Filter>a2d</Filter>
+    </ClInclude>
+    <ClInclude Include="puom_ratio.h" />
+    <ClInclude Include="puom_ratioc.h" />
+    <ClInclude Include="quantity_ratio.h" />
+    <ClInclude Include="puom_ratio_tmplt.h" />
+    <ClInclude Include="quantity_ratio_tmplt.h" />
+    <ClInclude Include="rate\puom.h">
+      <Filter>rate</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\puom_tmplt.h">
+      <Filter>rate</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\puomc.h">
+      <Filter>rate</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\quantity.h">
+      <Filter>rate</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\quantity_tmplt.h">
+      <Filter>rate</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\vol\puom_def.h">
+      <Filter>rate\vol</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\vol\quantity_def.h">
+      <Filter>rate\vol</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="temp\temp.cpp">
@@ -175,6 +271,26 @@
     </ClCompile>
     <ClCompile Include="time\time_convert_primitive.cpp">
       <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="vol\vol.cpp">
+      <Filter>vol</Filter>
+    </ClCompile>
+    <ClCompile Include="vol\vol_convert.cpp">
+      <Filter>vol</Filter>
+    </ClCompile>
+    <ClCompile Include="vol\vol_convert_primitive.cpp">
+      <Filter>vol</Filter>
+    </ClCompile>
+    <ClCompile Include="prefix_category.cpp" />
+    <ClCompile Include="prefix_values.cpp" />
+    <ClCompile Include="a2d\a2d.cpp">
+      <Filter>a2d</Filter>
+    </ClCompile>
+    <ClCompile Include="a2d\a2d_convert.cpp">
+      <Filter>a2d</Filter>
+    </ClCompile>
+    <ClCompile Include="a2d\a2d_convert_primitive.cpp">
+      <Filter>a2d</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

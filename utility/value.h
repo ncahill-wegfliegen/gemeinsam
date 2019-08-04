@@ -81,6 +81,34 @@ std::istream & operator>>( std::istream & is, Value<T, Validator> & value )
    return is;
 }
 
+template<typename T, typename Validator>
+Value<T, Validator>& operator*=( Value<T, Validator>& a, T b )
+{
+	a.value( a.value() * b );
+	return a;
+}
+
+template<typename T, typename Validator>
+Value<T, Validator>& operator*=( T a, Value<T, Validator>& b )
+{
+	b.value( b.value() * a );
+	return a;
+}
+
+template<typename T, typename Validator>
+Value<T, Validator>& operator/=( Value<T, Validator>& a, T b )
+{
+	a.value( a.value() / b );
+	return a;
+}
+
+template<typename T, typename Validator>
+Value<T, Validator>& operator/=( T a, Value<T, Validator>& b )
+{
+	b.value( b.value() / a );
+	return a;
+}
+
 }
 }
 #pragma endregion

@@ -35,6 +35,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="a2d.h" />
+    <ClInclude Include="a2d\a2d_convert.h" />
+    <ClInclude Include="a2d\a2d_convert_primitive.h" />
+    <ClInclude Include="a2d\puom.h" />
+    <ClInclude Include="a2d\puomc.h" />
+    <ClInclude Include="a2d\puom_def.h" />
+    <ClInclude Include="a2d\puom_tmplt.h" />
+    <ClInclude Include="a2d\quantity.h" />
+    <ClInclude Include="a2d\quantity_def.h" />
+    <ClInclude Include="a2d\quantity_tmplt.h" />
     <ClInclude Include="convert.h" />
     <ClInclude Include="len.h" />
     <ClInclude Include="len\len_convert.h" />
@@ -48,6 +58,8 @@
     <ClInclude Include="len\quantity_tmplt.h" />
     <ClInclude Include="port.h" />
     <ClInclude Include="prefix.h" />
+    <ClInclude Include="prefix_category.h" />
+    <ClInclude Include="prefix_values.h" />
     <ClInclude Include="press.h" />
     <ClInclude Include="press\press_convert.h" />
     <ClInclude Include="press\press_convert_primitive.h" />
@@ -60,9 +72,21 @@
     <ClInclude Include="press\quantity_tmplt.h" />
     <ClInclude Include="puom.h" />
     <ClInclude Include="puomc.h" />
+    <ClInclude Include="puom_ratio.h" />
+    <ClInclude Include="puom_ratioc.h" />
+    <ClInclude Include="puom_ratio_tmplt.h" />
     <ClInclude Include="puom_tmplt.h" />
     <ClInclude Include="quantity.h" />
+    <ClInclude Include="quantity_ratio.h" />
+    <ClInclude Include="quantity_ratio_tmplt.h" />
     <ClInclude Include="quantity_tmplt.h" />
+    <ClInclude Include="rate\puom.h" />
+    <ClInclude Include="rate\puomc.h" />
+    <ClInclude Include="rate\puom_tmplt.h" />
+    <ClInclude Include="rate\quantity.h" />
+    <ClInclude Include="rate\quantity_tmplt.h" />
+    <ClInclude Include="rate\vol\puom_def.h" />
+    <ClInclude Include="rate\vol\quantity_def.h" />
     <ClInclude Include="temp.h" />
     <ClInclude Include="temp\puom.h" />
     <ClInclude Include="temp\puomc.h" />
@@ -82,12 +106,27 @@
     <ClInclude Include="time\quantity_tmplt.h" />
     <ClInclude Include="time\time_convert.h" />
     <ClInclude Include="time\time_convert_primitive.h" />
+    <ClInclude Include="vol.h" />
+    <ClInclude Include="vol\puom.h" />
+    <ClInclude Include="vol\puomc.h" />
+    <ClInclude Include="vol\puom_def.h" />
+    <ClInclude Include="vol\puom_tmplt.h" />
+    <ClInclude Include="vol\quantity.h" />
+    <ClInclude Include="vol\quantity_def.h" />
+    <ClInclude Include="vol\quantity_tmplt.h" />
+    <ClInclude Include="vol\vol_convert.h" />
+    <ClInclude Include="vol\vol_convert_primitive.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="a2d\a2d.cpp" />
+    <ClCompile Include="a2d\a2d_convert.cpp" />
+    <ClCompile Include="a2d\a2d_convert_primitive.cpp" />
     <ClCompile Include="len\len.cpp" />
     <ClCompile Include="len\len_convert.cpp" />
     <ClCompile Include="len\len_convert_primitive.cpp" />
     <ClCompile Include="prefix.cpp" />
+    <ClCompile Include="prefix_category.cpp" />
+    <ClCompile Include="prefix_values.cpp" />
     <ClCompile Include="press\press.cpp" />
     <ClCompile Include="press\press_convert.cpp" />
     <ClCompile Include="press\press_convert_primitive.cpp" />
@@ -97,6 +136,9 @@
     <ClCompile Include="time\time.cpp" />
     <ClCompile Include="time\time_convert.cpp" />
     <ClCompile Include="time\time_convert_primitive.cpp" />
+    <ClCompile Include="vol\vol.cpp" />
+    <ClCompile Include="vol\vol_convert.cpp" />
+    <ClCompile Include="vol\vol_convert_primitive.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\enum\enum.vcxproj">

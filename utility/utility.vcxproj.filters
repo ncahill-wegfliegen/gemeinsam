@@ -34,7 +34,6 @@
     <ClInclude Include="ini.h" />
     <ClInclude Include="link_library.h" />
     <ClInclude Include="object.h" />
-    <ClInclude Include="port.h" />
     <ClInclude Include="property.h" />
     <ClInclude Include="range.h" />
     <ClInclude Include="size.h" />
@@ -55,6 +54,10 @@
       <Filter>exception</Filter>
     </ClInclude>
     <ClInclude Include="convert_file_bin_to_ascii.h" />
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="multi_pnt.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="utility.rc">
