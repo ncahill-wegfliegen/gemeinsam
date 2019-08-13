@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\..\enum\core\values.h"
-#include "..\chr.h"
+#include "../../enum/core/values.h"
+#include "../chr.h"
 #include <string_view>
 #include <string>
 #include <ostream>

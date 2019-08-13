@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\time.h"
-#include "..\puom_tmplt.h"
+#include "../time.h"
+#include "../puom_tmplt.h"
 
 namespace nhill
 {

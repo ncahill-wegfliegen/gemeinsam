@@ -1,5 +1,5 @@
-#include "len_convert.h"
-#include "len_convert_primitive.h"
+#include "../len/len_convert.h"
+#include "../len/len_convert_primitive.h"
 
 template<>
 double nhill::uom::convert( Prefix dst_prefix, Length dst_uom, double src_value, Prefix src_prefix, Length src_uom )

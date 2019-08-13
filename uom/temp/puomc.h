@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\temp.h"
-#include "..\puomc.h"
+#include "../temp.h"
+#include "../puomc.h"
 
 namespace nhill
 {

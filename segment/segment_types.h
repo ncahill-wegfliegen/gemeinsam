@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\geometry\pnt.h"
-#include "..\geometry\pnt_container.h"
+#include "../geometry/pnt.h"
+#include "../geometry/pnt_container.h"
 #include <vector>
 #include <memory>
 #include <map>

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\utility\enable_if.h"
+#include "../utility/enable_if.h"
 #include <cmath>
 
 // https://stackoverflow.com/questions/16443682/c-power-of-integer-template-meta-programming

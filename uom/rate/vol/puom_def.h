@@ -1,6 +1,7 @@
 #pragma once
 
-#include "..\puom_tmplt.h"
+#include "../../rate/puom_tmplt.h"
+#include "../../vol.h"
 
 namespace nhill
 {
@@ -8,6 +9,7 @@ namespace uom
 {
 namespace rate
 {
+
 
 /// <summary>SI oil rate: metres cubed per day</summary>
 template<typename T = double>

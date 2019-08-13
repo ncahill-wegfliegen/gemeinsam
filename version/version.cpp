@@ -1,5 +1,5 @@
 #include "version.h"
-#include "..\utility\str.h"
+#include "../utility/str.h"
 #include <vector>
 #include <algorithm>
 #include <limits>

@@ -1,7 +1,7 @@
 #include "segment_stepped.h"
-#include "..\geometry\pnt.h"
-#include "..\math\compare.h"
-#include "..\utility\exception\message.h"
+#include "../geometry/pnt.h"
+#include "../math/compare.h"
+#include "../utility/exception/message.h"
 #include <cmath>
 
 nhill::segment::Segment_stepped::Segment_stepped( const Key& key /*= {}*/ )
@@ -165,7 +165,7 @@ void nhill::segment::Segment_stepped::validate( float step, double start, const 
    }
 }
 
-auto nhill::segment::Segment_stepped::sub_segment( int pos_beg, int pos_end )->Segment_stepped
+auto nhill::segment::Segment_stepped::sub_segment( size_t pos_beg, size_t pos_end )->Segment_stepped
 {
    // Adjust the end position if necessary
    if( pos_end == -1 )

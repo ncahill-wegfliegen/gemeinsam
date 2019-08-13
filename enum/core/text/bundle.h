@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\..\port.h"
-#include "..\text.h"
+#include "../../port.h"
+#include "../text.h"
 #include <string_view>
 #include <map>
 #include <initializer_list>

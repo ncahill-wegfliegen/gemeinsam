@@ -1,6 +1,6 @@
 #pragma once
 
-#include "..\math\compare.h"
+#include "../math/compare.h"
 #include <type_traits>
 #include <string>
 #include <sstream>

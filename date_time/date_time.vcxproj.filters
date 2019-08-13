@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="core">
+      <UniqueIdentifier>{e5f79d95-6ea2-4023-bbe1-994e81f7f9e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="date">
+      <UniqueIdentifier>{d77ea1bb-fd93-4619-be7f-08d3eef45105}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="time">
+      <UniqueIdentifier>{0ffac450-2321-444c-86f4-5b6936bad8f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="module">
+      <UniqueIdentifier>{43984644-0eb1-488f-b81e-41a13e8cd484}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="core.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="date.cpp">
+      <Filter>date</Filter>
+    </ClCompile>
+    <ClCompile Include="day.cpp">
+      <Filter>date</Filter>
+    </ClCompile>
+    <ClCompile Include="month.cpp">
+      <Filter>date</Filter>
+    </ClCompile>
+    <ClCompile Include="year.cpp">
+      <Filter>date</Filter>
+    </ClCompile>
+    <ClCompile Include="hour.cpp">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="minute.cpp">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="second.cpp">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="time.cpp">
+      <Filter>time</Filter>
+    </ClCompile>
+    <ClCompile Include="date_time.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="core.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="date.h">
+      <Filter>date</Filter>
+    </ClInclude>
+    <ClInclude Include="day.h">
+      <Filter>date</Filter>
+    </ClInclude>
+    <ClInclude Include="month.h">
+      <Filter>date</Filter>
+    </ClInclude>
+    <ClInclude Include="year.h">
+      <Filter>date</Filter>
+    </ClInclude>
+    <ClInclude Include="hour.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="minute.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="second.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="time.h">
+      <Filter>time</Filter>
+    </ClInclude>
+    <ClInclude Include="date_time.h" />
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,5 +1,5 @@
-#include "temp_convert.h"
-#include "temp_convert_primitive.h"
+#include "../temp/temp_convert.h"
+#include "../temp/temp_convert_primitive.h"
 
 template<>
 double nhill::uom::convert( Prefix dst_prefix, Temp dst_uom, double src_value, Prefix src_prefix, Temp src_uom )

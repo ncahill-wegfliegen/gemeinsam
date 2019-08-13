@@ -28,6 +28,36 @@
     <Filter Include="rate\vol">
       <UniqueIdentifier>{5a5a3ead-f8db-414a-85b2-45d35ec3ad22}</UniqueIdentifier>
     </Filter>
+    <Filter Include="rate\speed">
+      <UniqueIdentifier>{35527fd0-1000-4434-9632-df4e90771f7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ratio">
+      <UniqueIdentifier>{a4b7f2df-25a9-49d7-9104-23f6f34c6932}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ratio\cnd_gas">
+      <UniqueIdentifier>{cd9181a9-6c2b-4487-bedb-dac8bd000ce0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ratio\gas_fld">
+      <UniqueIdentifier>{15f0d6b5-b99e-46f7-bf00-84d46e774331}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ratio\gas_oil">
+      <UniqueIdentifier>{366ff317-5d6d-4f0c-9abe-5e92d8b9e7ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ratio\wtr_gas">
+      <UniqueIdentifier>{4f2183b6-0a4c-4d30-aff7-2a6f04453774}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ratio\wtr_oil">
+      <UniqueIdentifier>{694a216f-7080-452f-8c6b-45e037bc55ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fvf">
+      <UniqueIdentifier>{3f6052f7-cae5-4228-a8c1-b688e8e1d08e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fvf\oil">
+      <UniqueIdentifier>{7973e0c9-74f8-47a7-a813-ac5f8e7c5233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fvf\gas">
+      <UniqueIdentifier>{183c9731-b327-4d78-8b93-e7c5211fda9e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -232,6 +262,162 @@
     </ClInclude>
     <ClInclude Include="rate\vol\quantity_def.h">
       <Filter>rate\vol</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\speed\puom_def.h">
+      <Filter>rate\speed</Filter>
+    </ClInclude>
+    <ClInclude Include="rate\speed\quantity_def.h">
+      <Filter>rate\speed</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\cnd_gas\puom.h">
+      <Filter>ratio\cnd_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\cnd_gas\puom_def.h">
+      <Filter>ratio\cnd_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\cnd_gas\puom_tmplt.h">
+      <Filter>ratio\cnd_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\cnd_gas\puomc.h">
+      <Filter>ratio\cnd_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\cnd_gas\quantity.h">
+      <Filter>ratio\cnd_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\cnd_gas\quantity_def.h">
+      <Filter>ratio\cnd_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\cnd_gas\quantity_tmplt.h">
+      <Filter>ratio\cnd_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_fld\puom.h">
+      <Filter>ratio\gas_fld</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_fld\puom_def.h">
+      <Filter>ratio\gas_fld</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_fld\puom_tmplt.h">
+      <Filter>ratio\gas_fld</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_fld\puomc.h">
+      <Filter>ratio\gas_fld</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_fld\quantity.h">
+      <Filter>ratio\gas_fld</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_fld\quantity_def.h">
+      <Filter>ratio\gas_fld</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_fld\quantity_tmplt.h">
+      <Filter>ratio\gas_fld</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_oil\puom.h">
+      <Filter>ratio\gas_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_oil\puom_def.h">
+      <Filter>ratio\gas_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_oil\puom_tmplt.h">
+      <Filter>ratio\gas_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_oil\puomc.h">
+      <Filter>ratio\gas_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_oil\quantity.h">
+      <Filter>ratio\gas_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_oil\quantity_def.h">
+      <Filter>ratio\gas_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\gas_oil\quantity_tmplt.h">
+      <Filter>ratio\gas_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_gas\puom.h">
+      <Filter>ratio\wtr_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_gas\puom_def.h">
+      <Filter>ratio\wtr_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_gas\puom_tmplt.h">
+      <Filter>ratio\wtr_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_gas\puomc.h">
+      <Filter>ratio\wtr_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_gas\quantity.h">
+      <Filter>ratio\wtr_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_gas\quantity_def.h">
+      <Filter>ratio\wtr_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_gas\quantity_tmplt.h">
+      <Filter>ratio\wtr_gas</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_oil\puom.h">
+      <Filter>ratio\wtr_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_oil\puom_def.h">
+      <Filter>ratio\wtr_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_oil\puom_tmplt.h">
+      <Filter>ratio\wtr_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_oil\puomc.h">
+      <Filter>ratio\wtr_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_oil\quantity.h">
+      <Filter>ratio\wtr_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_oil\quantity_def.h">
+      <Filter>ratio\wtr_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="ratio\wtr_oil\quantity_tmplt.h">
+      <Filter>ratio\wtr_oil</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\quantity_fvf.h">
+      <Filter>fvf</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\gas\puom.h">
+      <Filter>fvf\gas</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\gas\puom_def.h">
+      <Filter>fvf\gas</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\gas\puom_tmplt.h">
+      <Filter>fvf\gas</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\gas\puomc.h">
+      <Filter>fvf\gas</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\gas\quantity.h">
+      <Filter>fvf\gas</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\gas\quantity_def.h">
+      <Filter>fvf\gas</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\gas\quantity_tmplt.h">
+      <Filter>fvf\gas</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\oil\puom.h">
+      <Filter>fvf\oil</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\oil\puom_def.h">
+      <Filter>fvf\oil</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\oil\puom_tmplt.h">
+      <Filter>fvf\oil</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\oil\puomc.h">
+      <Filter>fvf\oil</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\oil\quantity.h">
+      <Filter>fvf\oil</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\oil\quantity_def.h">
+      <Filter>fvf\oil</Filter>
+    </ClInclude>
+    <ClInclude Include="fvf\oil\quantity_tmplt.h">
+      <Filter>fvf\oil</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

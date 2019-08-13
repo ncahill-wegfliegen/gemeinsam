@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\quantity_ratio.h"
-#include "..\time.h"
+#include "../quantity_ratio.h"
+#include "../time.h"
 
 namespace nhill
 {

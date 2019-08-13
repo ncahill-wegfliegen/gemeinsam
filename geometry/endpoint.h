@@ -8,7 +8,7 @@ namespace geometry
 
 /// <summary>The endpoint of an interval.</summary>
 /// <param name="T">The arithmetic type (signed/unsigned integer or floating point).</param>
-/// <param name="Compare">A functor that takes two T values and returns true/false (for exampke, use one of the Compare methods in 'nhill\math\compare.h').</param>
+/// <param name="Compare">A functor that takes two T values and returns true/false (for exampke, use one of the Compare methods in 'nhill/math/compare.h').</param>
 /// <remarks>A value 'x' is valid if it compres true relative to the the endpoint value.</remarks>
 /// <example>If the endpoint is 5 and the compare function is 'greater than', then
 ///   a value 'x' is valid if it is greater than 5.

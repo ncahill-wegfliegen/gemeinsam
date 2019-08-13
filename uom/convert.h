@@ -1,7 +1,7 @@
 #pragma once
 
 #include "prefix.h"
-#include "..\utility\exception\not_implemented.h"
+#include "../utility/exception/not_implemented.h"
 
 namespace nhill
 {

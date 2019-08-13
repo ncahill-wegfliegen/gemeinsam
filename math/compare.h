@@ -2,7 +2,7 @@
 
 #include "precision.h"
 #include "sign.h"
-#include "..\utility\enable_if.h"
+#include "../utility/enable_if.h"
 #include <algorithm>
 #include <limits>
 

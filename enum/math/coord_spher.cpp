@@ -1,4 +1,4 @@
-#include "..\math\coord_spher.h"
+#include "../math/coord_spher.h"
 
 template<>
 const nhill::text::Bundle_container<nhill::Coord_shper>& nhill::text::bundle_container<nhill::Coord_shper>()

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\puom.h"
-#include "..\press.h"
+#include "../puom.h"
+#include "../press.h"
 
 namespace nhill
 {

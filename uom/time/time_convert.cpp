@@ -1,5 +1,5 @@
-#include "time_convert.h"
-#include "time_convert_primitive.h"
+#include "../time/time_convert.h"
+#include "../time/time_convert_primitive.h"
 
 template<>
 double nhill::uom::convert( Prefix dst_prefix, Time dst_uom, double src_value, Prefix src_prefix, Time src_uom )

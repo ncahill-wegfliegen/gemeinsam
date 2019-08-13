@@ -1,6 +1,6 @@
 #pragma once
 
-#include "gs\util\enable_if.h"
+#include "gs/util/enable_if.h"
 #include <cmath>
 
 namespace gs

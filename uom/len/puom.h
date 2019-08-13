@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\puom.h"
-#include "..\len.h"
+#include "../puom.h"
+#include "../len.h"
 
 namespace nhill
 {

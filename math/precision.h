@@ -1,7 +1,7 @@
 #pragma once
 
 #include "pow_of_ten.h"
-#include "..\utility\enable_if.h"
+#include "../utility/enable_if.h"
 
 namespace nhill
 {

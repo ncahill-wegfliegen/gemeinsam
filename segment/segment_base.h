@@ -2,9 +2,9 @@
 
 #include "port.h"
 #include "segment_types.h"
-#include "..\geometry\interval.h"
-#include "..\geometry\pnt_container.h"
-#include "..\math\compare.h"
+#include "../geometry/interval.h"
+#include "../geometry/pnt_container.h"
+#include "../math/compare.h"
 
 #pragma warning(push)
 #pragma warning(disable: 4251)

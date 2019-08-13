@@ -1,7 +1,7 @@
 #pragma once
 
 #include "port.h"
-#include "..\utility\object.h"
+#include "../utility/object.h"
 #include <ostream>
 #include <istream>
 #include <cstdint>

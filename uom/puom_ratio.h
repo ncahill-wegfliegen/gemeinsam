@@ -2,7 +2,7 @@
 
 #include "puom.h"
 #include "prefix.h"
-#include "..\utility\object.h"
+#include "../utility/object.h"
 #include <string>
 #include <sstream>
 #include <type_traits>

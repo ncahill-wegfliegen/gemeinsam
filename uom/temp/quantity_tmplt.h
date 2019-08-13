@@ -1,7 +1,7 @@
 #pragma once
 
-#include "temp_convert.h"
-#include "..\quantity_tmplt.h"
+#include "../temp/temp_convert.h"
+#include "../quantity_tmplt.h"
 
 namespace nhill
 {

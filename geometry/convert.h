@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "port.h"
-#include "..\math\constants.h"
+#include "../math/constants.h"
 #include <string>
 
 namespace nhill

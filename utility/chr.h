@@ -1,7 +1,7 @@
 #pragma once
 
 #include "enable_if.h"
-#include "exception\not_implemented.h"
+#include "exception/not_implemented.h"
 #include <filesystem>
 
 namespace nhill

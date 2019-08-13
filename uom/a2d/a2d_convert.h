@@ -1,8 +1,8 @@
 #pragma once
 
-#include "..\port.h"
-#include "..\convert.h"
-#include "..\a2d.h"
+#include "../port.h"
+#include "../convert.h"
+#include "../a2d.h"
 
 namespace nhill
 {

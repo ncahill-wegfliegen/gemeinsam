@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\puom_ratioc.h"
-#include "..\time.h"
+#include "../puom_ratioc.h"
+#include "../time.h"
 
 namespace nhill
 {

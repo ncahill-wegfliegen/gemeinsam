@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////
 //
-// File: nhill\geometry\port.h
+// File: nhill/geometry/port.h
 // Date: 25 Jun 2015 nhill
 //
 // Definitions for exporting/importing library elements.

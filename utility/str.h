@@ -139,7 +139,7 @@ std::basic_string<Char> replace( const std::basic_string<Char>& text, const std:
 /// <see cref="std::isspace">The whitespace characters are determined by std::isspace.</see>
 /// <example>An example of calling this method.
 ///   <code>
-///      std::bstr s{""\t \nNow is the winter\t of our discontent.\t \n"};
+///      std::bstr s{""\t /nNow is the winter\t of our discontent.\t \n"};
 ///      nhill::trim_start( s );
 ///   </code>
 ///   When the function returns, the bstr 's' contains "Now is the winter\t of our discontent.\t \n".

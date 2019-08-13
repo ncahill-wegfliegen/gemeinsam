@@ -1,8 +1,8 @@
 #pragma once
 
 #include "compare.h"
-#include "nhill\enum\core\int.h"
-#include "nhill\enable_if.h"
+#include "nhill/enum/core/int.h"
+#include "nhill/enable_if.h"
 #include <array>
 #include <algorithm>
 

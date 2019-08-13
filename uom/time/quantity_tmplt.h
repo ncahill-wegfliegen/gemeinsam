@@ -1,7 +1,7 @@
 #pragma once
 
-#include "time_convert.h"
-#include "..\quantity_tmplt.h"
+#include "../time/time_convert.h"
+#include "../quantity_tmplt.h"
 
 namespace nhill
 {

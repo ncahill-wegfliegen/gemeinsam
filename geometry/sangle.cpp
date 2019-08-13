@@ -1,6 +1,6 @@
 #include "sangle.h"
-#include "..\math\sign.h"
-#include "..\enum\core\int.h"
+#include "../math/sign.h"
+#include "../enum/core/int.h"
 
 using namespace std;
 

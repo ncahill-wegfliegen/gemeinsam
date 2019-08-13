@@ -1,5 +1,5 @@
 #include "log.h"
-#include "..\utility\str.h"
+#include "../utility/str.h"
 #include <algorithm>
 #include <cctype>
 #include <iomanip>

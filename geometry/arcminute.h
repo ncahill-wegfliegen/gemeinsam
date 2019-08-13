@@ -1,10 +1,10 @@
 #pragma once
 
 #include "port.h"
-#include "..\utility\enable_if.h"
-#include "..\math\compare.h"
-#include "..\utility\chr.h"
-#include <gsl\gsl_assert>
+#include "../utility/enable_if.h"
+#include "../math/compare.h"
+#include "../utility/chr.h"
+#include <gsl/gsl_assert>
 
 #pragma region Adjust Methods
 namespace nhill

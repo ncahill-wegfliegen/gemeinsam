@@ -1,4 +1,4 @@
-#include "time_convert_primitive.h"
+#include "../time/time_convert_primitive.h"
 
 NHILL_UOM_PORT_PARAMETER const double nhill::uom::time::s_per_min { 60 };
 NHILL_UOM_PORT_PARAMETER const double nhill::uom::time::min_per_h { 60 };

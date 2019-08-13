@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\time.h"
-#include "..\puomc.h"
+#include "../time.h"
+#include "../puomc.h"
 
 namespace nhill
 {

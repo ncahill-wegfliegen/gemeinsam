@@ -1,7 +1,7 @@
 #include "convert.h"
-#include "..\utility\chr.h"
+#include "../utility/chr.h"
 #include <sstream>
-#include <gsl\gsl_assert>
+#include <gsl/gsl_assert>
 
 using namespace std;
 

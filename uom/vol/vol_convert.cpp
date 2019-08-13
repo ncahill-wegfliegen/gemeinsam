@@ -1,6 +1,6 @@
-#include "vol_convert.h"
-#include "vol_convert_primitive.h"
-#include "..\prefix_category.h"
+#include "../vol/vol_convert.h"
+#include "../vol/vol_convert_primitive.h"
+#include "../prefix_category.h"
 
 
 NHILL_UOM_PORT_PARAMETER double nhill::uom::vol::cf_per_boe = nhill::uom::vol::cf_per_boe_default;

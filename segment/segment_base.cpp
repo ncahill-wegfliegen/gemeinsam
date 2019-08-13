@@ -1,7 +1,7 @@
 #include "segment_base.h"
 #include "segment_stepped.h"
 #include "segment_indexed.h"
-#include "..\utility\exception\message.h"
+#include "../utility/exception/message.h"
 #include <exception>
 
 using namespace std;

@@ -3,7 +3,7 @@
 #include "array_iterator.h"
 #include <algorithm>
 #include <iterator>
-#include <gsl\gsl_assert>
+#include <gsl/gsl_assert>
 
 
 namespace nhill

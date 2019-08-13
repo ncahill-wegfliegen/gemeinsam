@@ -1,8 +1,8 @@
 #include "curve.h"
-#include "..\geometry\pnt.h"
-#include "..\geometry\interval_helper.h"
-#include "..\utility\exception\message.h"
-#include "..\utility\unique_ptr.h"
+#include "../geometry/pnt.h"
+#include "../geometry/interval_helper.h"
+#include "../utility/exception/message.h"
+#include "../utility/unique_ptr.h"
 
 using namespace std;
 

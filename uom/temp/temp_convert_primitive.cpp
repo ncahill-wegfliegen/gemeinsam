@@ -1,4 +1,4 @@
-#include "temp_convert_primitive.h"
+#include "../temp/temp_convert_primitive.h"
 
 double nhill::uom::temp::K_to_K( double K, double prefix_K /*= 1*/, double prefix_K_out /*= 1*/ )
 {

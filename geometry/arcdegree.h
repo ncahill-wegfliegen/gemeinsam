@@ -1,9 +1,9 @@
 #pragma once
 
 //#include "port.h"
-#include "..\math\compare.h"
-#include "..\utility\enable_if.h"
-#include <gsl\gsl_assert>
+#include "../math/compare.h"
+#include "../utility/enable_if.h"
+#include <gsl/gsl_assert>
 #include <cstdint>
 #include <type_traits>
 

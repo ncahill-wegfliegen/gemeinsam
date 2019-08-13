@@ -1,5 +1,5 @@
-#include "vol_convert_primitive.h"
-#include "..\a2d\a2d_convert_primitive.h"
+#include "../vol/vol_convert_primitive.h"
+#include "../a2d/a2d_convert_primitive.h"
 
 NHILL_UOM_PORT_PARAMETER const double nhill::uom::vol::cf_per_boe_default { 5800 };
 NHILL_UOM_PORT_PARAMETER const double nhill::uom::vol::boe_per_cf_default { 1.0 / nhill::uom::vol::cf_per_boe_default };

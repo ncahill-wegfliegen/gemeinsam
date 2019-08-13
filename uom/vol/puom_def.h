@@ -1,6 +1,6 @@
 #pragma once
 
-#include "puom_tmplt.h"
+#include "../vol/puom_tmplt.h"
 
 namespace nhill
 {

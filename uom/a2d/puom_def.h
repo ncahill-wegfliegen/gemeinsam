@@ -1,6 +1,6 @@
 #pragma once
 
-#include "puom_tmplt.h"
+#include "../a2d/puom_tmplt.h"
 
 namespace nhill
 {

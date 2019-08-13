@@ -1,5 +1,5 @@
 #include "uangle.h"
-#include "..\utility\chr.h"
+#include "../utility/chr.h"
 #include <string_view>
 
 using namespace std;

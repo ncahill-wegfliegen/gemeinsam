@@ -1,5 +1,5 @@
-#include "press_convert.h"
-#include "press_convert_primitive.h"
+#include "../press/press_convert.h"
+#include "../press/press_convert_primitive.h"
 
 template<>
 double nhill::uom::convert( Prefix dst_prefix, Press dst_uom, double src_value, Prefix src_prefix, Press src_uom )

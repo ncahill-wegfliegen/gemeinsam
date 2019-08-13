@@ -3,9 +3,9 @@
 #include "string_table.h"
 #include "translation.h"
 #include "version.h"
-#include "..\utility\file.h"
-#include "..\utility\exception\file_not_found.h"
-#include "..\enum\core\values.h"
+#include "../utility/file.h"
+#include "../utility/exception/file_not_found.h"
+#include "../enum/core/values.h"
 #include <sstream>
 
 
@@ -215,7 +215,7 @@ void nhill::version::Info::load( const std::string & path_module )
    // The variable file information
    Translation* translation = nullptr;
    UINT translation_size = 0;
-   if( !::VerQueryValueA( version_info, R"(\VarFileInfo\Translation)", (LPVOID*)&translation, &translation_size ) )
+   if( !::VerQueryValueA( version_info, R"(/VarFileInfo/Translation)", (LPVOID*)&translation, &translation_size ) )
    {
       delete[] version_info;
       std::ostringstream msg;
@@ -231,7 +231,7 @@ void nhill::version::Info::load( const std::string & path_module )
    {
       // The string file information
       ostringstream sub_block_base;
-      sub_block_base << "\\StringFileInfo\\" << translation[i] << "\\";
+      sub_block_base << "//StringFileInfo//" << translation[i] << "//";
 
       String_table string_table;
       string_table.translation( translation[i] );

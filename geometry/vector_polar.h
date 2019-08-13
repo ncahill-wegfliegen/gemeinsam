@@ -1,7 +1,7 @@
 ﻿#pragma once
 
 #include "convert.h"
-#include "..\math\compare.h"
+#include "../math/compare.h"
 #include <type_traits>
 
 namespace nhill

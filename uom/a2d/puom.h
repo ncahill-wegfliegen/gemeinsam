@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\puom.h"
-#include "..\a2d.h"
+#include "../puom.h"
+#include "../a2d.h"
 
 namespace nhill
 {

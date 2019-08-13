@@ -1,7 +1,7 @@
 #pragma once
 
-#include "len_convert.h"
-#include "..\quantity_tmplt.h"
+#include "../len/len_convert.h"
+#include "../quantity_tmplt.h"
 
 namespace nhill
 {

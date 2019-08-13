@@ -1,6 +1,6 @@
 #include "month.h"
-#include "core\int.h"
-#include "..\utility\str.h"
+#include "core/int.h"
+#include "../utility/str.h"
 #include <ctime>
 #include <locale>
 

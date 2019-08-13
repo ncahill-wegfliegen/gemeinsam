@@ -1,7 +1,7 @@
 #pragma once
 
-#include "a2d_convert.h"
-#include "..\quantity_tmplt.h"
+#include "../a2d/a2d_convert.h"
+#include "../quantity_tmplt.h"
 
 namespace nhill
 {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "port.h"
-#include "..\math\sign.h"
+#include "../math/sign.h"
 #include <string_view>
 
 namespace nhill

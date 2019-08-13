@@ -52,7 +52,7 @@ public:
    /// <exception cref="std::invalid_argment">Throw this exception if the segment is not valid.</exception>
    static void validate( float step, double start, const Value_container& y_values, const char* file, const char* function, int line );
 
-   Segment_stepped sub_segment( int pos_beg, int pos_end = -1 );
+   Segment_stepped sub_segment( size_t pos_beg, size_t pos_end = static_cast<size_t>(-1) );
    Segment_stepped sub_segment( double x_beg );
    Segment_stepped sub_segment( double x_beg, double x_end );
 

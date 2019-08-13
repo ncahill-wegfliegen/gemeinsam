@@ -1,7 +1,7 @@
 #pragma once
 
-#include "..\quantity.h"
-#include "..\press.h"
+#include "../quantity.h"
+#include "../press.h"
 
 namespace nhill
 {

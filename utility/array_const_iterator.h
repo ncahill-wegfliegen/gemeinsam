@@ -1,7 +1,7 @@
 #pragma once
 
 #include "enable_if.h"
-#include <gsl\gsl_assert>
+#include <gsl/gsl_assert>
 #include <memory>
 
 namespace nhill

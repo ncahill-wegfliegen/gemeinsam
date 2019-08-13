@@ -1,5 +1,5 @@
-#include "a2d_convert.h"
-#include "a2d_convert_primitive.h"
+#include "../a2d/a2d_convert.h"
+#include "../a2d/a2d_convert_primitive.h"
 
 template<>
 double nhill::uom::convert( Prefix dst_prefix, A2d dst_uom, double src_value, Prefix src_prefix, A2d src_uom )

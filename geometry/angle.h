@@ -6,7 +6,7 @@
 #include "arcsecond.h"
 #include "milliarcsecond.h"
 #include "degree.h"
-#include "..\math\sign.h"
+#include "../math/sign.h"
 #include <string_view>
 #include <string>
 #include <cstdint>

@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////
 //
-// File: nhill\uom\port.h
+// File: nhill/uom/port.h
 // Date: 27 Jul 2019 nhill
 //
 // Definitions for exporting/importing library elements.

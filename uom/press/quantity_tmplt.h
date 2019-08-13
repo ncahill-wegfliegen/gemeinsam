@@ -1,7 +1,7 @@
 #pragma once
 
-#include "press_convert.h"
-#include "..\quantity_tmplt.h"
+#include "../quantity_tmplt.h"
+#include "../press.h"
 
 namespace nhill
 {

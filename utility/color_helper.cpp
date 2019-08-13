@@ -2,28 +2,10 @@
 #include "str.h"
 #include <sstream>
 
-#include "..\math\matrix.h"
-#include "..\math\compare.h"
-#include "array_const_iterator.h"
-#include "array_iterator.h"
-#include "array.h"
-#include "..\geometry\endpoint.h"
-#include "..\geometry\interval.h"
-
 using namespace std;
-using namespace nhill::math;
-using namespace nhill::geometry;
-
 
 void nhill::clear( Color& c )
 {
-   Endpoint<double, Compare_greater> endpnt{4};
-   double ep{static_cast<double>(endpnt)};
-   bool b{endpnt.is_valid( 3.14159 )};
-
-   Interval<double, Compare_greater, Compare_less> interval;
-
-
    c.r = 0x00;
    c.g = 0x00;
    c.b = 0x00;

@@ -1,4 +1,4 @@
-#include "..\math\coord_cart2.h"
+#include "../math/coord_cart2.h"
 
 template<>
 const nhill::text::Bundle_container<nhill::Coord_cart2>& nhill::text::bundle_container<nhill::Coord_cart2>()

@@ -1,5 +1,5 @@
 #include "string_getable.h"
-#include "..\utility\str.h"
+#include "../utility/str.h"
 
 nhill::text::String_getable::~String_getable()
 {

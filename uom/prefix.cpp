@@ -1,5 +1,5 @@
 #include "prefix.h"
-#include "..\enum\core\int.h"
+#include "../enum/core/int.h"
 
 template<>
 const nhill::text::Bundle_container<nhill::uom::Prefix>& nhill::text::bundle_container<nhill::uom::Prefix>()

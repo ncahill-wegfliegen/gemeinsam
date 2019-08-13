@@ -1,6 +1,6 @@
 #pragma once
 
-#include "quantity_tmplt.h"
+#include "../press/quantity_tmplt.h"
 
 namespace nhill
 {

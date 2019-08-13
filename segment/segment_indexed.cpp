@@ -1,7 +1,7 @@
 #include "segment_indexed.h"
-#include "..\geometry\pnt.h"
-#include "..\math\compare.h"
-#include "..\utility\exception\message.h"
+#include "../geometry/pnt.h"
+#include "../math/compare.h"
+#include "../utility/exception/message.h"
 
 nhill::segment::Segment_indexed::Segment_indexed( const Key& key )
    : Segment_base( Type::indexed, key )
@@ -104,7 +104,7 @@ void nhill::segment::Segment_indexed::points( const Point_container & value )
 
 void nhill::segment::Segment_indexed::validate( const Point_container & value, const char* file, const char* function, int line )
 {
-   int cnt = value.size();
+	auto cnt{value.size()};
    if( cnt == 0 )
    {
       throw std::invalid_argument( exception::build( {file, function, line,  "Message: Invalid size.", "There must be at least one point."} ) );

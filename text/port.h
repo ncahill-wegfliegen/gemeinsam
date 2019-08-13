@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////
 //
-// File: nhill\text\port.h
+// File: nhill/text/port.h
 // Date: 25 Jun 2015 nhill
 //
 // Definitions for exporting/importing library elements.

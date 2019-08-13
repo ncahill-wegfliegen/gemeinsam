@@ -1,7 +1,7 @@
 #include <windows.h>
 #include "ini.h"
 #include "file.h"
-#include "exception\Invalid_path.h"
+#include "exception/Invalid_path.h"
 #include <sstream>
 
 nhill::Ini::Ini( const std::string& path /*= ""*/, const std::string& section /*= ""*/, const std::string& key /*= ""*/ )

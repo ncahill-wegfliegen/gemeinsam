@@ -70,7 +70,7 @@ nhill::uom::Quantity_ratio_template<Uom_numerator, Uom_denominator, prefix_numer
 	*this = src;
 }
 
-template<typename Uom_numerator, typename Uom_denominator, nhill::uom::Prefix prefix_numerator, Uom_numerator uom_numerator, nhill::uom::Prefix prefix_denominator, Uom_denominator uom_denominato, typename T>
+template<typename Uom_numerator, typename Uom_denominator, nhill::uom::Prefix prefix_numerator, Uom_numerator uom_numerator, nhill::uom::Prefix prefix_denominator, Uom_denominator uom_denominator, typename T>
 template<nhill::uom::Prefix prefix_numerator_src, Uom_numerator uom_numerator_src, nhill::uom::Prefix prefix_denominator_src, Uom_denominator uom_denominator_src, typename U>
 nhill::uom::Quantity_ratio_template<Uom_numerator, Uom_denominator, prefix_numerator, uom_numerator, prefix_denominator, uom_denominator, T>::Quantity_ratio_template( const Quantity_ratio_template<Uom_numerator, Uom_denominator, prefix_numerator_src, uom_numerator_src, prefix_denominator_src, uom_denominator_src, U>& src )
 	: base{prefix_numerator, uom_numerator, prefix_denominator, uom_denominator}

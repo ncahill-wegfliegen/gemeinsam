@@ -1,4 +1,4 @@
-#include "..\time.h"
+#include "../time.h"
 
 template<> inline
 const nhill::text::Bundle_container<nhill::uom::Time>& nhill::text::bundle_container<nhill::uom::Time>()

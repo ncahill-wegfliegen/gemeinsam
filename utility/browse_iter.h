@@ -1,6 +1,6 @@
 #pragma once
 
-#include "nhill\browse.h"
+#include "nhill/browse.h"
 #include <vector>
 
 namespace nhill
