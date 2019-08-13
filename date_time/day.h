@@ -36,6 +36,8 @@ public:
    void value(int uday);
    void value(int uday, Month mn, const Year& yr);
 
+	void clear();
+
 private:
    underlying_type value_; // unit based value
 };

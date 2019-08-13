@@ -54,6 +54,11 @@ void nhill::Year::value(int year)
    value_ = year;
 }
 
+void nhill::Year::clear()
+{
+	value_ = default_value;
+}
+
 auto nhill::current_year()->Year
 {
    return Year{ current_iyear() };

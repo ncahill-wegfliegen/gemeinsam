@@ -30,7 +30,9 @@ public:
    int value() const noexcept;
    void value(int year);
 
-   static const int default_value{ 2000 };
+   static const int default_value{ 1 };
+
+	void clear();
 
 private:
    underlying_type value_;

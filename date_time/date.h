@@ -24,8 +24,8 @@ public:
    Date(const Date& other);
    Date& operator=(const Date& other);
 
-   Date(Date&& other);
-   Date& operator=(Date&& other);
+   Date(Date&& other) noexcept;
+   Date& operator=(Date&& other) noexcept;
 
    ~Date();
 
@@ -38,6 +38,8 @@ public:
    static const char* const default_format;
 #pragma warning(suppress:4251)
    static const std::locale default_locale;  // The environment's default locale.
+
+	void clear();
 
 private:
    Day   dy_;

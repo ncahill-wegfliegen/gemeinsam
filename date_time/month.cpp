@@ -136,4 +136,9 @@ bool nhill::operator>=( Month mn1, Month mn2 )
    return compare( mn1, mn2 ) >= 0;
 }
 
+void nhill::clear( Month& mn )
+{
+	mn = Month::jan;
+}
+
 

@@ -58,6 +58,11 @@ void nhill::Day::value(int uday, Month mn, const Year & yr)
    value_ = static_cast<underlying_type>(uday);
 }
 
+void nhill::Day::clear()
+{
+	value_ = 1;
+}
+
 int nhill::to_uday(const Day & dy)
 {
    return dy.value();

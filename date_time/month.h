@@ -63,5 +63,8 @@ NHILL_DATETIME_PORT_FUNCTION bool operator< ( Month mn1, Month mn2 );
 NHILL_DATETIME_PORT_FUNCTION bool operator<=( Month mn1, Month mn2 );
 NHILL_DATETIME_PORT_FUNCTION bool operator> ( Month mn1, Month mn2 );
 NHILL_DATETIME_PORT_FUNCTION bool operator>=( Month mn1, Month mn2 );
+
+NHILL_DATETIME_PORT_FUNCTION void clear( Month& mn );
+
 }
 #pragma endregion

@@ -63,8 +63,8 @@ auto nhill::Date::operator=(double value)->Date &
 nhill::Date::Date(const Date & other) = default;
 auto nhill::Date::operator=(const Date & other)->Date & = default;
 
-nhill::Date::Date(Date && other) = default;
-auto nhill::Date::operator=(Date && other)->Date & = default;
+nhill::Date::Date(Date && other) noexcept = default;
+auto nhill::Date::operator=(Date && other) noexcept->Date & = default;
 
 nhill::Date::~Date() = default;
 
@@ -86,6 +86,13 @@ const nhill::Month& nhill::Date::month() const
 const nhill::Day& nhill::Date::day() const
 {
    return dy_;
+}
+
+void nhill::Date::clear()
+{
+	dy_.clear();
+	nhill::clear( mn_ );
+	yr_.clear();
 }
 
 auto nhill::operator++(Date& date)->Date &
