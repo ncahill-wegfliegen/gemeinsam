@@ -1,5 +1,7 @@
 #include "minute.h"
 #include "core.h"
+#include "../math/compare.h"
+#include "../enum/core/int.h"
 
 using namespace std;
 
@@ -76,37 +78,37 @@ auto nhill::operator--(Minute & min, int)->Minute
 }
 
 template<>
-int nhill::compare(const Minute& a, const Minute& b) noexcept
+auto nhill::compare(const Minute& a, const Minute& b) noexcept->Compare
 {
-   return compare<int>(a.value(), b.value());
+   return to_enum<Compare>( math::compare<int,int>(a.value(), b.value()) );
 }
 
 bool nhill::operator==(const Minute & a, const Minute & b) noexcept
 {
-   return compare<const Minute&>(a, b) == 0;
+   return compare<const Minute&>(a, b) == Compare::equal;
 }
 
 bool nhill::operator!=(const Minute &a, const Minute & b) noexcept
 {
-   return compare<const Minute&>(a, b) != 0;
+   return !(a == b);
 }
 
 bool nhill::operator<(const Minute &a, const Minute & b) noexcept
 {
-   return compare<const Minute&>(a, b) < 0;
+   return compare<const Minute&>(a, b) == Compare::less;
 }
 
 bool nhill::operator<=(const Minute &a, const Minute & b) noexcept
 {
-   return compare<const Minute&>(a, b) <= 0;
+   return (a < b) || (a == b);
 }
 
 bool nhill::operator>(const Minute &a, const Minute & b) noexcept
 {
-   return compare<const Minute&>(a, b) > 0;
+   return compare<const Minute&>(a, b) == Compare::greater;
 }
 
 bool nhill::operator>=(const Minute &a, const Minute & b) noexcept
 {
-   return compare<const Minute&>(a, b) >= 0;
+   return (a > b) || (a == b);
 }

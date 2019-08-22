@@ -52,7 +52,7 @@ NHILL_DATETIME_PORT_FUNCTION Hour operator++(Hour&, int); // post-increment: hr+
 NHILL_DATETIME_PORT_FUNCTION Hour operator--(Hour&, int); // post-decrement: hr--
 
 template<> NHILL_DATETIME_PORT_FUNCTION
-int compare(const Hour&, const Hour&) noexcept;
+Compare compare(const Hour&, const Hour&) noexcept;
 
 NHILL_DATETIME_PORT_FUNCTION bool operator==(const Hour&, const Hour&) noexcept;
 NHILL_DATETIME_PORT_FUNCTION bool operator!=(const Hour&, const Hour&) noexcept;

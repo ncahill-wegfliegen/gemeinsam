@@ -4,6 +4,7 @@
 #include "hour.h"
 #include "minute.h"
 #include "second.h"
+#include "../utility/compare.h"
 #include <locale>
 #include <memory>
 
@@ -75,7 +76,7 @@ public:
 
 private:
 #pragma warning(suppress:4251)
-	std::unique_ptr<STime> stime_;
+   std::unique_ptr<STime> stime_;
 };
 
 }
@@ -85,5 +86,16 @@ namespace nhill
 
 NHILL_DATETIME_PORT_FUNCTION Time operator++(Time&, int); // post-increment by seconds: x++
 NHILL_DATETIME_PORT_FUNCTION Time operator--(Time&, int); // post-decrement by seconds: x--
+
+template<> NHILL_DATETIME_PORT_FUNCTION
+Compare compare( const Time&, const Time& ) noexcept;
+
+NHILL_DATETIME_PORT_FUNCTION bool operator==( const Time&, const Time& ) noexcept;
+NHILL_DATETIME_PORT_FUNCTION bool operator!=( const Time&, const Time& ) noexcept;
+NHILL_DATETIME_PORT_FUNCTION bool operator< ( const Time&, const Time& ) noexcept;
+NHILL_DATETIME_PORT_FUNCTION bool operator<=( const Time&, const Time& ) noexcept;
+NHILL_DATETIME_PORT_FUNCTION bool operator> ( const Time&, const Time& ) noexcept;
+NHILL_DATETIME_PORT_FUNCTION bool operator>=( const Time&, const Time& ) noexcept;
+
 
 }

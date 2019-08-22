@@ -235,41 +235,6 @@ bool intersect( const Interval_interface_uptr_pair<T>& pair )
 
 
 template<typename T>
-bool overlap( typename Interval_interface<T>::cref i1, typename Interval_interface<T>::cref i2 )
-{
-   return intersect<T>( i1, i2 ) && !subset<T>( i1, i2 ) && !subset<T>( i2, i1 );
-}
-
-template<typename T>
-bool overlap( typename Interval_interface<T>::cptr i1, typename Interval_interface<T>::cptr i2 )
-{
-   return overlap<T>( *i1, *i2 );
-}
-
-template<typename T>
-bool overlap( const Interval_interface_cref_pair<T>& pair )
-{
-   return overlap<T>( interval1( pair ), interval2( pair ) );
-}
-
-template<typename T>
-bool overlap( const Interval_interface_cptr_pair<T>& pair )
-{
-   return overlap<T>( *interval1( pair ), *interval2( pair ) );
-}
-
-template<typename T>
-bool overlap( const Interval_interface_uptr_pair<T>& pair )
-{
-   return overlap<T>( *interval1( pair ), *interval2( pair ) );
-}
-
-
-
-
-
-
-template<typename T>
 bool subset( typename Interval_interface<T>::cref i1, typename Interval_interface<T>::cref i2 )
 {
    using namespace nhill::math;
@@ -340,6 +305,42 @@ bool subset( const Interval_interface_uptr_pair<T>& pair )
 {
    return subset<T>( *interval1( pair ), *interval2( pair ) );
 }
+
+
+
+
+
+template<typename T>
+bool overlap( typename Interval_interface<T>::cref i1, typename Interval_interface<T>::cref i2 )
+{
+   return intersect<T>( i1, i2 ) && !subset<T>( i1, i2 ) && !subset<T>( i2, i1 );
+}
+
+template<typename T>
+bool overlap( typename Interval_interface<T>::cptr i1, typename Interval_interface<T>::cptr i2 )
+{
+   return overlap<T>( *i1, *i2 );
+}
+
+template<typename T>
+bool overlap( const Interval_interface_cref_pair<T>& pair )
+{
+   return overlap<T>( interval1( pair ), interval2( pair ) );
+}
+
+template<typename T>
+bool overlap( const Interval_interface_cptr_pair<T>& pair )
+{
+   return overlap<T>( *interval1( pair ), *interval2( pair ) );
+}
+
+template<typename T>
+bool overlap( const Interval_interface_uptr_pair<T>& pair )
+{
+   return overlap<T>( *interval1( pair ), *interval2( pair ) );
+}
+
+
 
 
 

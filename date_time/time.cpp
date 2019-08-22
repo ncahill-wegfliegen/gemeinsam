@@ -210,3 +210,51 @@ auto nhill::operator--(Time& time, int)->Time
    --time;
    return tmp;
 }
+
+template<>
+auto nhill::compare( const Time& a, const Time& b ) noexcept->Compare
+{
+   Compare cmp = compare<Hour>( a.hour(), b.hour() );
+
+   if( cmp == Compare::equal )
+   {
+      cmp = compare<Minute>( a.minute(), b.minute() );
+
+      if( cmp == Compare::equal )
+      {
+         cmp = compare<Second>( a.second(), b.second() );
+      }
+   }
+
+   return cmp;
+}
+
+bool nhill::operator==( const Time& a, const Time& b ) noexcept
+{
+   return compare<const Time&>( a, b ) == Compare::equal;
+}
+
+bool nhill::operator!=( const Time& a, const Time& b ) noexcept
+{
+   return !(a == b);
+}
+
+bool nhill::operator<( const Time& a, const Time& b ) noexcept
+{
+   return compare<const Time&>( a, b ) == Compare::less;
+}
+
+bool nhill::operator<=( const Time& a, const Time& b ) noexcept
+{
+   return (a < b) || (a == b);
+}
+
+bool nhill::operator>( const Time& a, const Time& b ) noexcept
+{
+   return compare<const Time&>( a, b ) == Compare::greater;
+}
+
+bool nhill::operator>=( const Time& a, const Time& b ) noexcept
+{
+   return (a > b) || (a == b);
+}

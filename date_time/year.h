@@ -32,7 +32,7 @@ public:
 
    static const int default_value{ 1 };
 
-	void clear();
+   void clear();
 
 private:
    underlying_type value_;
@@ -54,7 +54,7 @@ NHILL_DATETIME_PORT_FUNCTION Year operator++(Year&, int); // post-increment yr++
 NHILL_DATETIME_PORT_FUNCTION Year operator--(Year&, int); // post-decrement yr--
 
 template<> inline NHILL_DATETIME_PORT_FUNCTION
-int compare( const Year& yr1, const Year& yr2 ) noexcept;
+Compare compare( const Year& yr1, const Year& yr2 ) noexcept;
 
 NHILL_DATETIME_PORT_FUNCTION bool operator==(const Year& yr1, const Year& yr2) noexcept;
 NHILL_DATETIME_PORT_FUNCTION bool operator!=(const Year& yr1, const Year& yr2) noexcept;

@@ -1,6 +1,7 @@
 #include "month.h"
 #include "../enum/core/int.h"
 #include "../utility/str.h"
+#include "../math/compare.h"
 #include <sstream>
 #include <chrono>
 #include <iomanip>
@@ -87,11 +88,11 @@ nhill::Month nhill::umonth_to_month( int umonth )
 
 nhill::Month nhill::current_month()
 {
-	auto now{chrono::system_clock::now()};
-	auto tt{chrono::system_clock::to_time_t( now )};
-	struct tm today{};
+   auto now{chrono::system_clock::now()};
+   auto tt{chrono::system_clock::to_time_t( now )};
+   struct tm today{};
 
-	errno_t err{::localtime_s( &today, &tt )};
+   errno_t err{::localtime_s( &today, &tt )};
    if( err != 0)
    {
       throw exception( "Cannot get the current month." );
@@ -101,44 +102,44 @@ nhill::Month nhill::current_month()
 }
 
 template<> inline
-int nhill::compare( const Month& mn1, const Month& mn2 ) noexcept
+auto nhill::compare( const Month& mn1, const Month& mn2 ) noexcept->Compare
 {
-   return compare<int>( to_int( mn1 ), to_int( mn2 ) );
+   return to_enum<Compare>( math::compare<int,int>( to_int( mn1 ), to_int( mn2 ) ) );
 }
 
 bool nhill::operator==( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) == 0;
+   return compare<const Month&>( mn1, mn2 ) == Compare::equal;
 }
 
 bool nhill::operator!=( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) != 0;
+   return !(mn1 == mn2);
 }
 
 bool nhill::operator<( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) < 0;
+   return compare<const Month&>( mn1, mn2 ) == Compare::less;
 }
 
 bool nhill::operator<=( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) <= 0;
+   return (mn1 < mn2) || (mn1 == mn2);
 }
 
 bool nhill::operator>( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) > 0;
+   return compare<const Month&>( mn1, mn2 ) == Compare::greater;
 }
 
 bool nhill::operator>=( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) >= 0;
+   return (mn1 > mn2) || (mn1 == mn2);
 }
 
 void nhill::clear( Month& mn )
 {
-	mn = Month::jan;
+   mn = Month::jan;
 }
 
 

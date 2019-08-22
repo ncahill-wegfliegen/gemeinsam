@@ -36,7 +36,7 @@ public:
    void value(int uday);
    void value(int uday, Month mn, const Year& yr);
 
-	void clear();
+   void clear();
 
 private:
    underlying_type value_; // unit based value
@@ -61,7 +61,7 @@ NHILL_DATETIME_PORT_FUNCTION Day post_increment(Day& dy, Month mn, const Year& y
 NHILL_DATETIME_PORT_FUNCTION Day post_decrement(Day& dy, Month mn, const Year& yr);
 
 template<> inline NHILL_DATETIME_PORT_FUNCTION
-int compare(const Day& dy1, const Day& dy2) noexcept;
+Compare compare(const Day& dy1, const Day& dy2) noexcept;
 
 NHILL_DATETIME_PORT_FUNCTION bool operator==(const Day& dy1, const Day& dy2) noexcept;
 NHILL_DATETIME_PORT_FUNCTION bool operator!=(const Day& dy1, const Day& dy2) noexcept;

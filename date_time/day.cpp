@@ -3,6 +3,8 @@
 #include "year.h"
 #include "core.h"
 #include "../enum/core/values.h"
+#include "../enum/core/int.h"
+#include "../math/compare.h"
 #include <ctime>
 #include <stdexcept>
 #include <sstream>
@@ -60,7 +62,7 @@ void nhill::Day::value(int uday, Month mn, const Year & yr)
 
 void nhill::Day::clear()
 {
-	value_ = 1;
+   value_ = 1;
 }
 
 int nhill::to_uday(const Day & dy)
@@ -109,37 +111,37 @@ auto nhill::post_decrement(Day& dy, Month mn, const Year & yr)->Day
 
 
 template<> inline
-int nhill::compare( const Day & dy1, const Day & dy2 ) noexcept
+auto nhill::compare( const Day & dy1, const Day & dy2 ) noexcept->Compare
 {
-   return compare<int>( dy1.value(), dy2.value() );
+   return to_enum<Compare>( math::compare<int,int>( dy1.value(), dy2.value() ) );
 }
 
 bool nhill::operator==( const Day & dy1, const Day & dy2 ) noexcept
 {
-   return compare( dy1, dy2) == 0;
+   return compare<const Day &>( dy1, dy2) == Compare::equal;
 }
 
 bool nhill::operator!=( const Day & dy1, const Day & dy2 ) noexcept
 {
-   return compare( dy1, dy2 ) != 0;
+   return !(dy1 == dy2);
 }
 
 bool nhill::operator<( const Day & dy1, const Day & dy2 ) noexcept
 {
-   return compare( dy1, dy2 ) < 0;
+   return compare<const Day&>( dy1, dy2 ) == Compare::less;
 }
 
 bool nhill::operator<=( const Day & dy1, const Day & dy2 ) noexcept
 {
-   return compare( dy1, dy2 ) <= 0;
+   return (dy1 < dy2) || (dy1 == dy2);
 }
 
 bool nhill::operator>( const Day & dy1, const Day & dy2 ) noexcept
 {
-   return compare( dy1, dy2 ) > 0;
+   return compare<const Day&>( dy1, dy2 ) == Compare::greater;
 }
 
 bool nhill::operator>=( const Day & dy1, const Day & dy2 ) noexcept
 {
-   return compare( dy1, dy2 ) >= 0;
+   return (dy1 > dy2) || (dy1 == dy2);
 }

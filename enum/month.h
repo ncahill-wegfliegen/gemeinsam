@@ -55,7 +55,7 @@ NHILL_ENUM_PORT_FUNCTION Month from_umonth( int umonth );
 NHILL_ENUM_PORT_FUNCTION Month current_month();
 
 template<> NHILL_ENUM_PORT_FUNCTION
-int compare<Month>( Month mn1, Month mn2 ) noexcept;
+Compare compare<Month>( Month mn1, Month mn2 ) noexcept;
 
 NHILL_ENUM_PORT_FUNCTION bool operator==( Month mn1, Month mn2 );
 NHILL_ENUM_PORT_FUNCTION bool operator!=( Month mn1, Month mn2 );

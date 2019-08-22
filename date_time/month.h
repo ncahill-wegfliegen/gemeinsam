@@ -55,7 +55,7 @@ NHILL_DATETIME_PORT_FUNCTION Month umonth_to_month( int umonth );
 NHILL_DATETIME_PORT_FUNCTION Month current_month();
 
 template<> inline NHILL_DATETIME_PORT_FUNCTION
-int compare( const Month& mn1, const Month& mn2 ) noexcept;
+Compare compare( const Month& mn1, const Month& mn2 ) noexcept;
 
 NHILL_DATETIME_PORT_FUNCTION bool operator==( Month mn1, Month mn2 );
 NHILL_DATETIME_PORT_FUNCTION bool operator!=( Month mn1, Month mn2 );

@@ -90,9 +90,9 @@ const nhill::Day& nhill::Date::day() const
 
 void nhill::Date::clear()
 {
-	dy_.clear();
-	nhill::clear( mn_ );
-	yr_.clear();
+   dy_.clear();
+   nhill::clear( mn_ );
+   yr_.clear();
 }
 
 auto nhill::operator++(Date& date)->Date &
@@ -136,11 +136,11 @@ auto nhill::current_date()->Date
 {
    // https://stackoverflow.com/questions/17223096/outputting-date-and-time-in-c-using-stdchrono?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 
-	auto now{chrono::system_clock::now()};
-	time_t tt{chrono::system_clock::to_time_t( now )};
-	struct tm tm{};
+   auto now{chrono::system_clock::now()};
+   time_t tt{chrono::system_clock::to_time_t( now )};
+   struct tm tm{};
 
-	errno_t err{::localtime_s( &tm, &tt )};
+   errno_t err{::localtime_s( &tm, &tt )};
    if (err != 0)
    {
       throw exception("Cannot get the current date.");
@@ -173,15 +173,15 @@ string nhill::to_string(const Date& date, const locale & locale /*= default_loca
 }
 
 template<> inline
-int nhill::compare( const Date& dt1, const Date& dt2 ) noexcept
+auto nhill::compare( const Date& dt1, const Date& dt2 ) noexcept->Compare
 {
-   int cmp = compare<Year>( dt1.year(), dt2.year() );
+   Compare cmp = compare<Year>( dt1.year(), dt2.year() );
 
-   if( cmp == 0 )
+   if( cmp == Compare::equal )
    {
       cmp = compare<Month>( dt1.month(), dt2.month() );
 
-      if( cmp == 0 )
+      if( cmp == Compare::equal )
       {
          cmp = compare<Day>( dt1.day(), dt2.day() );
       }
@@ -192,30 +192,30 @@ int nhill::compare( const Date& dt1, const Date& dt2 ) noexcept
 
 bool nhill::operator==( const Date & dt1, const Date & dt2 )
 {
-   return compare( dt1, dt2 ) == 0;
+   return compare<const Date&>( dt1, dt2 ) == Compare::equal;
 }
 
 bool nhill::operator!=( const Date & dt1, const Date & dt2 )
 {
-   return compare( dt1, dt2 ) != 0;
+   return !(dt1 == dt2);
 }
 
 bool nhill::operator<( const Date & dt1, const Date & dt2 )
 {
-   return compare( dt1, dt2 ) < 0;
+   return compare<const Date&>( dt1, dt2 ) == Compare::less;
 }
 
 bool nhill::operator<=( const Date & dt1, const Date & dt2 )
 {
-   return compare( dt1, dt2 ) <= 0;
+   return (dt1 < dt2) || (dt1 == dt2);
 }
 
 bool nhill::operator>( const Date & dt1, const Date & dt2 )
 {
-   return compare( dt1, dt2 ) > 0;
+   return compare<const Date&>( dt1, dt2 ) == Compare::greater;
 }
 
 bool nhill::operator>=( const Date & dt1, const Date & dt2 )
 {
-   return compare( dt1, dt2 ) >= 0;
+   return (dt1 > dt2) || (dt1 == dt2);
 }

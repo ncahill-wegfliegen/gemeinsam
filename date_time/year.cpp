@@ -1,5 +1,7 @@
 #include "year.h"
 #include "core.h"
+#include "../math/compare.h"
+#include "../enum/core/int.h"
 #include <ctime>
 #include <exception>
 #include <memory>
@@ -56,7 +58,7 @@ void nhill::Year::value(int year)
 
 void nhill::Year::clear()
 {
-	value_ = default_value;
+   value_ = default_value;
 }
 
 auto nhill::current_year()->Year
@@ -96,39 +98,39 @@ auto nhill::operator--(Year& year, int)->Year
 }
 
 template<> inline
-int nhill::compare( const Year& yr1, const Year& yr2 ) noexcept
+auto nhill::compare( const Year& yr1, const Year& yr2 ) noexcept->Compare
 {
-   return compare<int>( static_cast<int>(yr1), static_cast<int>(yr2) );
+   return to_enum<Compare>(math::compare<int,int>( static_cast<int>(yr1), static_cast<int>(yr2) ) );
 }
 
 bool nhill::operator==( const Year & yr1, const Year & yr2 ) noexcept
 {
-   return compare(yr1, yr2) == 0;
+   return compare<const Year &>(yr1, yr2) == Compare::equal;
 }
 
 bool nhill::operator!=( const Year & yr1, const Year & yr2 ) noexcept
 {
-   return compare( yr1, yr2 ) != 0;
+   return !(yr1 == yr2);
 }
 
 bool nhill::operator<( const Year & yr1, const Year & yr2 ) noexcept
 {
-   return compare( yr1, yr2 ) < 0;
+   return compare<const Year&>( yr1, yr2 ) == Compare::less;
 }
 
 bool nhill::operator<=( const Year & yr1, const Year & yr2 ) noexcept
 {
-   return compare( yr1, yr2 ) <= 0;
+   return (yr1 < yr2) || (yr1 == yr2);
 }
 
 bool nhill::operator>( const Year & yr1, const Year & yr2 ) noexcept
 {
-   return compare( yr1, yr2 ) > 0;
+   return compare<const Year&>( yr1, yr2 ) == Compare::greater;
 }
 
 bool nhill::operator>=( const Year & yr1, const Year & yr2 ) noexcept
 {
-   return compare( yr1, yr2 ) >= 0;
+   return (yr1 > yr2) || (yr1 == yr2);
 }
 
 

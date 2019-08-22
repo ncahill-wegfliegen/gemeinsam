@@ -1,5 +1,7 @@
 #include "second.h"
 #include "core.h"
+#include "../math/compare.h"
+#include "../enum/core/int.h"
 
 using namespace std;
 
@@ -76,38 +78,38 @@ auto nhill::operator--(Second & sec, int)->Second
 }
 
 template<>
-int nhill::compare(const Second& a, const Second& b) noexcept
+auto nhill::compare(const Second& a, const Second& b) noexcept->Compare
 {
-   return compare<int>(a.value(), b.value());
+   return to_enum<Compare>( math::compare<int,int>(a.value(), b.value()) );
 }
 
 bool nhill::operator==(const Second & a, const Second & b) noexcept
 {
-   return compare<const Second&>(a, b) == 0;
+   return compare<const Second&>(a, b) == Compare::equal;
 }
 
 bool nhill::operator!=(const Second &a, const Second & b) noexcept
 {
-   return compare<const Second&>(a, b) != 0;
+   return !(a == b);
 }
 
 bool nhill::operator<(const Second &a, const Second & b) noexcept
 {
-   return compare<const Second&>(a, b) < 0;
+   return compare<const Second&>(a, b) == Compare::less;
 }
 
 bool nhill::operator<=(const Second &a, const Second & b) noexcept
 {
-   return compare<const Second&>(a, b) <= 0;
+   return (a < b) || (a == b);
 }
 
 bool nhill::operator>(const Second &a, const Second & b) noexcept
 {
-   return compare<const Second&>(a, b) > 0;
+   return compare<const Second&>(a, b) == Compare::greater;
 }
 
 bool nhill::operator>=(const Second &a, const Second & b) noexcept
 {
-   return compare<const Second&>(a, b) >= 0;
+   return (a > b ) || (a == b);
 }
 

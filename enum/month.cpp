@@ -1,6 +1,7 @@
 #include "month.h"
 #include "core/int.h"
 #include "../utility/str.h"
+#include "../math/compare.h"
 #include <ctime>
 #include <locale>
 
@@ -105,39 +106,39 @@ nhill::Month nhill::current_month()
 }
 
 template<>
-int nhill::compare<nhill::Month>( Month mn1, Month mn2 ) noexcept
+auto nhill::compare<nhill::Month>( Month mn1, Month mn2 ) noexcept->Compare
 {
-   return compare<int>( to_int( mn1 ), to_int( mn2 ) );
+   return to_enum<Compare>( math::compare<int,int>( to_int( mn1 ), to_int( mn2 ) ) );
 }
 
 bool nhill::operator==( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) == 0;
+   return compare( mn1, mn2 ) == Compare::equal;
 }
 
 bool nhill::operator!=( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) != 0;
+   return !(mn1 == mn2);
 }
 
 bool nhill::operator<( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) < 0;
+   return compare( mn1, mn2 ) == Compare::less;
 }
 
 bool nhill::operator<=( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) <= 0;
+   return (mn1 < mn2) || (mn1 == mn2);
 }
 
 bool nhill::operator>( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) > 0;
+   return compare( mn1, mn2 ) == Compare::greater;
 }
 
 bool nhill::operator>=( Month mn1, Month mn2 )
 {
-   return compare( mn1, mn2 ) >= 0;
+   return (mn1 > mn2) || (mn1 == mn2);
 }
 
 

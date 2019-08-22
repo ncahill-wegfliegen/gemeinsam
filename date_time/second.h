@@ -52,7 +52,7 @@ NHILL_DATETIME_PORT_FUNCTION Second operator++(Second&, int); // post-increment:
 NHILL_DATETIME_PORT_FUNCTION Second operator--(Second&, int); // post-decrement: min--
 
 template<> NHILL_DATETIME_PORT_FUNCTION
-int compare(const Second&, const Second&) noexcept;
+Compare compare(const Second&, const Second&) noexcept;
 
 NHILL_DATETIME_PORT_FUNCTION bool operator==(const Second&, const Second&) noexcept;
 NHILL_DATETIME_PORT_FUNCTION bool operator!=(const Second&, const Second&) noexcept;

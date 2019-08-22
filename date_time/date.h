@@ -15,8 +15,8 @@ class NHILL_DATETIME_PORT_CLASS Date
 {
 public:
    Date();
-	Date( int year, int umonth, int uday = 1 );
-	Date( const Year& year, Month month, const Day& day= Day{1} );
+   Date( int year, int umonth, int uday = 1 );
+   Date( const Year& year, Month month, const Day& day= Day{1} );
 
    explicit Date(double value);
    Date& operator=(double value);
@@ -39,7 +39,7 @@ public:
 #pragma warning(suppress:4251)
    static const std::locale default_locale;  // The environment's default locale.
 
-	void clear();
+   void clear();
 
 private:
    Day   dy_;
@@ -65,7 +65,7 @@ NHILL_DATETIME_PORT_FUNCTION Date current_date();
 /// <param name="fmt">The date format. </param>
 /// <returns>The date formated as a string.</returns>
 /// <remarks>See http://en.cppreference.com/w/cpp/io/manip/put_time for details on formatting.</remarks>
-NHILL_DATETIME_PORT_FUNCTION  std::string to_string(const Date& date, const std::string& format = Date::default_format, const std::locale& locale = Date::default_locale);
+NHILL_DATETIME_PORT_FUNCTION  std::string to_string(const Date& date, const std::string& format, const std::locale& locale = Date::default_locale);
 
 /// <summary>Format the date as a string according to the locale.</summary>
 /// <param name="loc">The locale.</param>
@@ -73,7 +73,7 @@ NHILL_DATETIME_PORT_FUNCTION  std::string to_string(const Date& date, const std:
 NHILL_DATETIME_PORT_FUNCTION std::string to_string(const Date& date, const std::locale& locale = Date::default_locale);
 
 template<> inline NHILL_DATETIME_PORT_FUNCTION  
-int compare( const Date& dt1, const Date& dt2 ) noexcept;
+Compare compare( const Date& dt1, const Date& dt2 ) noexcept;
 
 NHILL_DATETIME_PORT_FUNCTION bool operator==( const Date& dt1, const Date& dt2 );
 NHILL_DATETIME_PORT_FUNCTION bool operator!=( const Date& dt1, const Date& dt2 );
