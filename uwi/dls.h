@@ -1,6 +1,13 @@
 #pragma once
 
 #include "port.h"
+#include "location_exception.h"
+#include "legal_subdivision.h"
+#include "section.h"
+#include "township.h"
+#include "range.h"
+#include "meridian.h"
+#include "event_sequence.h"
 #include "../utility/compare.h"
 #include <cstdint>
 #include <string>
@@ -26,6 +33,16 @@ public:
    Dls& operator=( Dls&& ) noexcept;
 
    ~Dls();
+
+
+   dls::Location_exception le__;
+   dls::Legal_subdivision<dls::Legal_subdivision_validator_throw> lsd__;
+   dls::Section<dls::Section_validator_throw> sc__;
+   dls::Township<dls::Township_validator_throw> twp__;
+   dls::Range<dls::Range_validator_throw> rg__;
+   dls::Meridian<dls::Meridian_validator_throw> m__;
+   dls::Event_sequence es__;
+
 
    const char* clocation_exception() const;
    void location_exception( const char* );
@@ -108,6 +125,7 @@ private:
    Rgd		  rgd_  {Rgd::W}; // range direction East/West
    value_type m_    {0};      // meridian
    char       es_   {'0'};    // event sequence
+
 
 };
 

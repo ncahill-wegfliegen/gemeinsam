@@ -35,7 +35,8 @@ using Cmp = Compare;
 //   return (a < b) ? -1 : (a > b);
 //}
 
-/// <summary>This comparison method must be overriden for every particular type.</summary>?
+/// <summary>This comparison method must be overriden for every particular type.</summary>
+/// <remarks>For arithmetic types, use nhill::math::compare.</remarks>
 template<typename T, typename std::enable_if_t<!std::is_arithmetic_v<T>>* = nullptr> inline
 Compare compare( T a, T b ) noexcept
 {

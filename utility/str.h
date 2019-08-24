@@ -98,39 +98,49 @@ bool ends_with( const std::basic_string<Char>& bstr, const std::basic_string<Cha
 /// <param name="newsubstr">The new substring to replace the old substring.</param>
 /// <returns>The text with all occurrances of the old substring replaced by the new substring.<para>The text is returned if it does not contain the old substring.</para></returns>
 template<typename Char> inline
-std::basic_string<Char> replace( const std::basic_string<Char>& text, const std::basic_string<Char>& oldsubstr, const std::basic_string<Char>& newsubstr )
+std::basic_string<Char>& replace( std::basic_string<Char>& text, const std::basic_string<Char>& oldsubstr, const std::basic_string<Char>& newsubstr )
 {
    // Make a copy of the input text so that we can manipulate it,
    // and return it when we are done.
-   std::basic_string<Char> textout{text};
    const size_t oldlen = oldsubstr.length();
 
    // do nothing if line is shorter than the bstr to find
-   if( oldlen > textout.length() )
-      return textout;
+   if( oldlen > text.length() )
+      return text;
 
    const size_t newlen = newsubstr.length();
    for( size_t pos = 0; ; pos += newlen )
    {
       // Locate the substring to replace
-      pos = textout.find( oldsubstr, pos );
+      pos = text.find( oldsubstr, pos );
       if( pos == std::string::npos )
-         return textout;
+         return text;
 
       if( oldlen == newlen )
       {
          // if they're same size, use std::bstr::replace
-         textout.replace( pos, oldlen, newsubstr );
+         text.replace( pos, oldlen, newsubstr );
       }
       else
       {
          // if not same size, replace by erasing and inserting
-         textout.erase( pos, oldlen );
-         textout.insert( pos, newsubstr );
+         text.erase( pos, oldlen );
+         text.insert( pos, newsubstr );
       }
    }
 
-   return textout;
+   return text;
+}
+
+/// <summary>In the given text, find all occurrances of the old substring and replace them with the new substring.</summary>
+/// <param name="text">The given text that contains the old substring.</param>
+/// <param name="oldsubstr">The old substring to find and replace.</param>
+/// <param name="newsubstr">The new substring to replace the old substring.</param>
+/// <returns>The text with all occurrances of the old substring replaced by the new substring.<para>The text is returned if it does not contain the old substring.</para></returns>
+template<typename Char> inline
+std::basic_string<Char> replace_copy( std::basic_string<Char> text, const std::basic_string<Char>& oldsubstr, const std::basic_string<Char>& newsubstr )
+{
+   return replace( text, oldsubstr, newsubstr );
 }
 
 /// <summary>(In-place) Trim all of the whitespace (space, tab, etc.) from the start of the bstr (std::bstr, std::wstring, etc.).</summary>

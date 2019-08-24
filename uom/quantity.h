@@ -92,7 +92,7 @@ template<typename Uom, typename T>
 std::string nhill::uom::Quantity<Uom, T>::to_string() const
 {
    std::ostringstream oss;
-   oss << base_value::to_string() << " " << base_puom::to_string();
+   oss << base_value::value() << " " << base_puom::to_string();
    return oss.str();
 }
 #pragma endregion

@@ -112,7 +112,9 @@ bool almost_equal_ulp( T a, T b, int max_diff = 1 )
    }
 
    // Find the difference in ULPs.
-   int diff = static_cast<int>(std::abs( fpa.i - fpb.i ));
+   using sint = typename Floating_point_limits<T>::sint;
+   sint diff{ static_cast<sint>(std::abs( fpa.i - fpb.i )) };
+   //Floating_point_limits<T>::uint diff{ static_cast<Floating_point_limits<T>::uint>(std::abs( fpa.i - fpb.i )) };
    return diff <= max_diff;
 }
 

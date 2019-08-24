@@ -15,9 +15,51 @@
     <ClInclude Include="dls.h">
       <Filter>dls</Filter>
     </ClInclude>
+    <ClInclude Include="location_exception.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+    <ClInclude Include="legal_subdivision.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+    <ClInclude Include="section.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+    <ClInclude Include="township.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+    <ClInclude Include="range.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+    <ClInclude Include="meridian.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+    <ClInclude Include="event_sequence.h">
+      <Filter>dls</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dls.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="location_exception.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="legal_subdivision.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="section.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="township.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="range.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="meridian.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="event_sequence.cpp">
       <Filter>dls</Filter>
     </ClCompile>
   </ItemGroup>

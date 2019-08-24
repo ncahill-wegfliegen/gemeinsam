@@ -58,6 +58,7 @@
       <Filter>module</Filter>
     </ClInclude>
     <ClInclude Include="multi_pnt.h" />
+    <ClInclude Include="strn.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="utility.rc">

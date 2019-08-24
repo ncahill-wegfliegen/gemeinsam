@@ -1,10 +1,14 @@
 #pragma once
 
 #include "../math/compare.h"
+#include "../utility/compare.h"
+#include "../enum/core/int.h"
 #include <type_traits>
 #include <string>
 #include <sstream>
 #include <string_view>
+#include <istream>
+#include <ostream>
 
 namespace nhill
 {
@@ -12,24 +16,32 @@ namespace utility
 {
 
 template<typename T>
-struct Value_validator
+class Value_validator
 {
+public:
    static_assert(std::is_arithmetic_v<T>, "The template parameter must be an arithmetic type (integral or floating point).");
 
-	virtual T operator()( T value ) const = 0;
+   using value_type = T;
 
-   struct Default : public Value_validator<T>
-   {
-		T operator()( T value ) const override
-		{
-			return value;
-		}
-   };
+   Value_validator( T default_value = 0 )
+      : default_value{default_value}
+   { }
 
-   using default_type = Default;
+   virtual T operator()( T value ) const = 0;
+   const T default_value;
 };
 
-template<typename T, typename Validator = typename Value_validator<T>::default_type >
+template<typename T>
+class Default_value_validator final : public Value_validator<T>
+{
+public:
+   T operator()( T value ) const final
+   {
+      return value;
+   }
+};
+
+template<typename T, typename Validator = typename Default_value_validator<T> >
 class Value
 {
    static_assert(std::is_arithmetic_v<T>, "The template parameter must be an arithmetic type (integral or floating point).");
@@ -39,29 +51,36 @@ public:
    using value_type = T;
    using validator_type = Validator;
 
-   Value( T = 0 );
-   Value& operator=( T );
+   Value();
+
+   template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* = nullptr> Value( U );
+   template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* = nullptr> Value& operator=( U );
+
+   Value( std::string_view );
+   Value& operator=( std::string_view );
 
    Value( const Value& );
    Value& operator=( const Value& );
 
-   Value( Value&& );
-   Value& operator=( Value&& );
+   Value( Value&& ) noexcept;
+   Value& operator=( Value&& ) noexcept;
 
    virtual ~Value();
 
    operator T() const;
+   operator std::string() const;
 
    T value() const;
-   void value( T );
+   template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* = nullptr> void value( U );
 
-   std::string to_string() const;
-   bool parse( std::string_view str );
+   std::string string() const;
+   void value( std::string_view );
+
+   void clear();
 
 private:
    T value_;
 };
-
 
 }
 }
@@ -69,44 +88,96 @@ private:
 #pragma region Operators
 namespace nhill 
 {
+
+template<typename AT, typename AValidator, typename BT, typename BValidator> inline
+Compare compare( const utility::Value<AT,AValidator>& a, const utility::Value<BT,BValidator>& b )
+{
+   return to_enum<Compare>( math::compare<AT, BT>( a.value(), b.value() ) );
+}
+
 namespace utility
 {
+
+template<typename AT, typename AValidator, typename BT, typename BValidator> inline
+bool operator==( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
+{
+   return compare( a, b ) == Compare::equal;
+}
+
+template<typename AT, typename AValidator, typename BT, typename BValidator> inline
+bool operator!=( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
+{
+   return !(a == b);
+}
+
+template<typename AT, typename AValidator, typename BT, typename BValidator> inline
+bool operator<( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
+{
+   return compare( a, b ) == Compare::less;
+}
+
+template<typename AT, typename AValidator, typename BT, typename BValidator> inline
+bool operator>( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
+{
+   return compare( a, b ) == Compare::greater;
+}
+
+
+template<typename AT, typename AValidator, typename BT, typename BValidator> inline
+bool operator<=( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
+{
+   return (a == b) || (a < b);
+}
+
+template<typename AT, typename AValidator, typename BT, typename BValidator> inline
+bool operator>=( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
+{
+   return (a == b) || (a > b);
+}
+
+
+template<typename T, typename Validator >
+std::ostream& operator<<( std::ostream& os, Value<T, Validator>& value )
+{
+   os << value.value();
+   return os;
+}
 
 template<typename T, typename Validator >
 std::istream & operator>>( std::istream & is, Value<T, Validator> & value )
 {
    T v;
    is >> v;
-   value.value( v );
+   value.value<T>( v );
    return is;
 }
 
 template<typename T, typename Validator>
 Value<T, Validator>& operator*=( Value<T, Validator>& a, T b )
 {
-	a.value( a.value() * b );
-	return a;
+   a.value( a.value() * b );
+   return a;
 }
 
 template<typename T, typename Validator>
 Value<T, Validator>& operator*=( T a, Value<T, Validator>& b )
 {
-	b.value( b.value() * a );
-	return a;
+   b.value( b.value() * a );
+   return a;
 }
 
 template<typename T, typename Validator>
 Value<T, Validator>& operator/=( Value<T, Validator>& a, T b )
 {
-	a.value( a.value() / b );
-	return a;
+   a.value( a.value() / b );
+   return a;
 }
 
 template<typename T, typename Validator>
 Value<T, Validator>& operator/=( T a, Value<T, Validator>& b )
 {
-	b.value( b.value() / a );
-	return a;
+   b.value( b.value() / a );
+   return a;
 }
 
 }
@@ -115,15 +186,36 @@ Value<T, Validator>& operator/=( T a, Value<T, Validator>& b )
 
 #pragma region Definitions
 template<typename T, typename Validator>
-inline nhill::utility::Value<T, Validator>::Value( T val )
+inline nhill::utility::Value<T, Validator>::Value()
 {
-   value( val );
+   clear();
 }
 
 template<typename T, typename Validator>
-inline auto nhill::utility::Value<T, Validator>::operator=( T val )->Value &
+template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* ef>
+inline nhill::utility::Value<T, Validator>::Value( U val)
 {
-   value( val );
+   value<U>( val );
+}
+
+template<typename T, typename Validator>
+template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* ef>
+inline auto nhill::utility::Value<T, Validator>::operator=(U val )->Value &
+{
+   value<U>( val );
+   return *this;
+}
+
+template<typename T, typename Validator>
+inline nhill::utility::Value<T, Validator>::Value( std::string_view str)
+{
+   value( str );
+}
+
+template<typename T, typename Validator>
+inline auto nhill::utility::Value<T, Validator>::operator=( std::string_view str )->Value &
+{
+   value( str );
    return *this;
 }
 
@@ -134,10 +226,10 @@ template<typename T, typename Validator>
 inline auto nhill::utility::Value<T, Validator>::operator=( const Value& )->Value & = default;
 
 template<typename T, typename Validator>
-inline nhill::utility::Value<T, Validator>::Value( Value&& ) = default;
+inline nhill::utility::Value<T, Validator>::Value( Value&& ) noexcept = default;
 
 template<typename T, typename Validator>
-inline auto nhill::utility::Value<T, Validator>::operator=( Value&& )->Value & = default;
+inline auto nhill::utility::Value<T, Validator>::operator=( Value&& ) noexcept->Value & = default;
 
 template<typename T, typename Validator>
 inline nhill::utility::Value<T, Validator>::~Value() = default;
@@ -149,20 +241,27 @@ inline nhill::utility::Value<T, Validator>::operator T() const
 }
 
 template<typename T, typename Validator>
+inline nhill::utility::Value<T, Validator>::operator std::string() const
+{
+   return this->string();
+}
+
+template<typename T, typename Validator>
 inline T nhill::utility::Value<T, Validator>::value() const
 {
    return value_;
 }
 
 template<typename T, typename Validator>
-inline void nhill::utility::Value<T, Validator>::value( T value )
+template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* ef>
+inline void nhill::utility::Value<T, Validator>::value( U val )
 {
-   Validator validator;
-	value_ = validator( value );
+   static const Validator validator;
+   value_ = validator( static_cast<T>( val ) );
 }
 
 template<typename T, typename Validator>
-inline std::string nhill::utility::Value<T, Validator>::to_string() const
+inline std::string nhill::utility::Value<T, Validator>::string() const
 {
    std::ostringstream oss;
    oss << value();
@@ -170,10 +269,17 @@ inline std::string nhill::utility::Value<T, Validator>::to_string() const
 }
 
 template<typename T, typename Validator>
-inline bool nhill::utility::Value<T, Validator>::parse( std::string_view str )
+inline void nhill::utility::Value<T, Validator>::value( std::string_view str )
 {
    std::stringstream iss;
    iss << str;
    iss >> *this;
+}
+
+template<typename T, typename Validator>
+inline void nhill::utility::Value<T, Validator>::clear()
+{
+   static const Validator validator;
+   value_ = validator.default_value;
 }
 #pragma endregion

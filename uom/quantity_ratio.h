@@ -16,21 +16,21 @@ template<typename Uom_numerator, typename Uom_denominator, typename T = double>
 class Quantity_ratio : public nhill::utility::Value<T>, public Prefixed_uom_ratio<Uom_numerator, Uom_denominator>
 {
 public:
-	using base_value = nhill::utility::Value<T>;
+   using base_value = nhill::utility::Value<T>;
    using base_puom  = Prefixed_uom_ratio<Uom_numerator, Uom_denominator>;
 
    Quantity_ratio( const Prefixed_uom_ratio<Uom_numerator, Uom_denominator>& puom, T value = {} );
    Quantity_ratio( const Prefixed_uom<Uom_numerator>& num, const Prefixed_uom<Uom_denominator>& den, T value = {} );
    Quantity_ratio( Prefix prefixNum, Uom_numerator uomNum, Prefix prefixDen, Uom_denominator uomDen, T value = {} );
-	Quantity_ratio& operator=( double value );
+   Quantity_ratio& operator=( double value );
 
-	Quantity_ratio( const Quantity_ratio& );
-	Quantity_ratio& operator=( const Quantity_ratio& );
+   Quantity_ratio( const Quantity_ratio& );
+   Quantity_ratio& operator=( const Quantity_ratio& );
 
-	Quantity_ratio( Quantity_ratio&& );
-	Quantity_ratio& operator=( Quantity_ratio&& );
+   Quantity_ratio( Quantity_ratio&& );
+   Quantity_ratio& operator=( Quantity_ratio&& );
 
-	virtual ~Quantity_ratio();
+   virtual ~Quantity_ratio();
 
    virtual std::string to_string_value() const;
    virtual std::string to_string_puom() const;
@@ -125,7 +125,7 @@ auto nhill::uom::Quantity_ratio<Uom_numerator, Uom_denominator, T>::operator=( d
 template<typename Uom_numerator, typename Uom_denominator, typename T>
 std::string nhill::uom::Quantity_ratio<Uom_numerator, Uom_denominator, T>::to_string_value() const
 {
-   return base_value::to_string();
+   return base_value::string();
 }
 
 template<typename Uom_numerator, typename Uom_denominator, typename T>

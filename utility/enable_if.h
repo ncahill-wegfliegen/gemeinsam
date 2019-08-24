@@ -140,10 +140,10 @@ template<typename mtype>
 using is_math_type = typename std::enable_if< is_math< mtype >::value >::type;
 
 template<typename mtype1, typename mtype2>
-using are_2math_types = typename std::enable_if< nhill::enable_if::is_math<mtype1>::value && nhill::enable_if::is_math<mtype2>::value >::type;
+using are_2math_types = typename std::enable_if< is_math<mtype1>::value && is_math<mtype2>::value >::type;
 
 template<typename mtype1, typename mtype2, typename mtype3>
-using are_3math_types = typename std::enable_if< nhill::enable_if::is_math<mtype1>::value && nhill::enable_if::is_math<mtype2>::value && nhill::enable_if::is_math<mtype3>::value >::type;
+using are_3math_types = typename std::enable_if< is_math<mtype1>::value && is_math<mtype2>::value && is_math<mtype3>::value >::type;
 
 /// <summary>SFINAE condition: is 'not math'; neither a (un)signed integer type nor a floating-point type.</summary>
 template<typename mtype>
