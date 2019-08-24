@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="module">
+      <UniqueIdentifier>{bb92a8fe-9197-42d1-85aa-8641133d0de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dls">
+      <UniqueIdentifier>{e6b53aee-2241-4b20-9254-95e28b269a68}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="port.h">
+      <Filter>module</Filter>
+    </ClInclude>
+    <ClInclude Include="dls.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dls.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

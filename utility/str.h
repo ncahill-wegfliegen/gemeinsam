@@ -114,7 +114,7 @@ std::basic_string<Char> replace( const std::basic_string<Char>& text, const std:
    {
       // Locate the substring to replace
       pos = textout.find( oldsubstr, pos );
-      if( pos == std::tstring::npos )
+      if( pos == std::string::npos )
          return textout;
 
       if( oldlen == newlen )
