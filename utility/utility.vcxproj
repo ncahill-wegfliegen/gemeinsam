@@ -38,6 +38,7 @@
     <ClCompile Include="color_helper.cpp" />
     <ClCompile Include="convert_file_bin_to_ascii.cpp" />
     <ClCompile Include="ini.cpp" />
+    <ClCompile Include="str_query.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array.h" />
@@ -70,6 +71,7 @@
     <ClInclude Include="size.h" />
     <ClInclude Include="str.h" />
     <ClInclude Include="strn.h" />
+    <ClInclude Include="str_query.h" />
     <ClInclude Include="type.h" />
     <ClInclude Include="unique_ptr.h" />
     <ClInclude Include="value.h" />

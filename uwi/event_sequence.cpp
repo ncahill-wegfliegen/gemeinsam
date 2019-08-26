@@ -1,45 +1,34 @@
 #include "event_sequence.h"
+#include "../enum/core/int.h"
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
 nhill::uwi::dls::Event_sequence::Event_sequence()
-   : base{ "0" }
 {
+	clear();
 }
 
-nhill::uwi::dls::Event_sequence::Event_sequence( const char* s )
+nhill::uwi::dls::Event_sequence::Event_sequence( char c )
 {
-   string error_msg;
-   if( !is_valid( s, &error_msg ) )
-   {
-      throw invalid_argument( error_msg.c_str() );
-   }
-
-   base::set( s );
+	value(c);
 }
 
-auto nhill::uwi::dls::Event_sequence::operator=( const char* s )->Event_sequence &
+auto nhill::uwi::dls::Event_sequence::operator=( char c )->Event_sequence &
 {
-   base::operator=( s );
-   return *this;
+	value( c );
+	return *this;
 }
 
 nhill::uwi::dls::Event_sequence::Event_sequence( int i )
 {
-   operator=( i );
+	value( i );
 }
 
 auto nhill::uwi::dls::Event_sequence::operator=( int i )->Event_sequence &
 {
-   string error_msg;
-   if( !is_valid( i, &error_msg ) )
-   {
-      throw invalid_argument( error_msg.c_str() );
-   }
-
-   base::set( to_string(i).c_str());
-
+	value( i );
    return *this;
 }
 
@@ -51,71 +40,140 @@ auto nhill::uwi::dls::Event_sequence::operator=( Event_sequence&& other ) noexce
 
 nhill::uwi::dls::Event_sequence::~Event_sequence() = default;
 
-
-nhill::uwi::dls::Event_sequence::operator const char* () const
+nhill::uwi::dls::Event_sequence::operator char () const
 {
-   return base::operator const char* ();
+   return value();
 }
 
 nhill::uwi::dls::Event_sequence::operator int() const
 {
-   const char* const s{ base::operator const char* () };
-   const char c0{ s[0] };
-
-   if( !isdigit( c0 )  )
-   {
-      throw logic_error( "The location exception \"" + string{ s } +"\" cannot be converted to an integer." );
-   }
-
-   return atoi( s );
-}
-
-constexpr size_t nhill::uwi::dls::Event_sequence::size() const
-{
-   return base::size();
+	return ivalue();
 }
 
 void nhill::uwi::dls::Event_sequence::clear()
 {
-   base::clear();
+	c_ = '0';
 }
 
-bool nhill::uwi::dls::Event_sequence::is_valid( const char* s, string* error_msg )
+char nhill::uwi::dls::Event_sequence::value() const
 {
-   // Validate string length (less than or equal to two)
-   if( !base::is_valid( s, error_msg ) )
-   {
-      return false;
-   }
-
-   // The event sequence must be either a digit (except 1) or a capital letter
-   const char c{ s[0] };
-   if( isdigit( c ) || ( 'A' <= c && c <= 'Z'))
-   {
-      return true;
-   }
-
-   if( error_msg != nullptr )
-   {
-      *error_msg = "The character \"" + string{ s } + "\" is not a valid event sequence: it must be either a digit (except 1) or a capital letter.";
-   }
-
-   return false;
+	return c_;
 }
 
-bool nhill::uwi::dls::Event_sequence::is_valid( int i, std::string* error_msg )
+void nhill::uwi::dls::Event_sequence::value( char c)
 {
-   if( (i == 0) || (2 <= i && i <= 9) )
-   {
-      return true;
-   }
-   else
-   {
-      if( error_msg != nullptr )
-      {
-         *error_msg = "The integer \"" + to_string( i ) + "\" is not a valid event sequence: it must be either '0' or between '2' and '9'.";
-      }
-      return false;
-   }
+	if( !is_valid( c ) )
+	{
+		throw invalid_argument( "The character '" + string( 1, c ) + "' is not a valid event sequence: it must be either a digit [0,2-9] or a capital letter [A-Z]" );
+	}
+
+	c_ = c;
+}
+
+int nhill::uwi::dls::Event_sequence::ivalue() const
+{
+	if( !isdigit( c_ ) )
+	{
+		throw logic_error( "The location exception \"" + string( 1, c_ ) + "\" cannot be converted to an integer." );
+	}
+
+	return static_cast<int>(c_ - '0');
+}
+
+void nhill::uwi::dls::Event_sequence::value( int i)
+{
+	if( !is_valid( i ) )
+	{
+		throw invalid_argument( "The integer '" + to_string( i ) + "' is not a valid event sequence: it must be either 0 or between 2 and 9" );
+	}
+
+	c_ = ('0' + i);
+}
+
+bool nhill::uwi::dls::Event_sequence::is_valid( char c )
+{
+	return is_valid_event_sequence( c );
+}
+
+bool nhill::uwi::dls::Event_sequence::is_valid( int i )
+{
+	return is_valid_event_sequence( i );
+}
+
+template<>
+auto nhill::compare( const uwi::dls::Event_sequence& a, const uwi::dls::Event_sequence& b )->Compare
+{
+	if( a.value() < b.value() )
+	{
+		return Compare::less;
+	}
+	else if( a.value() == b.value() )
+	{
+		return Compare::equal;
+	}
+	else
+	{
+		return Compare::greater;
+	}
+}
+
+bool nhill::uwi::dls::is_valid_event_sequence( char c )
+{
+	// The event sequence must be either a digit (except 1) or a capital letter
+	if( (isdigit( c ) && c != '1') || ('A' <= c && c <= 'Z') )
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool nhill::uwi::dls::is_valid_event_sequence( int i )
+{
+	if( (i == 0) || (2 <= i && i <= 9) )
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+ostream& nhill::uwi::dls::operator<<( ostream& out, const Event_sequence& es )
+{
+	return out << es.value();
+}
+
+bool nhill::uwi::dls::operator==( const Event_sequence& a, const Event_sequence& b )
+{
+	return compare<const Event_sequence&>( a, b ) == Compare::equal;
+}
+
+bool nhill::uwi::dls::operator!=( const Event_sequence& a, const Event_sequence& b )
+{
+	return !(a == b);
+}
+
+bool nhill::uwi::dls::operator<( const Event_sequence& a, const Event_sequence& b )
+{
+	return compare<const Event_sequence&>( a, b ) == Compare::less;
+}
+
+bool nhill::uwi::dls::operator>( const Event_sequence& a, const Event_sequence& b )
+{
+	return compare<const Event_sequence&>( a, b ) == Compare::greater;
+}
+
+bool nhill::uwi::dls::operator<=( const Event_sequence& a, const Event_sequence& b )
+{
+	return !(a > b);
+}
+
+bool nhill::uwi::dls::operator>=( const Event_sequence& a, const Event_sequence& b )
+{
+	return !(a < b);
 }
 

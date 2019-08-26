@@ -36,6 +36,12 @@
     <ClInclude Include="event_sequence.h">
       <Filter>dls</Filter>
     </ClInclude>
+    <ClInclude Include="range_direction.h">
+      <Filter>dls</Filter>
+    </ClInclude>
+    <ClInclude Include="range_direction_ex.h">
+      <Filter>dls</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dls.cpp">
@@ -60,6 +66,9 @@
       <Filter>dls</Filter>
     </ClCompile>
     <ClCompile Include="event_sequence.cpp">
+      <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="range_direction_ex.cpp">
       <Filter>dls</Filter>
     </ClCompile>
   </ItemGroup>

@@ -38,7 +38,7 @@ class Township : public utility::Value<uint8_t, Validator>
 public:
    using base = utility::Value<uint8_t, Validator>;
    using base::base;
-   static bool is_valid( uint8_t );
+   static bool is_valid( int );
 };
 
 }
@@ -52,14 +52,15 @@ namespace uwi
 namespace dls
 {
 
-NHILL_UWI_PORT_FUNCTION bool is_valid_township( int v );
+NHILL_UWI_PORT_FUNCTION bool is_valid_township( int i );
+NHILL_UWI_PORT_FUNCTION bool is_valid_township( const char* s );
 
 }
 }
 }
 
 template<typename Validator>
-inline bool nhill::uwi::dls::Township<Validator>::is_valid( uint8_t val )
+inline bool nhill::uwi::dls::Township<Validator>::is_valid( int i )
 {
-   return is_valid_township( val );
+   return is_valid_township( i );
 }

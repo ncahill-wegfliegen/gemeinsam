@@ -19,6 +19,8 @@ public:
    using base = utility::Value_validator<uint8_t>;
    Legal_subdivision_validator_throw();
    value_type operator()( value_type val ) const final;
+	std::string_view operator()( std::string_view ) const final;
+
 };
 
 /// <summary>If the value is not a valid legal subdivision [1,16], then pin the value to the range for a legal subdivision.</summary>
@@ -38,8 +40,9 @@ class Legal_subdivision : public utility::Value<uint8_t, Validator>
 public:
    using base = utility::Value<uint8_t, Validator>;
    using base::base;
-   static bool is_valid( uint8_t );
+   static bool is_valid( int );
 };
+
 
 }
 }
@@ -52,14 +55,15 @@ namespace uwi
 namespace dls
 {
 
-NHILL_UWI_PORT_FUNCTION bool is_valid_legal_subdivision( int v );
+NHILL_UWI_PORT_FUNCTION bool is_valid_legal_subdivision( int i );
+NHILL_UWI_PORT_FUNCTION bool is_valid_legal_subdivision( const std::string& s );
 
 }
 }
 }
 
 template<typename Validator>
-inline bool nhill::uwi::dls::Legal_subdivision<Validator>::is_valid( uint8_t val )
+inline bool nhill::uwi::dls::Legal_subdivision<Validator>::is_valid( int i)
 {
-   return is_valid_legal_subdivision( val );
+	return is_valid_legal_subdivision( i );
 }

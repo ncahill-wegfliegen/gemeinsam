@@ -1,8 +1,8 @@
 #pragma once
 
 #include "port.h"
-#include "../utility/strn.h"
-#include <string>
+#include "../utility/compare.h"
+#include <ostream>
 
 namespace nhill
 {
@@ -11,15 +11,13 @@ namespace uwi
 namespace dls
 {
 
-class NHILL_UWI_PORT_CLASS Event_sequence : protected Strn<1>
+class NHILL_UWI_PORT_CLASS Event_sequence 
 {
 public:
-   using base = Strn<1>;
-
    Event_sequence();
 
-   Event_sequence( const char* );
-   Event_sequence& operator=( const char* );
+   Event_sequence( char );
+   Event_sequence& operator=( char );
 
    Event_sequence( int );
    Event_sequence& operator=( int );
@@ -32,18 +30,53 @@ public:
 
    ~Event_sequence();
 
-   operator const char* () const;
+   operator char () const;
    operator int() const;
-   /// <summary>Includes null terminator.</summary>
-   constexpr size_t size() const;
+
+	char value() const;
+	void value( char );
+
+	int ivalue() const;
+	void value( int );
 
    void clear();
 
-   bool is_valid( const char* s, std::string* error_msg = nullptr ) override;
-   bool is_valid( int i, std::string* error_msg = nullptr );
+   static bool is_valid( char c );
+   static bool is_valid( int i );
+
+private:
+	char c_{};
 };
 
 }
 }
 }
 
+namespace nhill
+{
+
+template<> NHILL_UWI_PORT_FUNCTION inline
+Compare compare( const uwi::dls::Event_sequence& a, const uwi::dls::Event_sequence& b );
+
+namespace uwi
+{
+namespace dls
+{
+
+NHILL_UWI_PORT_FUNCTION bool is_valid_event_sequence( char c );
+NHILL_UWI_PORT_FUNCTION bool is_valid_event_sequence( int i );
+
+NHILL_UWI_PORT_FUNCTION std::ostream& operator<<( std::ostream& out, const Event_sequence& es );
+
+NHILL_UWI_PORT_FUNCTION bool operator==( const Event_sequence& a, const Event_sequence& b );
+NHILL_UWI_PORT_FUNCTION bool operator!=( const Event_sequence& a, const Event_sequence& b );
+
+NHILL_UWI_PORT_FUNCTION bool operator<( const Event_sequence& a, const Event_sequence& b );
+NHILL_UWI_PORT_FUNCTION bool operator>( const Event_sequence& a, const Event_sequence& b );
+
+NHILL_UWI_PORT_FUNCTION bool operator<=( const Event_sequence& a, const Event_sequence& b );
+NHILL_UWI_PORT_FUNCTION bool operator>=( const Event_sequence& a, const Event_sequence& b );
+
+}
+}
+}

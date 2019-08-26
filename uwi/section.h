@@ -38,7 +38,7 @@ class Section : public utility::Value<uint8_t, Validator>
 public:
    using base = utility::Value<uint8_t, Validator>;
    using base::base;
-   static bool is_valid( uint8_t );
+   static bool is_valid( int );
 };
 
 }
@@ -52,14 +52,15 @@ namespace uwi
 namespace dls
 {
 
-NHILL_UWI_PORT_FUNCTION bool is_valid_section( int v );
+NHILL_UWI_PORT_FUNCTION bool is_valid_section( int i );
+NHILL_UWI_PORT_FUNCTION bool is_valid_section( const char* s );
 
 }
 }
 }
 
 template<typename Validator>
-inline bool nhill::uwi::dls::Section<Validator>::is_valid( uint8_t val )
+inline bool nhill::uwi::dls::Section<Validator>::is_valid( int i )
 {
-   return is_valid_section( val );
+   return is_valid_section( i );
 }

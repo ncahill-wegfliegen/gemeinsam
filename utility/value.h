@@ -28,6 +28,10 @@ public:
    { }
 
    virtual T operator()( T value ) const = 0;
+	virtual std::string_view operator()( std::string_view s) const
+	{
+		return s;
+	}
    const T default_value;
 };
 
@@ -101,7 +105,7 @@ namespace utility
 template<typename AT, typename AValidator, typename BT, typename BValidator> inline
 bool operator==( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
 {
-   return compare( a, b ) == Compare::equal;
+   return compare<AT, AValidator, BT, BValidator>( a, b ) == Compare::equal;
 }
 
 template<typename AT, typename AValidator, typename BT, typename BValidator> inline
@@ -113,26 +117,25 @@ bool operator!=( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b 
 template<typename AT, typename AValidator, typename BT, typename BValidator> inline
 bool operator<( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
 {
-   return compare( a, b ) == Compare::less;
+   return compare<AT, AValidator, BT, BValidator>( a, b ) == Compare::less;
 }
 
 template<typename AT, typename AValidator, typename BT, typename BValidator> inline
 bool operator>( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
 {
-   return compare( a, b ) == Compare::greater;
+   return compare<AT, AValidator, BT, BValidator>( a, b ) == Compare::greater;
 }
-
 
 template<typename AT, typename AValidator, typename BT, typename BValidator> inline
 bool operator<=( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
 {
-   return (a == b) || (a < b);
+   return !(a > b);
 }
 
 template<typename AT, typename AValidator, typename BT, typename BValidator> inline
 bool operator>=( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b )
 {
-   return (a == b) || (a > b);
+   return !( a > b);
 }
 
 
@@ -155,28 +158,28 @@ std::istream & operator>>( std::istream & is, Value<T, Validator> & value )
 template<typename T, typename Validator>
 Value<T, Validator>& operator*=( Value<T, Validator>& a, T b )
 {
-   a.value( a.value() * b );
+   a.value<T>( a.value() * b );
    return a;
 }
 
 template<typename T, typename Validator>
 Value<T, Validator>& operator*=( T a, Value<T, Validator>& b )
 {
-   b.value( b.value() * a );
+   b.value<T>( b.value() * a );
    return a;
 }
 
 template<typename T, typename Validator>
 Value<T, Validator>& operator/=( Value<T, Validator>& a, T b )
 {
-   a.value( a.value() / b );
+   a.value<T>( a.value() / b );
    return a;
 }
 
 template<typename T, typename Validator>
 Value<T, Validator>& operator/=( T a, Value<T, Validator>& b )
 {
-   b.value( b.value() / a );
+   b.value<T>( b.value() / a );
    return a;
 }
 
@@ -271,8 +274,11 @@ inline std::string nhill::utility::Value<T, Validator>::string() const
 template<typename T, typename Validator>
 inline void nhill::utility::Value<T, Validator>::value( std::string_view str )
 {
-   std::stringstream iss;
-   iss << str;
+	static const Validator validator;
+	std::string_view s{ validator( str ) };
+
+	std::stringstream iss;
+   iss << s;
    iss >> *this;
 }
 

@@ -1,4 +1,5 @@
 #include "dls.h"
+#include "range_direction_ex.h"
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -14,30 +15,6 @@ constexpr char slash{'/'};
 
 nhill::uwi::Dls::Dls() = default;
 
-nhill::uwi::Dls::Dls( const char* le, int lsd, int sc, int twp, int rg, int m, int es, Rgd rgd )
-{
-   this->le ( le  );
-   this->lsd( lsd );
-   this->sc ( sc  );
-   this->twp( twp );
-   this->rg ( rg  );
-   this->rgd( rgd );
-   this->m  ( m   );
-   this->es ( es  );
-}
-
-nhill::uwi::Dls::Dls( int le, int lsd, int sc, int twp, int rg, int m, int es, Rgd rgd )
-{
-   this->le ( le  );
-   this->lsd( lsd );
-   this->sc ( sc  );
-   this->twp( twp );
-   this->rg ( rg  );
-   this->rgd( rgd );
-   this->m  ( m   );
-   this->es ( es  );
-}
-
 nhill::uwi::Dls::Dls( const Dls& ) = default;
 auto nhill::uwi::Dls::operator=( const Dls& )->Dls & = default;
 
@@ -46,263 +23,28 @@ auto nhill::uwi::Dls::operator=( Dls&& ) noexcept->Dls & = default;
 
 nhill::uwi::Dls::~Dls() = default;
 
-const char* nhill::uwi::Dls::clocation_exception() const
-{
-   return cle();
-}
-
-void nhill::uwi::Dls::location_exception( const char* value)
-{
-   le( value );
-}
-
-int nhill::uwi::Dls::location_exception() const
-{
-   return le();
-}
-
-void nhill::uwi::Dls::location_exception( int value)
-{
-   le( value );
-}
-
-int nhill::uwi::Dls::legal_subdivision() const
-{
-   return lsd();
-}
-
-void nhill::uwi::Dls::legal_subdivision( int value)
-{
-   lsd( value );
-}
-
-int nhill::uwi::Dls::section() const
-{
-   return sc();
-}
-
-void nhill::uwi::Dls::section( int value)
-{
-   sc(value);
-}
-
-int nhill::uwi::Dls::township() const
-{
-   return twp();
-}
-
-void nhill::uwi::Dls::township( int value)
-{
-   twp( value );
-}
-
-int nhill::uwi::Dls::range() const
-{
-   return rg();
-}
-
-void nhill::uwi::Dls::range( int value)
-{
-   rg( value );
-}
-
-auto nhill::uwi::Dls::range_direction() const->Rgd
-{
-   return rgd();
-}
-
-void nhill::uwi::Dls::range_direction( Rgd value)
-{
-   rgd( value );
-}
-
-int nhill::uwi::Dls::meridian() const
-{
-   return m();
-}
-
-void nhill::uwi::Dls::meridian( int value)
-{
-   m( value );
-}
-
-char nhill::uwi::Dls::cevent_sequence() const
-{
-   return ces();
-}
-
-void nhill::uwi::Dls::event_sequence( char value )
-{
-   es( value );
-}
-
-int nhill::uwi::Dls::event_sequence() const
-{
-   return es();
-}
-
-void nhill::uwi::Dls::event_sequence( int value)
-{
-   es( value );
-}
-
-const char* nhill::uwi::Dls::cle() const
-{
-   return le_;
-}
-
-void nhill::uwi::Dls::le( const char* value)
-{
-   if( value == nullptr || strlen(value) == 0 )
-   {
-      le_[0] = '\0';
-      le_[1] = '\0';
-   }
-   else
-   {
-      switch( strlen( value ) )
-      {
-      case 0:
-      {
-         le_[0] = '\0';
-         le_[1] = '\0';
-         break;
-      }
-      case 1:
-      {
-         le_[0] = '0';
-         le_[1] = value[0];
-         break;
-      }
-      case 2:
-      {
-         le_[0] = value[0];
-         le_[1] = value[1];
-         break;
-      }
-      }
-   }
-
-   le_[2] = '\0';
-}
-
-int nhill::uwi::Dls::le() const
-{
-   return atoi(cle());
-}
-
-void nhill::uwi::Dls::le( int value)
-{
-   le( to_string( value ).c_str() );
-}
-
-int nhill::uwi::Dls::lsd() const
-{
-   return static_cast<int>(lsd_);
-}
-
-void nhill::uwi::Dls::lsd( int value)
-{
-   lsd_ = static_cast<value_type>(value);
-}
-
-int nhill::uwi::Dls::sc() const
-{
-   return static_cast<int>(sc_);
-}
-
-void nhill::uwi::Dls::sc( int value)
-{
-   sc_ = static_cast<value_type>(value);
-}
-
-int nhill::uwi::Dls::twp() const
-{
-   return static_cast<int>(twp_);
-}
-
-void nhill::uwi::Dls::twp( int value)
-{
-   twp_ = static_cast<value_type>(value);
-}
-
-int nhill::uwi::Dls::rg() const
-{
-   return static_cast<int>(rg_);
-}
-
-void nhill::uwi::Dls::rg( int value)
-{
-   rg_ = static_cast<value_type>(value);
-}
-
-auto nhill::uwi::Dls::rgd() const->Rgd
-{
-   return rgd_;
-}
-
-void nhill::uwi::Dls::rgd( Rgd value)
-{
-   rgd_ = value;
-}
-
-int nhill::uwi::Dls::m() const
-{
-   return static_cast<int>(m_);
-}
-
-void nhill::uwi::Dls::m( int value)
-{
-   m_ = static_cast<value_type>(value);
-}
-
-char nhill::uwi::Dls::ces() const
-{
-   return es_;
-}
-
-void nhill::uwi::Dls::es( char value)
-{
-   es_ = value;
-}
-
-int nhill::uwi::Dls::es() const
-{
-   return static_cast<int>(es_ - '0');
-}
-
-void nhill::uwi::Dls::es( int value)
-{
-   es_ = static_cast<char>(value) + '0';
-}
-
 void nhill::uwi::Dls::clear()
 {
-   le_[0] = '0';
-   le_[1] = '0';
-   le_[2] = '\0';
-   lsd_ = 0;
-   sc_  = 0;
-   twp_ = 0;
-   rg_  = 0;
-   rgd_ = Rgd::W;
-   m_   = 0;
-   es_  = '0';
+	le.clear();
+	lsd.clear();
+	sc.clear();
+	twp.clear();
+	rg.clear();
+	m.clear();
+	es.clear();
 }
 
 string nhill::uwi::Dls::sort() const
 {
    ostringstream oss;
 
-   oss.fill( '0' );
-   
-   oss << setw( 3 ) << twp();
-   oss << m();
-   oss << setw( 2 ) << rg();
-   oss << setw( 2 ) << sc();
-   oss << setw( 2 ) << lsd();
-   oss << le();
-   oss << ces();
+   oss << twp;
+   oss << m;
+   oss << rg;
+   oss << sc;
+   oss << lsd;
+   oss << le;
+   oss << es;
    
    return oss.str();
 }
@@ -311,19 +53,17 @@ string nhill::uwi::Dls::plain( bool range_direction ) const
 {
    ostringstream oss;
 
-   oss.fill( '0' );
-
-   oss << cle();
-   oss << setw( 2 ) << lsd();
-   oss << setw( 2 ) << sc ();
-   oss << setw( 3 ) << twp();
-   oss << setw( 2 ) << rg ();
-   if( range_direction )
-   {
-      oss << to_char( rgd() );
-   }
-   oss << m ();
-   oss << ces();
+   oss << le;
+   oss << lsd;
+   oss << sc;
+   oss << twp;
+   oss << rg;
+	if( range_direction )
+	{
+		oss << rgd();
+	}
+   oss << m;
+   oss << es;
 
    return oss.str();
 }
@@ -332,18 +72,16 @@ string nhill::uwi::Dls::full() const
 {
    ostringstream oss;
 
-   oss.fill( '0' );
-
    oss << 1;
-   oss << cle();
-   oss << setw( 2 ) << lsd();
-   oss << setw( 2 ) << sc();
-   oss << setw( 3 ) << twp();
-   oss << setw( 2 ) << rg();
-   oss << to_char( rgd() );
-   oss << m();
+   oss << le;
+   oss << lsd;
+   oss << sc;
+   oss << twp;
+   oss << rg;
+	oss << rgd();
+   oss << m;
    oss << 0;
-   oss << ces();
+   oss << es;
 
    return oss.str();
 }
@@ -352,21 +90,19 @@ string nhill::uwi::Dls::plain_dressed() const
 {
    ostringstream oss;
 
-   oss.fill( '0' );
-
-   oss << cle();
+   oss << le;
    oss << slash;
-   oss << setw( 2 ) << lsd();
+   oss << lsd;
    oss << dash;
-   oss << setw( 2 ) << sc();
+   oss << sc;
    oss << dash;
-   oss << setw( 3 ) << twp();
+   oss << twp;
    oss << dash;
-   oss << setw( 2 ) << rg();
-   oss << to_char( rgd() );
-   oss << m();
+   oss << rg;
+	oss << rgd();
+   oss << m;
    oss << slash;
-   oss << ces();
+   oss << es;
 
    return oss.str();
 }
@@ -375,71 +111,79 @@ string nhill::uwi::Dls::full_dressed() const
 {
    ostringstream oss;
 
-   oss.fill( '0' );
-
    oss << 1; // survey system
-   oss << cle();
+   oss << le;
    oss << slash;
-   oss << setw( 2 ) << lsd();
+   oss << lsd;
    oss << dash;
-   oss << setw( 2 ) << sc();
+   oss << sc;
    oss << dash;
-   oss << setw( 3 ) << twp();
+   oss << twp;
    oss << dash;
-   oss << setw( 2 ) << rg();
-   oss << to_char( rgd() );
-   oss << m();
+   oss << rg;
+	oss << rgd();
+   oss << m;
    oss << slash;
    oss << 0; // padding character
-   oss << ces();
+   oss << es;
 
    return oss.str();
+}
+
+auto nhill::uwi::Dls::range_direction() const->Range_direction
+{
+	return m.range_direction();
+}
+
+char nhill::uwi::Dls::rgd() const
+{
+	return to_char( range_direction() );
 }
 
 template<> inline
 auto nhill::compare( const uwi::Dls& a, const uwi::Dls& b ) noexcept -> Compare
 {
-   if( a.twp() < b.twp() )
+   if( a.twp < b.twp )
    {
       return Compare::less;
    }
-   else if( a.twp() == b.twp() )
+   else if( a.twp == b.twp )
    {
-      if( a.m() < b.m() )
+      if( a.m < b.m )
       {
          return Compare::less;
       }
-      else if( a.m() == b.m() )
+      else if( a.m == b.m )
       {
-         if( a.rg() < b.rg() )
+         if( a.rg < b.rg )
          {
             return Compare::less;
          }
-         else if( a.rg() == b.rg() )
+         else if( a.rg == b.rg )
          {
-            if( a.sc() < b.sc() )
+            if( a.sc < b.sc )
             {
                return Compare::less;
             }
-            else if( a.sc() == b.sc() )
+            else if( a.sc == b.sc )
             {
-               if( a.lsd() < b.lsd() )
+               if( a.lsd < b.lsd )
                {
                   return Compare::less;
                }
-               else if( a.lsd() == b.lsd() )
+               else if( a.lsd == b.lsd )
                {
-                  if( strcmp( a.cle(), b.cle() ) < 0 )
+                  if( a.le < b.le )
                   {
                      return Compare::less;
                   }
-                  else if( strcmp( a.cle(), b.cle() ) == 0 )
+                  else if( a.le == b.le )
                   {
-                     if( a.ces() < b.ces() )
+                     if( a.es < b.es )
                      {
                         return Compare::less;
                      }
-                     else if( a.ces() == b.ces() )
+                     else if( a.es == b.es )
                      {
                         return Compare::equal;
                      }
@@ -455,14 +199,13 @@ auto nhill::compare( const uwi::Dls& a, const uwi::Dls& b ) noexcept -> Compare
 
 bool nhill::uwi::operator==( const Dls& a, const Dls& b )
 {
-   return strcmp(a.cle(), b.cle()) == 0
-      && a.lsd() == b.lsd()
-      && a.sc () == b.sc ()
-      && a.twp() == b.twp()
-      && a.rg () == b.rg ()
-      && a.m  () == b.m  ()
-      && a.rgd() == b.rgd()
-      && a.ces () == b.ces ();
+   return a.le == b.le
+      && a.lsd == b.lsd
+      && a.sc == b.sc
+      && a.twp == b.twp
+      && a.rg == b.rg
+      && a.m  == b.m 
+      && a.es == b.es;
 }
 
 bool nhill::uwi::operator!=( const Dls& a, const Dls& b )
@@ -490,29 +233,302 @@ bool nhill::uwi::operator>=( const Dls& a, const Dls& b )
    return (a == b) || (a > b);
 }
 
-char nhill::uwi::to_char( Dls::Rgd rgd )
+bool nhill::uwi::dls::is_sort( std::string_view str, Dls* dls )
 {
-   switch( rgd )
-   {
-   case nhill::uwi::Dls::Rgd::E: return 'E';
-   case nhill::uwi::Dls::Rgd::W: return 'W';
-   default: return '\0';
-   }
+	if( dls != nullptr )
+	{
+		dls->clear();
+	}
+
+	// The string must be the same length as the sort format
+	if( str.size() != len_sort )
+	{
+		return false;
+	}
+	
+	// 01234567890123 index
+	// TTTMDRRSSLLXXE
+	// 12345678901234 count
+
+	Dls::Location_exception le;
+	Dls::Legal_subdivision lsd;
+	Dls::Section sc;
+	Dls::Township twp;
+	Dls::Range rg;
+	Dls::Meridian m;
+	Dls::Event_sequence es;
+
+	try
+	{
+	}
+	catch( exception e )
+	{
+
+	}
+
+	//string s;
+
+	//// The first three charactes must be the township
+	//s = str.substr( 0, 3 );
+	//int twp{ atoi( s.c_str() ) };
+	//if( !is_valid_township( twp ) )
+	//{
+	//	return false;
+	//}
+
+	//// The fourth character is the meridian
+	//s = str.substr( 3, 1 );
+	//int m{ atoi( s.c_str() ) };
+	//if( !is_valid_meridian( m ) )
+	//{
+	//	return false;
+	//}
+
+	//// The fifth character is the range direction
+	//s = str.substr( 4, 1 );
+	//Range_direction rgd{ to_enum<Range_direction>( atoi( s.c_str() ) )};
+	//if( rgd == Range_direction::none )
+	//{
+	//	return false;
+	//}
+
+	//// Can only be East of the first meridian
+	//if( rgd == Range_direction::E && m != 1 ) 
+	//{
+	//	return false;
+	//}
+
+	//// The sixth and seventh characters are the range
+	//s = str.substr( 5, 2 );
+	//int rg{ atoi( s.c_str() ) };
+	//if( !is_valid_range( rg) )
+	//{
+	//	return false;
+	//}
+
+	//// The eighth and ninth characters are the section
+	//s = str.substr( 7, 2 );
+	//int sc{ atoi( s.c_str() ) };
+	//if( !is_valid_section( sc ) )
+	//{
+	//	return false;
+	//}
+
+	//// The tenth and eleventh characters are the legal subdivision
+	//s = str.substr( 9, 2 );
+	//int lsd{ atoi( s.c_str() ) };
+	//if( !is_valid_legal_subdivision( lsd ) )
+	//{
+	//	return false;
+	//}
+
+	//// The twelfth and thirteenth characters are the location exception
+	//s = str.substr( 11, 2 );
+	//string le{ s };
+	//if( !is_valid_location_exception( le.c_str() ) )
+	//{
+	//	return false;
+	//}
+
+	//// The fourteenth character is the event sequence
+	//s = str.substr( 13, 1 );
+	//char es{ s[0] };
+	//if( !is_valid_event_sequence( es ) )
+	//{
+	//	return true;
+	//}
+
+	//// The string must be the sort format for a DLS uwi
+	//if( dls != nullptr )
+	//{
+	//	dls->le = le.c_str();
+	//	dls->lsd = lsd;
+	//	dls->sc = sc;
+	//	dls->twp = twp;
+	//	dls->rg = rg;
+	//	dls->m = (rgd == Range_direction::E ? -1 : m);
+	//	dls->es = es;
+	//}
+
+	return true;
 }
 
-auto nhill::uwi::to_dls_range_direction( char c )->Dls::Rgd
+bool nhill::uwi::dls::is_plain( std::string_view str, Dls* dls )
 {
-   switch( c )
-   {
-   case 'E':
-   case 'e':
-   return Dls::Rgd::E;
+	if( dls != nullptr )
+	{
+		dls->clear();
+	}
 
-   case 'W':
-   case 'w':
-   return Dls::Rgd::W;
+	// The string must be the same length as the plain format
+	if( str.size() != len_plain && str.size() != len_plain_rgd )
+	{
+		return false;
+	}
+	bool has_rgd{ str.size() == len_plain_rgd };
 
-   default:
-   return Dls::Rgd::W;
-   }
+	// 0123456789012    01234567890123
+	// XXLLSSTTTRRME or XXLLSSTTTRRDME
+
+	string s;
+	size_t p{ 0 }; // The position at which to start the substring
+
+	// location excepton
+	s = str.substr( p, 2 );
+	string le{ s };
+	if( !is_valid_location_exception( le.c_str() ) )
+	{
+		return false;
+	}
+	p += 2;
+
+	// legal subdivision
+	s = str.substr( 6, 2 );
+	int lsd{ atoi( s.c_str() ) };
+	if( !is_valid_legal_subdivision( lsd ) )
+	{
+		return false;
+	}
+	p += 2;
+
+	// section
+	s = str.substr( p, 2 );
+	int sc{ atoi( s.c_str() ) };
+	if( !is_valid_section( sc ) )
+	{
+		return false;
+	}
+	p += 2;
+
+	// township
+	s = str.substr( p, 3 );
+	int twp{ atoi( s.c_str() ) };
+	if( !is_valid_township( twp ) )
+	{
+		return false;
+	}
+	p += 3;
+
+	// range
+	s = str.substr( p, 2 );
+	int rg{ atoi( s.c_str() ) };
+	if( !is_valid_range( rg ) )
+	{
+		return false;
+	}
+	p += 2;
+
+	// range direction
+	Range_direction rgd{ Range_direction::W};
+	if( has_rgd )
+	{
+		s = str.substr( p, 1 );
+		if( !is_valid_range_direction( s[0] ) )
+		{
+			return false;
+		}
+		rgd = to_range_direction( s[0] );
+		p += 1;
+	}
+
+	// meridian
+	s = str.substr( p, 1 );
+	int m{ atoi( s.c_str() ) };
+	if( !is_valid_meridian( m ) )
+	{
+		return false;
+	}
+	p += 1;
+
+	// range direction can only be east for the first meridian
+	if( rgd == Range_direction::E )
+	{
+		if( m != 1 )
+		{
+			return false;
+		}
+		m = -1; // change 1 to -1 for E
+	}
+
+	// event sequence
+	s = str.substr( p, 1 );
+	char es{ s[0] };
+	if( !is_valid_event_sequence( es ) )
+	{
+		return false;
+	}
+
+	// It is plain format
+	if( dls != nullptr )
+	{
+		dls->le = le.c_str();
+		dls->lsd = lsd;
+		dls->sc = sc;
+		dls->twp = twp;
+		dls->rg = rg;
+		dls->m = m;
+		dls->es = es;
+	}
+
+	return true;
+}
+
+bool nhill::uwi::dls::is_plain_rgd( std::string_view str, Dls* dls )
+{
+	if( dls != nullptr )
+	{
+		dls->clear();
+	}
+
+	// The string must be the same length as this format
+	if( str.size() != len_full  )
+	{
+		return false;
+	}
+
+	// 0123456789012345
+	// 1XXLLSSTTTRRDM0E
+
+	string s;
+
+	// survey system
+	s = str.substr( 0, 1 );
+	if( s[0] != '1' )
+	{
+		return false;
+	}
+
+	// location exception
+	s = str.substr( 1, 2 );
+	string le{ s };
+	if( !is_valid_location_exception( s.c_str() ) )
+	{
+		return false;
+	}
+
+	// legal subdivision
+	s = str.substr( 3, 2 );
+	int lsd{ atoi( s.c_str() ) };
+	if( !is_valid_legal_subdivision( lsd ) )
+	{
+		return false;
+	}
+
+
+	return bool();
+}
+
+bool nhill::uwi::dls::is_full( std::string_view str, Dls* dls )
+{
+	return bool();
+}
+
+bool nhill::uwi::dls::is_plain_dressed( std::string_view str, Dls* dls )
+{
+	return bool();
+}
+
+bool nhill::uwi::dls::is_full_dressed( std::string_view str, Dls* dls )
+{
+	return bool();
 }

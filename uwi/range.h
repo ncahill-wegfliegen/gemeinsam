@@ -38,7 +38,7 @@ class Range : public utility::Value<uint8_t, Validator>
 public:
    using base = utility::Value<uint8_t, Validator>;
    using base::base;
-   static bool is_valid( uint8_t );
+   static bool is_valid( int );
 };
 
 }
@@ -52,14 +52,15 @@ namespace uwi
 namespace dls
 {
 
-NHILL_UWI_PORT_FUNCTION bool is_valid_range( int v );
+NHILL_UWI_PORT_FUNCTION bool is_valid_range( int i );
+NHILL_UWI_PORT_FUNCTION bool is_valid_range( const char* s );
 
 }
 }
 }
 
 template<typename Validator>
-inline bool nhill::uwi::dls::Range<Validator>::is_valid( uint8_t val )
+inline bool nhill::uwi::dls::Range<Validator>::is_valid( int i )
 {
-   return is_valid_range( val );
+   return is_valid_range( i );
 }

@@ -7,7 +7,7 @@ auto nhill::uwi::dls::Meridian_validator_throw::operator()( value_type val ) con
 {
    if( !is_valid_meridian( val ) )
    {
-      throw invalid_argument( "The value '" + to_string( val ) + "' is not a valid meridian: it must be in the range [1,6]." );
+      throw invalid_argument( "The value '" + to_string( val ) + "' is not a valid meridian: it must be in the range [-1,1-6]." );
    }
    return val;
 }
@@ -20,7 +20,11 @@ nhill::uwi::dls::Meridian_validator_throw::Meridian_validator_throw()
 
 auto nhill::uwi::dls::Meridian_validator_pin::operator()( value_type val ) const->value_type
 {
-   if( val < 1 )
+	if( val < -1 )
+	{
+		return -1;
+	}
+   if( val == 0 )
    {
       return 1;
    }
@@ -40,9 +44,14 @@ nhill::uwi::dls::Meridian_validator_pin::Meridian_validator_pin()
 }
 
 
-bool nhill::uwi::dls::is_valid_meridian( int v )
+bool nhill::uwi::dls::is_valid_meridian( int i )
 {
-   return 1 <= v && v <= 6;
+   return (i == -1) || ( 1 <= i && i <= 6 );
+}
+
+bool nhill::uwi::dls::is_valid_meridian( char c )
+{
+	return is_valid_meridian( static_cast<int>(c - '0') );
 }
 
 

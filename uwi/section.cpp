@@ -1,4 +1,5 @@
 #include "section.h"
+#include "../utility/str_query.h"
 #include <stdexcept>
 
 using namespace std;
@@ -40,7 +41,20 @@ nhill::uwi::dls::Section_validator_pin::Section_validator_pin()
 }
 
 
-bool nhill::uwi::dls::is_valid_section( int v )
+bool nhill::uwi::dls::is_valid_section( int i )
 {
-   return 1 <= v && v <= 36;
+   return 1 <= i && i <= 36;
+}
+
+bool nhill::uwi::dls::is_valid_section( const char* s )
+{
+	if( !str::is_integer( s, 1, 2 ) )
+	{
+		return false;
+	}
+	else
+	{
+		int i{ atoi( s ) };
+		return is_valid_section( i );
+	}
 }

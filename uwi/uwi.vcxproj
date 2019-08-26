@@ -26,6 +26,8 @@
     <ClInclude Include="meridian.h" />
     <ClInclude Include="port.h" />
     <ClInclude Include="range.h" />
+    <ClInclude Include="range_direction.h" />
+    <ClInclude Include="range_direction_ex.h" />
     <ClInclude Include="section.h" />
     <ClInclude Include="township.h" />
   </ItemGroup>
@@ -36,8 +38,14 @@
     <ClCompile Include="location_exception.cpp" />
     <ClCompile Include="meridian.cpp" />
     <ClCompile Include="range.cpp" />
+    <ClCompile Include="range_direction_ex.cpp" />
     <ClCompile Include="section.cpp" />
     <ClCompile Include="township.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\enum\enum.vcxproj">
+      <Project>{042eae2b-5393-48db-939d-cf2ac861463f}</Project>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
