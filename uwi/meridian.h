@@ -41,7 +41,7 @@ public:
    using base = utility::Value<int8_t, Validator>;
    using base::base;
    static bool is_valid( int );
-	Range_direction range_direction() const;
+   Range_direction range_direction() const;
 };
 
 }
@@ -56,12 +56,11 @@ namespace dls
 {
 
 NHILL_UWI_PORT_FUNCTION bool is_valid_meridian( int i );
-NHILL_UWI_PORT_FUNCTION bool is_valid_meridian( char c );
 
 template<typename Validator>
 std::ostream& operator<<( std::ostream& out, const Meridian<Validator>& m )
 {
-	out << std::abs( m.value() );
+   return out << std::abs(static_cast<int>( m.value() ));
 }
 
 }
@@ -77,5 +76,5 @@ inline bool nhill::uwi::dls::Meridian<Validator>::is_valid( int i )
 template<typename Validator>
 inline auto nhill::uwi::dls::Meridian<Validator>::range_direction() const->Range_direction
 {
-	return base::value() == -1 ? Range_direction::E : Range_direction::W;
+   return base::value() == -1 ? Range_direction::E : Range_direction::W;
 }

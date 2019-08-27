@@ -1,8 +1,10 @@
 #pragma once
 
 #include "port.h"
+#include "../utility/strn.h"
 #include "../utility/compare.h"
 #include <ostream>
+#include <string>
 
 namespace nhill
 {
@@ -14,10 +16,15 @@ namespace dls
 class NHILL_UWI_PORT_CLASS Event_sequence 
 {
 public:
+	using Str = Strn<1>;
+
    Event_sequence();
 
    Event_sequence( char );
    Event_sequence& operator=( char );
+
+	Event_sequence( std::string_view );
+	Event_sequence& operator=( std::string_view );
 
    Event_sequence( int );
    Event_sequence& operator=( int );
@@ -30,14 +37,14 @@ public:
 
    ~Event_sequence();
 
-   operator char () const;
-   operator int() const;
+   char value() const;
+   void value( char );
 
-	char value() const;
-	void value( char );
+	std::string str() const;
+	void value( std::string_view );
 
-	int ivalue() const;
-	void value( int );
+   int integer() const;
+   void value( int );
 
    void clear();
 
@@ -45,7 +52,8 @@ public:
    static bool is_valid( int i );
 
 private:
-	char c_{};
+#pragma warning(suppress:4251)
+	Str s_{};
 };
 
 }

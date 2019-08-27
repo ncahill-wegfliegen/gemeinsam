@@ -28,15 +28,9 @@ auto nhill::uwi::dls::to_range_direction( char c )->Range_direction
 {
 	switch( c )
 	{
-	case 'e':
-	case 'E':
-		return Range_direction::E;
-
-	case 'w':
-	case 'W':
-		return Range_direction::W;
-
-	default: return Range_direction::none;
+	case 'E': return Range_direction::E;
+	case 'W': return Range_direction::W;
+	default : return Range_direction::none;
 	}
 }
 

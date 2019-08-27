@@ -1,5 +1,4 @@
 #include "range.h"
-#include "../utility/str_query.h"
 #include <stdexcept>
 
 using namespace std;
@@ -44,18 +43,4 @@ nhill::uwi::dls::Range_validator_pin::Range_validator_pin()
 bool nhill::uwi::dls::is_valid_range( int i )
 {
    return 1 <= i && i <= 30;
-}
-
-
-bool nhill::uwi::dls::is_valid_range( const char* s )
-{
-	if( !str::is_integer( s, 1, 2 ) )
-	{
-		return false;
-	}
-	else
-	{
-		int i{ atoi( s ) };
-		return is_valid_range( i );
-	}
 }

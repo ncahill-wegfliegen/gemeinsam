@@ -5,8 +5,8 @@
 #include "../enum/core/int.h"
 #include <type_traits>
 #include <string>
-#include <sstream>
 #include <string_view>
+#include <sstream>
 #include <istream>
 #include <ostream>
 
@@ -28,10 +28,6 @@ public:
    { }
 
    virtual T operator()( T value ) const = 0;
-	virtual std::string_view operator()( std::string_view s) const
-	{
-		return s;
-	}
    const T default_value;
 };
 
@@ -72,7 +68,7 @@ public:
    virtual ~Value();
 
    operator T() const;
-   operator std::string() const;
+   explicit operator std::string() const;
 
    T value() const;
    template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* = nullptr> void value( U );
@@ -139,19 +135,51 @@ bool operator>=( const Value<AT, AValidator>& a, const Value<BT, BValidator>& b 
 }
 
 
-template<typename T, typename Validator >
+template<typename T, typename Validator, typename std::enable_if_t<std::is_integral_v<T>&& std::is_signed_v<T>>* = nullptr>
 std::ostream& operator<<( std::ostream& os, Value<T, Validator>& value )
 {
-   os << value.value();
+   os << static_cast<intmax_t>( value.value());
    return os;
 }
 
-template<typename T, typename Validator >
+template<typename T, typename Validator, typename std::enable_if_t<std::is_integral_v<T>&& std::is_unsigned_v<T>>* = nullptr>
+std::ostream & operator<<( std::ostream & os, Value<T, Validator> & value )
+{
+   os << static_cast<uintmax_t>(value.value());
+   return os;
+}
+
+template<typename T, typename Validator, typename std::enable_if_t<std::is_floating_point_v<T>>* = nullptr>
+std::ostream & operator<<( std::ostream & os, Value<T, Validator> & value )
+{
+   os << static_cast<long double>(value.value());
+   return os;
+}
+
+template<typename T, typename Validator, typename std::enable_if_t<std::is_integral_v<T> && std::is_signed_v<T>>* = nullptr>
 std::istream & operator>>( std::istream & is, Value<T, Validator> & value )
 {
-   T v;
+   intmax_t v; // largest signed integer type
    is >> v;
-   value.value<T>( v );
+   value.value<intmax_t>( v );
+   return is;
+}
+
+template<typename T, typename Validator, typename std::enable_if_t<std::is_integral_v<T>&& std::is_unsigned_v<T>>* = nullptr>
+std::istream & operator>>( std::istream & is, Value<T, Validator> & value )
+{
+   uintmax_t v; // largest unsigned integer typw
+   is >> v;
+   value.value<uintmax_t>( v );
+   return is;
+}
+
+template<typename T, typename Validator, typename std::enable_if_t<std::is_floating_point_v<T>>* = nullptr>
+std::istream & operator>>( std::istream & is, Value<T, Validator> & value )
+{
+   long double v; // largest floating point typw
+   is >> v;
+   value.value<long double>( v );
    return is;
 }
 
@@ -210,13 +238,13 @@ inline auto nhill::utility::Value<T, Validator>::operator=(U val )->Value &
 }
 
 template<typename T, typename Validator>
-inline nhill::utility::Value<T, Validator>::Value( std::string_view str)
+inline nhill::utility::Value<T, Validator>::Value( std::string_view  str)
 {
    value( str );
 }
 
 template<typename T, typename Validator>
-inline auto nhill::utility::Value<T, Validator>::operator=( std::string_view str )->Value &
+inline auto nhill::utility::Value<T, Validator>::operator=( std::string_view  str )->Value &
 {
    value( str );
    return *this;
@@ -272,12 +300,9 @@ inline std::string nhill::utility::Value<T, Validator>::string() const
 }
 
 template<typename T, typename Validator>
-inline void nhill::utility::Value<T, Validator>::value( std::string_view str )
+inline void nhill::utility::Value<T, Validator>::value( std::string_view s )
 {
-	static const Validator validator;
-	std::string_view s{ validator( str ) };
-
-	std::stringstream iss;
+   std::stringstream iss;
    iss << s;
    iss >> *this;
 }

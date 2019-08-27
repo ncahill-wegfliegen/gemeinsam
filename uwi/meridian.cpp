@@ -20,10 +20,10 @@ nhill::uwi::dls::Meridian_validator_throw::Meridian_validator_throw()
 
 auto nhill::uwi::dls::Meridian_validator_pin::operator()( value_type val ) const->value_type
 {
-	if( val < -1 )
-	{
-		return -1;
-	}
+   if( val < -1 )
+   {
+      return -1;
+   }
    if( val == 0 )
    {
       return 1;
@@ -48,10 +48,3 @@ bool nhill::uwi::dls::is_valid_meridian( int i )
 {
    return (i == -1) || ( 1 <= i && i <= 6 );
 }
-
-bool nhill::uwi::dls::is_valid_meridian( char c )
-{
-	return is_valid_meridian( static_cast<int>(c - '0') );
-}
-
-

@@ -9,11 +9,68 @@ using namespace std;
 
 namespace
 {
+using namespace nhill::uwi;
+using namespace nhill::uwi::dls;
+
 constexpr char dash{'-'};
 constexpr char slash{'/'};
+
+bool is_valid_range_direction_and_meridian( std::string_view s, Dls::Meridian& m )
+{
+   // 01
+   // DM
+
+   if( s.length() != 2 )
+   {
+      return false;
+   }
+
+   // Validate the range direction
+   Range_direction rgd{ to_range_direction( s[0] ) };
+   if( rgd == Range_direction::none )
+   {
+      return false;
+   }
+
+   int i{ (static_cast<int>(s[1]) - static_cast<int>('0')) };
+   if( rgd == Range_direction::E )
+   {
+      // The range direction is East, then the only allowed value for the meridian is 1
+      if( i != 1 )
+      {
+         return false;
+      }
+      // Use -1 for the meridian to indicate East
+      i = -1;
+   }
+
+   try
+   {
+      // Validate the meridian
+      m = i;
+   }
+   catch( exception )
+   {
+      return false;
+   }
+
+   return true;
+}
+
 }
 
 nhill::uwi::Dls::Dls() = default;
+
+nhill::uwi::Dls::Dls( const Location_exception& le, const Legal_subdivision& lsd, const Section& sc, const Township& twp, const Range& rg, const Meridian& m, const Event_sequence& es )
+   : le{le}
+   , lsd{lsd}
+   , sc{sc}
+   , twp{twp}
+   , rg{rg}
+   , m{m}
+   , es{es}
+{
+}
 
 nhill::uwi::Dls::Dls( const Dls& ) = default;
 auto nhill::uwi::Dls::operator=( const Dls& )->Dls & = default;
@@ -25,13 +82,13 @@ nhill::uwi::Dls::~Dls() = default;
 
 void nhill::uwi::Dls::clear()
 {
-	le.clear();
-	lsd.clear();
-	sc.clear();
-	twp.clear();
-	rg.clear();
-	m.clear();
-	es.clear();
+   le.clear();
+   lsd.clear();
+   sc.clear();
+   twp.clear();
+   rg.clear();
+   m.clear();
+   es.clear();
 }
 
 string nhill::uwi::Dls::sort() const
@@ -39,6 +96,7 @@ string nhill::uwi::Dls::sort() const
    ostringstream oss;
 
    oss << twp;
+   oss << rgd();
    oss << m;
    oss << rg;
    oss << sc;
@@ -58,10 +116,10 @@ string nhill::uwi::Dls::plain( bool range_direction ) const
    oss << sc;
    oss << twp;
    oss << rg;
-	if( range_direction )
-	{
-		oss << rgd();
-	}
+   if( range_direction )
+   {
+      oss << rgd();
+   }
    oss << m;
    oss << es;
 
@@ -78,7 +136,7 @@ string nhill::uwi::Dls::full() const
    oss << sc;
    oss << twp;
    oss << rg;
-	oss << rgd();
+   oss << rgd();
    oss << m;
    oss << 0;
    oss << es;
@@ -99,7 +157,7 @@ string nhill::uwi::Dls::plain_dressed() const
    oss << twp;
    oss << dash;
    oss << rg;
-	oss << rgd();
+   oss << rgd();
    oss << m;
    oss << slash;
    oss << es;
@@ -121,7 +179,7 @@ string nhill::uwi::Dls::full_dressed() const
    oss << twp;
    oss << dash;
    oss << rg;
-	oss << rgd();
+   oss << rgd();
    oss << m;
    oss << slash;
    oss << 0; // padding character
@@ -132,12 +190,12 @@ string nhill::uwi::Dls::full_dressed() const
 
 auto nhill::uwi::Dls::range_direction() const->Range_direction
 {
-	return m.range_direction();
+   return m.range_direction();
 }
 
 char nhill::uwi::Dls::rgd() const
 {
-	return to_char( range_direction() );
+   return to_char( range_direction() );
 }
 
 template<> inline
@@ -233,302 +291,331 @@ bool nhill::uwi::operator>=( const Dls& a, const Dls& b )
    return (a == b) || (a > b);
 }
 
-bool nhill::uwi::dls::is_sort( std::string_view str, Dls* dls )
+bool nhill::uwi::dls::is_sort( std::string_view s, Dls* dls )
 {
-	if( dls != nullptr )
-	{
-		dls->clear();
-	}
+   if( dls != nullptr )
+   {
+      dls->clear();
+   }
 
-	// The string must be the same length as the sort format
-	if( str.size() != len_sort )
-	{
-		return false;
-	}
-	
-	// 01234567890123 index
-	// TTTMDRRSSLLXXE
-	// 12345678901234 count
+   // The string must be the same length as the sort format
+   if( s.size() != len_sort )
+   {
+      return false;
+   }
+   
+   // 01234567890123 index
+   // TTTDMRRSSLLXXE
 
-	Dls::Location_exception le;
-	Dls::Legal_subdivision lsd;
-	Dls::Section sc;
-	Dls::Township twp;
-	Dls::Range rg;
-	Dls::Meridian m;
-	Dls::Event_sequence es;
+   Dls::Meridian m;
+   if( !is_valid_range_direction_and_meridian( s.substr(3,2), m) )
+   {
+      return false;
+   }
 
-	try
-	{
-	}
-	catch( exception e )
-	{
+   Dls::Location_exception le;
+   Dls::Legal_subdivision lsd;
+   Dls::Section sc;
+   Dls::Township twp;
+   Dls::Range rg;
+   Dls::Event_sequence es;
 
-	}
+   // Validation is done when setting values
+   try
+   {
+      le  = s.substr( 11, 2 );
+      lsd = s.substr(  9, 2 );
+      sc  = s.substr(  7, 2 );
+      twp = s.substr(  0, 3 );
+      rg  = s.substr(  5, 2 );
+      es  = s[13];
+   }
+   catch( exception )
+   {
+      return false;
+   }
 
-	//string s;
+   // Pass the parameters to output (if necessary)
+   if( dls != nullptr )
+   {
+      dls->le  = le;
+      dls->lsd = lsd;
+      dls->sc  = sc;
+      dls->twp = twp;
+      dls->rg  = rg;
+      dls->m   = m;
+      dls->es  = es;
+   }
 
-	//// The first three charactes must be the township
-	//s = str.substr( 0, 3 );
-	//int twp{ atoi( s.c_str() ) };
-	//if( !is_valid_township( twp ) )
-	//{
-	//	return false;
-	//}
-
-	//// The fourth character is the meridian
-	//s = str.substr( 3, 1 );
-	//int m{ atoi( s.c_str() ) };
-	//if( !is_valid_meridian( m ) )
-	//{
-	//	return false;
-	//}
-
-	//// The fifth character is the range direction
-	//s = str.substr( 4, 1 );
-	//Range_direction rgd{ to_enum<Range_direction>( atoi( s.c_str() ) )};
-	//if( rgd == Range_direction::none )
-	//{
-	//	return false;
-	//}
-
-	//// Can only be East of the first meridian
-	//if( rgd == Range_direction::E && m != 1 ) 
-	//{
-	//	return false;
-	//}
-
-	//// The sixth and seventh characters are the range
-	//s = str.substr( 5, 2 );
-	//int rg{ atoi( s.c_str() ) };
-	//if( !is_valid_range( rg) )
-	//{
-	//	return false;
-	//}
-
-	//// The eighth and ninth characters are the section
-	//s = str.substr( 7, 2 );
-	//int sc{ atoi( s.c_str() ) };
-	//if( !is_valid_section( sc ) )
-	//{
-	//	return false;
-	//}
-
-	//// The tenth and eleventh characters are the legal subdivision
-	//s = str.substr( 9, 2 );
-	//int lsd{ atoi( s.c_str() ) };
-	//if( !is_valid_legal_subdivision( lsd ) )
-	//{
-	//	return false;
-	//}
-
-	//// The twelfth and thirteenth characters are the location exception
-	//s = str.substr( 11, 2 );
-	//string le{ s };
-	//if( !is_valid_location_exception( le.c_str() ) )
-	//{
-	//	return false;
-	//}
-
-	//// The fourteenth character is the event sequence
-	//s = str.substr( 13, 1 );
-	//char es{ s[0] };
-	//if( !is_valid_event_sequence( es ) )
-	//{
-	//	return true;
-	//}
-
-	//// The string must be the sort format for a DLS uwi
-	//if( dls != nullptr )
-	//{
-	//	dls->le = le.c_str();
-	//	dls->lsd = lsd;
-	//	dls->sc = sc;
-	//	dls->twp = twp;
-	//	dls->rg = rg;
-	//	dls->m = (rgd == Range_direction::E ? -1 : m);
-	//	dls->es = es;
-	//}
-
-	return true;
+   return true;
 }
 
-bool nhill::uwi::dls::is_plain( std::string_view str, Dls* dls )
+bool nhill::uwi::dls::is_plain( std::string_view s, Dls* dls )
 {
-	if( dls != nullptr )
-	{
-		dls->clear();
-	}
+   if( dls != nullptr )
+   {
+      dls->clear();
+   }
 
-	// The string must be the same length as the plain format
-	if( str.size() != len_plain && str.size() != len_plain_rgd )
-	{
-		return false;
-	}
-	bool has_rgd{ str.size() == len_plain_rgd };
+   // The string must be the same length as the plain format
+   if( s.size() != len_plain && s.size() != len_plain_rgd )
+   {
+      return false;
+   }
 
-	// 0123456789012    01234567890123
-	// XXLLSSTTTRRME or XXLLSSTTTRRDME
+   // 0123456789012    01234567890123
+   // XXLLSSTTTRRME or XXLLSSTTTRRDME
 
-	string s;
-	size_t p{ 0 }; // The position at which to start the substring
+   bool has_rgd{ s.size() == len_plain_rgd };
+   Dls::Meridian m;
+   if( has_rgd )
+   {
+      Dls::Meridian m;
+      if( !is_valid_range_direction_and_meridian( s.substr( 11, 2 ), m ) )
+      {
+         return false;
+      }
+   }
 
-	// location excepton
-	s = str.substr( p, 2 );
-	string le{ s };
-	if( !is_valid_location_exception( le.c_str() ) )
-	{
-		return false;
-	}
-	p += 2;
+   Dls::Location_exception le;
+   Dls::Legal_subdivision lsd;
+   Dls::Section sc;
+   Dls::Township twp;
+   Dls::Range rg;
+   Dls::Event_sequence es;
 
-	// legal subdivision
-	s = str.substr( 6, 2 );
-	int lsd{ atoi( s.c_str() ) };
-	if( !is_valid_legal_subdivision( lsd ) )
-	{
-		return false;
-	}
-	p += 2;
+   // Validation is done when setting values
+   try
+   {
+      le  = s.substr( 0, 2 );
+      lsd = s.substr( 2, 2 );
+      sc  = s.substr( 4, 2 );
+      twp = s.substr( 6, 3 );
+      rg  = s.substr( 9, 2 );
+      if( has_rgd )
+      {
+         // meridian is already validated and set
+         es = s[13];
+      }
+      else
+      {
+         m = s.substr( 11, 1 );
+         es = s[12];
+      }
+   }
+   catch( exception )
+   {
+      return false;
+   }
 
-	// section
-	s = str.substr( p, 2 );
-	int sc{ atoi( s.c_str() ) };
-	if( !is_valid_section( sc ) )
-	{
-		return false;
-	}
-	p += 2;
+   // Pass the parameters to output (if necessary)
+   if( dls != nullptr )
+   {
+      dls->le  = le;
+      dls->lsd = lsd;
+      dls->sc  = sc;
+      dls->twp = twp;
+      dls->rg  = rg;
+      dls->m   = m;
+      dls->es  = es;
+   }
 
-	// township
-	s = str.substr( p, 3 );
-	int twp{ atoi( s.c_str() ) };
-	if( !is_valid_township( twp ) )
-	{
-		return false;
-	}
-	p += 3;
-
-	// range
-	s = str.substr( p, 2 );
-	int rg{ atoi( s.c_str() ) };
-	if( !is_valid_range( rg ) )
-	{
-		return false;
-	}
-	p += 2;
-
-	// range direction
-	Range_direction rgd{ Range_direction::W};
-	if( has_rgd )
-	{
-		s = str.substr( p, 1 );
-		if( !is_valid_range_direction( s[0] ) )
-		{
-			return false;
-		}
-		rgd = to_range_direction( s[0] );
-		p += 1;
-	}
-
-	// meridian
-	s = str.substr( p, 1 );
-	int m{ atoi( s.c_str() ) };
-	if( !is_valid_meridian( m ) )
-	{
-		return false;
-	}
-	p += 1;
-
-	// range direction can only be east for the first meridian
-	if( rgd == Range_direction::E )
-	{
-		if( m != 1 )
-		{
-			return false;
-		}
-		m = -1; // change 1 to -1 for E
-	}
-
-	// event sequence
-	s = str.substr( p, 1 );
-	char es{ s[0] };
-	if( !is_valid_event_sequence( es ) )
-	{
-		return false;
-	}
-
-	// It is plain format
-	if( dls != nullptr )
-	{
-		dls->le = le.c_str();
-		dls->lsd = lsd;
-		dls->sc = sc;
-		dls->twp = twp;
-		dls->rg = rg;
-		dls->m = m;
-		dls->es = es;
-	}
-
-	return true;
+   return true;
 }
 
-bool nhill::uwi::dls::is_plain_rgd( std::string_view str, Dls* dls )
+bool nhill::uwi::dls::is_full( std::string_view s, Dls* dls )
 {
-	if( dls != nullptr )
-	{
-		dls->clear();
-	}
+   if( dls != nullptr )
+   {
+      dls->clear();
+   }
 
-	// The string must be the same length as this format
-	if( str.size() != len_full  )
-	{
-		return false;
-	}
+   // The string must be the same length as this format
+   if( s.size() != len_full )
+   {
+      return false;
+   }
 
-	// 0123456789012345
-	// 1XXLLSSTTTRRDM0E
+   // 0123456789012345
+   // 1XXLLSSTTTRRDM0E
 
-	string s;
+   if( s[0] != '1' || s[14] != '0' )
+   {
+      return false;
+   }
 
-	// survey system
-	s = str.substr( 0, 1 );
-	if( s[0] != '1' )
-	{
-		return false;
-	}
+   Dls::Meridian m;
+   if( !is_valid_range_direction_and_meridian( s.substr( 12, 2 ), m ) )
+   {
+      return false;
+   }
 
-	// location exception
-	s = str.substr( 1, 2 );
-	string le{ s };
-	if( !is_valid_location_exception( s.c_str() ) )
-	{
-		return false;
-	}
+   Dls::Location_exception le;
+   Dls::Legal_subdivision lsd;
+   Dls::Section sc;
+   Dls::Township twp;
+   Dls::Range rg;
+   Dls::Event_sequence es;
 
-	// legal subdivision
-	s = str.substr( 3, 2 );
-	int lsd{ atoi( s.c_str() ) };
-	if( !is_valid_legal_subdivision( lsd ) )
-	{
-		return false;
-	}
+   // Validation is done when setting values
+   try
+   {
+      le  = s.substr( 1, 2 );
+      lsd = s.substr( 3, 2 );
+      sc  = s.substr( 5, 2 );
+      twp = s.substr( 7, 3 );
+      rg  = s.substr( 10, 2 );
+      es  = s[15];
+   }
+   catch( exception )
+   {
+      return false;
+   }
 
+   // Pass the parameters to output (if necessary)
+   if( dls != nullptr )
+   {
+      dls->le  = le;
+      dls->lsd = lsd;
+      dls->sc  = sc;
+      dls->twp = twp;
+      dls->rg  = rg;
+      dls->m   = m;
+      dls->es  = es;
+   }
 
-	return bool();
+   return true;
 }
 
-bool nhill::uwi::dls::is_full( std::string_view str, Dls* dls )
+bool nhill::uwi::dls::is_plain_dressed( std::string_view s, Dls* dls )
 {
-	return bool();
+   if( dls != nullptr )
+   {
+      dls->clear();
+   }
+
+   // The string must be the same length as this format
+   if( s.size() != len_plain_dressed )
+   {
+      return false;
+   }
+
+   // 0123456789012345678
+   // XX/LL-SS-TTT-RRDM/E
+
+   // Slashes and dashes are in the correct locations
+   if( s[2] != slash || s[5] != dash || s[8] != dash || s[12] != dash || s[17] != slash )
+   {
+      return false;
+   }
+
+   // Validate and set the meridian
+   Dls::Meridian m;
+   if( !is_valid_range_direction_and_meridian( s.substr( 15, 2 ), m ) )
+   {
+      return false;
+   }
+
+   Dls::Location_exception le;
+   Dls::Legal_subdivision lsd;
+   Dls::Section sc;
+   Dls::Township twp;
+   Dls::Range rg;
+   Dls::Event_sequence es;
+
+   // Validation is done when setting values
+   try
+   {
+      le  = s.substr(  0, 2 );
+      lsd = s.substr(  3, 2 );
+      sc  = s.substr(  6, 2 );
+      twp = s.substr(  9, 3 );
+      rg  = s.substr( 13, 2 );
+      es  = s[18];
+   }
+   catch( exception )
+   {
+      return false;
+   }
+
+   // Pass the parameters to output (if necessary)
+   if( dls != nullptr )
+   {
+      dls->le  = le;
+      dls->lsd = lsd;
+      dls->sc  = sc;
+      dls->twp = twp;
+      dls->rg  = rg;
+      dls->m   = m;
+      dls->es  = es;
+   }
+
+   return true;
 }
 
-bool nhill::uwi::dls::is_plain_dressed( std::string_view str, Dls* dls )
+bool nhill::uwi::dls::is_full_dressed( std::string_view s, Dls* dls )
 {
-	return bool();
-}
+   if( dls != nullptr )
+   {
+      dls->clear();
+   }
 
-bool nhill::uwi::dls::is_full_dressed( std::string_view str, Dls* dls )
-{
-	return bool();
+   // The string must be the same length as this format
+   if( s.size() != len_full_dressed )
+   {
+      return false;
+   }
+
+   //           1         2
+   // 012345678901234567890
+   // 1XX/LL-SS-TTT-RRDM/0E
+
+
+   if( s[0] != '1' || s[3] != slash || s[6] != dash || s[9] != dash || s[13] != dash || s[18] != slash || s[19] != '0' )
+   {
+      return false;
+   }
+
+   // Validate and set the meridian
+   Dls::Meridian m;
+   if( !is_valid_range_direction_and_meridian( s.substr( 16, 2 ), m ) )
+   {
+      return false;
+   }
+
+   Dls::Location_exception le;
+   Dls::Legal_subdivision lsd;
+   Dls::Section sc;
+   Dls::Township twp;
+   Dls::Range rg;
+   Dls::Event_sequence es;
+
+   // Validation is done when setting values
+   try
+   {
+      le  = s.substr( 1, 2 );
+      lsd = s.substr( 4, 2 );
+      sc  = s.substr( 7, 2 );
+      twp = s.substr( 10, 3 );
+      rg  = s.substr( 14, 2 );
+      es  = s[20];
+   }
+   catch( exception )
+   {
+      return false;
+   }
+
+   // Pass the parameters to output (if necessary)
+   if( dls != nullptr )
+   {
+      dls->le  = le;
+      dls->lsd = lsd;
+      dls->sc  = sc;
+      dls->twp = twp;
+      dls->rg  = rg;
+      dls->m   = m;
+      dls->es  = es;
+   }
+
+   return true;
 }

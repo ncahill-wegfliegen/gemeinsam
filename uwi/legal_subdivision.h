@@ -4,6 +4,8 @@
 #include "../utility/value.h"
 #include <cstdint>
 #include <string>
+#include <ostream>
+#include <iomanip>
 
 namespace nhill
 {
@@ -18,9 +20,7 @@ class NHILL_UWI_PORT_CLASS Legal_subdivision_validator_throw final : public util
 public:
    using base = utility::Value_validator<uint8_t>;
    Legal_subdivision_validator_throw();
-   value_type operator()( value_type val ) const final;
-	std::string_view operator()( std::string_view ) const final;
-
+   value_type operator()( value_type  ) const final;
 };
 
 /// <summary>If the value is not a valid legal subdivision [1,16], then pin the value to the range for a legal subdivision.</summary>
@@ -56,7 +56,12 @@ namespace dls
 {
 
 NHILL_UWI_PORT_FUNCTION bool is_valid_legal_subdivision( int i );
-NHILL_UWI_PORT_FUNCTION bool is_valid_legal_subdivision( const std::string& s );
+
+template<typename Validator>
+std::ostream& operator<<( std::ostream& out, const Legal_subdivision<Validator>& lsd )
+{
+   return out << std::setfill( '0' ) << std::setw( 2 ) << static_cast<int>(lsd);
+}
 
 }
 }
@@ -65,5 +70,5 @@ NHILL_UWI_PORT_FUNCTION bool is_valid_legal_subdivision( const std::string& s );
 template<typename Validator>
 inline bool nhill::uwi::dls::Legal_subdivision<Validator>::is_valid( int i)
 {
-	return is_valid_legal_subdivision( i );
+   return is_valid_legal_subdivision( i );
 }

@@ -4,6 +4,8 @@
 #include "../utility/value.h"
 #include <cstdint>
 #include <string>
+#include <ostream>
+#include <iomanip>
 
 namespace nhill
 {
@@ -53,7 +55,14 @@ namespace dls
 {
 
 NHILL_UWI_PORT_FUNCTION bool is_valid_section( int i );
-NHILL_UWI_PORT_FUNCTION bool is_valid_section( const char* s );
+
+template<typename Validator>
+std::ostream& operator<<( std::ostream& out, const Section<Validator>& sc )
+{
+   return out << std::setfill( '0' ) << std::setw( 2 ) << static_cast<int>(sc);
+}
+
+
 
 }
 }

@@ -16,8 +16,8 @@ namespace uwitest
       {
          Location_exception le;
          const char* const expected{ "00" };
-         const char* const actual{ le };
-         Assert::AreEqual( expected, actual );
+         const std::string actual{ le.value() };
+         Assert::AreEqual( expected, actual.c_str() );
       }
 
       TEST_METHOD( ctor_s )

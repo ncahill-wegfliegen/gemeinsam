@@ -7,28 +7,39 @@ using namespace std;
 
 nhill::uwi::dls::Event_sequence::Event_sequence()
 {
-	clear();
+   clear();
 }
 
 nhill::uwi::dls::Event_sequence::Event_sequence( char c )
 {
-	value(c);
+   value(c);
 }
 
 auto nhill::uwi::dls::Event_sequence::operator=( char c )->Event_sequence &
 {
-	value( c );
+   value( c );
+   return *this;
+}
+
+nhill::uwi::dls::Event_sequence::Event_sequence( std::string_view s)
+{
+	value( s );
+}
+
+auto nhill::uwi::dls::Event_sequence::operator=( std::string_view s)->Event_sequence &
+{
+	value( s );
 	return *this;
 }
 
 nhill::uwi::dls::Event_sequence::Event_sequence( int i )
 {
-	value( i );
+   value( i );
 }
 
 auto nhill::uwi::dls::Event_sequence::operator=( int i )->Event_sequence &
 {
-	value( i );
+   value( i );
    return *this;
 }
 
@@ -40,140 +51,149 @@ auto nhill::uwi::dls::Event_sequence::operator=( Event_sequence&& other ) noexce
 
 nhill::uwi::dls::Event_sequence::~Event_sequence() = default;
 
-nhill::uwi::dls::Event_sequence::operator char () const
-{
-   return value();
-}
-
-nhill::uwi::dls::Event_sequence::operator int() const
-{
-	return ivalue();
-}
-
 void nhill::uwi::dls::Event_sequence::clear()
 {
-	c_ = '0';
+   s_ = "0";
 }
 
 char nhill::uwi::dls::Event_sequence::value() const
 {
-	return c_;
+   return s_[0];
 }
 
 void nhill::uwi::dls::Event_sequence::value( char c)
 {
-	if( !is_valid( c ) )
-	{
-		throw invalid_argument( "The character '" + string( 1, c ) + "' is not a valid event sequence: it must be either a digit [0,2-9] or a capital letter [A-Z]" );
-	}
+   if( !is_valid( c ) )
+   {
+      throw invalid_argument( "The character '" + string( 1, c ) + "' is not a valid event sequence: it must be either a digit [0,2-9] or a capital letter [A-Z]" );
+   }
 
-	c_ = c;
+	char s[]{ c, '\0' };
+   s_ = s;
 }
 
-int nhill::uwi::dls::Event_sequence::ivalue() const
+string nhill::uwi::dls::Event_sequence::str() const
 {
-	if( !isdigit( c_ ) )
+	return s_.str();
+}
+
+void nhill::uwi::dls::Event_sequence::value( std::string_view s)
+{
+	if( s.length() != 1 )
 	{
-		throw logic_error( "The location exception \"" + string( 1, c_ ) + "\" cannot be converted to an integer." );
+		throw invalid_argument( "The string '" + string{ s } +"' is not a valid event sequence; it must be a single character." );
 	}
 
-	return static_cast<int>(c_ - '0');
+	value( s[0] );
+}
+
+
+int nhill::uwi::dls::Event_sequence::integer() const
+{
+   if( !isdigit( value() ) )
+   {
+      throw logic_error( "The location exception \"" + string( 1, value() ) + "\" cannot be converted to an integer." );
+   }
+
+   return static_cast<int>(value() - '0');
 }
 
 void nhill::uwi::dls::Event_sequence::value( int i)
 {
-	if( !is_valid( i ) )
-	{
-		throw invalid_argument( "The integer '" + to_string( i ) + "' is not a valid event sequence: it must be either 0 or between 2 and 9" );
-	}
+   if( !is_valid( i ) )
+   {
+      throw invalid_argument( "The integer '" + to_string( i ) + "' is not a valid event sequence: it must be either 0 or between 2 and 9" );
+   }
 
-	c_ = ('0' + i);
+	char c{ '0' + static_cast<char>(i)};
+	value( c );
 }
+
 
 bool nhill::uwi::dls::Event_sequence::is_valid( char c )
 {
-	return is_valid_event_sequence( c );
+   return is_valid_event_sequence( c );
 }
 
 bool nhill::uwi::dls::Event_sequence::is_valid( int i )
 {
-	return is_valid_event_sequence( i );
+   return is_valid_event_sequence( i );
 }
 
 template<>
 auto nhill::compare( const uwi::dls::Event_sequence& a, const uwi::dls::Event_sequence& b )->Compare
 {
-	if( a.value() < b.value() )
-	{
-		return Compare::less;
-	}
-	else if( a.value() == b.value() )
-	{
-		return Compare::equal;
-	}
-	else
-	{
-		return Compare::greater;
-	}
+   if( a.value() < b.value() )
+   {
+      return Compare::less;
+   }
+   else if( a.value() == b.value() )
+   {
+      return Compare::equal;
+   }
+   else
+   {
+      return Compare::greater;
+   }
 }
 
 bool nhill::uwi::dls::is_valid_event_sequence( char c )
 {
-	// The event sequence must be either a digit (except 1) or a capital letter
-	if( (isdigit( c ) && c != '1') || ('A' <= c && c <= 'Z') )
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+   // The event sequence must be either a digit (except 1) or a capital letter
+   if( (isdigit( c ) && c != '1') || ('A' <= c && c <= 'Z') )
+   {
+      return true;
+   }
+   else
+   {
+      return false;
+   }
 }
 
 bool nhill::uwi::dls::is_valid_event_sequence( int i )
 {
-	if( (i == 0) || (2 <= i && i <= 9) )
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+   if( (i == 0) || (2 <= i && i <= 9) )
+   {
+      return true;
+   }
+   else
+   {
+      return false;
+   }
 }
 
 ostream& nhill::uwi::dls::operator<<( ostream& out, const Event_sequence& es )
 {
-	return out << es.value();
+   return out << es.value();
 }
 
 bool nhill::uwi::dls::operator==( const Event_sequence& a, const Event_sequence& b )
 {
-	return compare<const Event_sequence&>( a, b ) == Compare::equal;
+   return compare<const Event_sequence&>( a, b ) == Compare::equal;
 }
 
 bool nhill::uwi::dls::operator!=( const Event_sequence& a, const Event_sequence& b )
 {
-	return !(a == b);
+   return !(a == b);
 }
 
 bool nhill::uwi::dls::operator<( const Event_sequence& a, const Event_sequence& b )
 {
-	return compare<const Event_sequence&>( a, b ) == Compare::less;
+   return compare<const Event_sequence&>( a, b ) == Compare::less;
 }
 
 bool nhill::uwi::dls::operator>( const Event_sequence& a, const Event_sequence& b )
 {
-	return compare<const Event_sequence&>( a, b ) == Compare::greater;
+   return compare<const Event_sequence&>( a, b ) == Compare::greater;
 }
 
 bool nhill::uwi::dls::operator<=( const Event_sequence& a, const Event_sequence& b )
 {
-	return !(a > b);
+   return !(a > b);
 }
 
 bool nhill::uwi::dls::operator>=( const Event_sequence& a, const Event_sequence& b )
 {
-	return !(a < b);
+   return !(a < b);
 }
 

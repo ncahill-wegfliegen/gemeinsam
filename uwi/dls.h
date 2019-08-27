@@ -25,20 +25,17 @@ enum class Range_direction;
 class NHILL_UWI_PORT_CLASS Dls
 {
 public:
-	using Location_exception = dls::Location_exception;
-	using Legal_subdivision = dls::Legal_subdivision<dls::Legal_subdivision_validator_throw>;
-	using Section = dls::Section<dls::Section_validator_throw>;
-	using Township = dls::Township<dls::Township_validator_throw>;
-	using Range = dls::Range<dls::Range_validator_throw>;
-	using Meridian  = dls::Meridian<dls::Meridian_validator_throw>;
-	using Event_sequence = dls::Event_sequence;
-	using Range_direction = dls::Range_direction;
-
-   //enum class Rgd{ E, W }; // range direction East/West
+   using Location_exception = dls::Location_exception;
+   using Legal_subdivision = dls::Legal_subdivision<dls::Legal_subdivision_validator_throw>;
+   using Section = dls::Section<dls::Section_validator_throw>;
+   using Township = dls::Township<dls::Township_validator_throw>;
+   using Range = dls::Range<dls::Range_validator_throw>;
+   using Meridian  = dls::Meridian<dls::Meridian_validator_throw>;
+   using Event_sequence = dls::Event_sequence;
+   using Range_direction = dls::Range_direction;
 
    Dls();
-   //Dls( const char* le, int lsd, int sc, int twp, int rg, int m, int es, Rgd rgd = Rgd::W  );
-   //Dls( int le, int lsd, int sc, int twp, int rg, int m, int es, Rgd rgd = Rgd::W );
+   Dls( const Location_exception& le, const Legal_subdivision& lsd, const Section& sc, const Township& twp, const Range& rg, const Meridian& m, const Event_sequence& es );
 
    Dls( const Dls& );
    Dls& operator=( const Dls& );
@@ -61,23 +58,23 @@ public:
 
    void clear();
 
-	// 1=survey_system, XX=location_exception, LL=legal_subdivision, SS=section, TTT=township, RR=range, D=range_direction (either 'W' or 'E'), M=meridian, 0=padding, E=event_sequence
-	
-	// TTTMDRRSSLLXXE (for sorting D is 1 for West and 0 for East) BC > AB > SK > ...
+   // 1=survey_system, XX=location_exception, LL=legal_subdivision, SS=section, TTT=township, RR=range, D=range_direction (either 'W' or 'E'), M=meridian, 0=padding, E=event_sequence
+   
+   // TTTDMRRSSLLXXE  BC > AB > SK > ...
    std::string sort() const;
-	// XXLLSSTTTRRME or XXLLSSTTTRRDME
+   // XXLLSSTTTRRME or XXLLSSTTTRRDME
    std::string plain( bool range_direction = false ) const;
-	// 1XXLLSSTTTRRDM0E
-	std::string full() const;
-	// XX/LL-SS-TTT-RRDM/E
+   // 1XXLLSSTTTRRDM0E
+   std::string full() const;
+   // XX/LL-SS-TTT-RRDM/E
    std::string plain_dressed() const;
-	// 1XX/LL-SS-TTT-RRDM/0E
-	std::string full_dressed() const;
+   // 1XX/LL-SS-TTT-RRDM/0E
+   std::string full_dressed() const;
 
-	Range_direction range_direction() const;
+   Range_direction range_direction() const;
 
 protected:
-	char rgd() const; // The character that represents the range direction
+   char rgd() const; // The character that represents the range direction
 };
 
 }
@@ -105,7 +102,7 @@ NHILL_UWI_PORT_CLASS bool operator>=( const Dls& a, const Dls& b );
 namespace dls
 {
 
-constexpr uint8_t len_sort{ 13 };
+constexpr uint8_t len_sort{ 14 };
 constexpr uint8_t len_plain{ 13 }; // without range direction
 constexpr uint8_t len_plain_rgd{ 14 }; // with range direction
 constexpr uint8_t len_full{ 16 };
@@ -114,7 +111,6 @@ constexpr uint8_t len_full_dressed{ 21 };
 
 NHILL_UWI_PORT_FUNCTION bool is_sort( std::string_view str, Dls* dls = nullptr );
 NHILL_UWI_PORT_FUNCTION bool is_plain( std::string_view str, Dls* dls = nullptr );
-NHILL_UWI_PORT_FUNCTION bool is_plain_rgd( std::string_view str, Dls* dls = nullptr );
 NHILL_UWI_PORT_FUNCTION bool is_full( std::string_view str, Dls* dls = nullptr );
 NHILL_UWI_PORT_FUNCTION bool is_plain_dressed( std::string_view str, Dls* dls = nullptr );
 NHILL_UWI_PORT_FUNCTION bool is_full_dressed( std::string_view str, Dls* dls = nullptr );

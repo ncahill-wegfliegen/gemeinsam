@@ -16,7 +16,7 @@ bool unchecked_is_integer( string_view s )
 
 }
 
-bool nhill::str::is_integer( string_view s )
+bool nhill::str::is_uint( string_view s )
 {
 	size_t len{ s.length() };
 	if( len == 0 )
@@ -27,7 +27,7 @@ bool nhill::str::is_integer( string_view s )
 	return unchecked_is_integer( s );
 }
 
-bool nhill::str::is_integer( string_view s, size_t len_must_be )
+bool nhill::str::is_uint( string_view s, size_t len_must_be )
 {
 	size_t len{ s.length() };
 	if( len != len_must_be )
@@ -38,7 +38,7 @@ bool nhill::str::is_integer( string_view s, size_t len_must_be )
 	return unchecked_is_integer( s );
 }
 
-bool nhill::str::is_integer( string_view s, size_t len_min, size_t len_max )
+bool nhill::str::is_uint( string_view s, size_t len_min, size_t len_max )
 {
 	size_t len{ s.length() };
 	if( len < len_min || len_max < len )

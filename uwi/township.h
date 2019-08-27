@@ -4,6 +4,8 @@
 #include "../utility/value.h"
 #include <cstdint>
 #include <string>
+#include <ostream>
+#include <iomanip>
 
 namespace nhill
 {
@@ -53,7 +55,13 @@ namespace dls
 {
 
 NHILL_UWI_PORT_FUNCTION bool is_valid_township( int i );
-NHILL_UWI_PORT_FUNCTION bool is_valid_township( const char* s );
+
+template<typename Validator>
+std::ostream& operator<<( std::ostream& out, const Township<Validator>& twp )
+{
+   return out << std::setfill( '0' ) << std::setw( 3 ) << static_cast<int>(twp);
+}
+
 
 }
 }
