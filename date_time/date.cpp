@@ -49,6 +49,26 @@ nhill::Date::Date( const Year& year, Month month, const Day& day )
    dy_.value( day.value(), mn_, yr_ );
 }
 
+nhill::Date::Date( const tm& tm )
+	: Date( tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday)
+{
+}
+
+auto nhill::Date::operator=( const tm& tm )->Date &
+{
+	int year{ tm.tm_year + 1900 };
+	int umonth{ tm.tm_mon + 1 };
+	int uday{ tm.tm_mday };
+
+	validate_date( { uday, umonth, year } );
+
+	yr_ = year;
+	mn_ = umonth_to_month( umonth );
+	dy_.value( uday, mn_, yr_ );
+
+	return *this;
+}
+
 nhill::Date::Date( double value )
 {
    *this = value;

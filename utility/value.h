@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include "../math/compare.h"
@@ -71,6 +72,7 @@ public:
    explicit operator std::string() const;
 
    T value() const;
+	template<typename U = T> typename std::enable_if_t<std::is_arithmetic_v<U>,U> value() const;
    template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* = nullptr> void value( U );
 
    std::string string() const;
@@ -281,6 +283,13 @@ template<typename T, typename Validator>
 inline T nhill::utility::Value<T, Validator>::value() const
 {
    return value_;
+}
+
+template<typename T, typename Validator>
+template<typename U>
+inline auto nhill::utility::Value<T, Validator>::value() const ->typename std::enable_if_t<std::is_arithmetic_v<U>, U>
+{
+	return static_cast<U>(value_);
 }
 
 template<typename T, typename Validator>

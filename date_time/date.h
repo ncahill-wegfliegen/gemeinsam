@@ -7,6 +7,7 @@
 #include "../utility/compare.h"
 #include "../utility/str.h"
 #include <locale>
+#include <ctime>
 
 namespace nhill
 {
@@ -17,6 +18,9 @@ public:
    Date();
    Date( int year, int umonth, int uday = 1 );
    Date( const Year& year, Month month, const Day& day= Day{1} );
+	
+	Date( const struct tm& tm );
+	Date& operator=( const struct tm& tm );
 
    explicit Date(double value);
    Date& operator=(double value);
