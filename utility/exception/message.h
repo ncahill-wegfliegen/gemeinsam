@@ -24,9 +24,6 @@ public:
       line,
       message,
       condition,
-
-      end, 
-      begin = file,
    };
 
    Message();
@@ -53,6 +50,22 @@ private:
 
 }
 }
+
+#pragma region Values
+namespace nhill
+{
+template<> inline nhill::exception::Message::Type nhill::begin() 
+{
+	return  exception::Message::Type::file; 
+}
+template<> inline nhill::exception::Message::Type nhill::end()
+{
+	int i{ to_int( exception::Message::Type::condition ) };
+	++i;
+	return to_enum<exception::Message::Type>(i);
+};
+}
+#pragma endregion
 
 #pragma region Exception Message Macro
 namespace nhill
@@ -107,11 +120,11 @@ inline nhill::exception::Message::Message() = default;
 
 inline nhill::exception::Message::Message( std::string_view file, std::string_view function, int line, std::string_view message, std::string_view condition )
    : values_{
-      { Type::file      , file.data() },
-      { Type::function  , function.data() },
+      { Type::file      , std::string(file) },
+      { Type::function  , std::string(function) },
       { Type::line      , std::to_string( line ) },
-      { Type::message   , message.data() },
-      { Type::condition , condition.data() },
+      { Type::message   , std::string(message) },
+      { Type::condition , std::string(condition) },
 }
 {
 }

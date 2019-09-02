@@ -109,16 +109,16 @@ auto nhill::Version::operator=( const string& s )->Version&
 
    // assign the version items.
    if( 0 < size )
-      major( stoi( items[0].c_str() ) );
+      major( stoi( items[0] ) );
 
    if( 1 < size )
-      minor( stoi( items[1].c_str() ) );
+      minor( stoi( items[1] ) );
 
    if( 2 < size )
-      build( stoi( items[2].c_str() ) );
+      build( stoi( items[2] ) );
 
    if( 3 < size )
-      revision( stoi( items[3].c_str() ) );
+      revision( stoi( items[3] ) );
 
    return *this;
 }

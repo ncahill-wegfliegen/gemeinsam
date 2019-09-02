@@ -1,5 +1,6 @@
 #include "dls.h"
 #include "range_direction_ex.h"
+#include "format.h"
 #include <string>
 #include <sstream>
 #include <iomanip>
@@ -95,11 +96,12 @@ string nhill::uwi::Dls::sort() const
 {
    ostringstream oss;
 
+	oss << to_int( Survey_system::dls );
+	oss << rgd();
+	oss << m;
+	oss << rg;
    oss << twp;
-   oss << rgd();
-   oss << m;
-   oss << rg;
-   oss << sc;
+	oss << sc;
    oss << lsd;
    oss << le;
    oss << es;
@@ -186,6 +188,20 @@ string nhill::uwi::Dls::full_dressed() const
    oss << es;
 
    return oss.str();
+}
+
+string nhill::uwi::Dls::to_string( Format fmt ) const
+{
+	switch( fmt )
+	{
+	case Format::sort: return sort();
+	case Format::plain: return plain();
+	case Format::plain_no_rgd: return plain(false);
+	case Format::plain_dressed: return plain_dressed();
+	case Format::full: return full();
+	case Format::full_dressed: return full_dressed();
+	default: return {};
+	}
 }
 
 auto nhill::uwi::Dls::range_direction() const->Range_direction
@@ -303,12 +319,17 @@ bool nhill::uwi::dls::is_sort( std::string_view s, Dls* dls )
    {
       return false;
    }
-   
-   // 01234567890123 index
-   // TTTDMRRSSLLXXE
+
+	// 1DMRRTTTSSLLXXE  
+	// 012345678901234
+
+	if( s[0] != '1' )
+	{
+		return false;
+	}
 
    Dls::Meridian m;
-   if( !is_valid_range_direction_and_meridian( s.substr(3,2), m) )
+   if( !is_valid_range_direction_and_meridian( s.substr(1,2), m) )
    {
       return false;
    }
@@ -323,12 +344,12 @@ bool nhill::uwi::dls::is_sort( std::string_view s, Dls* dls )
    // Validation is done when setting values
    try
    {
-      le  = s.substr( 11, 2 );
-      lsd = s.substr(  9, 2 );
-      sc  = s.substr(  7, 2 );
-      twp = s.substr(  0, 3 );
-      rg  = s.substr(  5, 2 );
-      es  = s[13];
+      lsd = s.substr( 10, 2 );
+      sc  = s.substr(  8, 2 );
+      twp = s.substr(  5, 3 );
+      rg  = s.substr(  3, 2 );
+      es  = s[14];
+      le = s.substr( 12, 2 );
    }
    catch( exception )
    {
@@ -387,7 +408,6 @@ bool nhill::uwi::dls::is_plain( std::string_view s, Dls* dls )
    // Validation is done when setting values
    try
    {
-      le  = s.substr( 0, 2 );
       lsd = s.substr( 2, 2 );
       sc  = s.substr( 4, 2 );
       twp = s.substr( 6, 3 );
@@ -402,6 +422,7 @@ bool nhill::uwi::dls::is_plain( std::string_view s, Dls* dls )
          m = s.substr( 11, 1 );
          es = s[12];
       }
+      le = s.substr( 0, 2 );
    }
    catch( exception )
    {
@@ -460,12 +481,12 @@ bool nhill::uwi::dls::is_full( std::string_view s, Dls* dls )
    // Validation is done when setting values
    try
    {
-      le  = s.substr( 1, 2 );
       lsd = s.substr( 3, 2 );
       sc  = s.substr( 5, 2 );
       twp = s.substr( 7, 3 );
       rg  = s.substr( 10, 2 );
       es  = s[15];
+      le = s.substr( 1, 2 );
    }
    catch( exception )
    {
@@ -526,12 +547,12 @@ bool nhill::uwi::dls::is_plain_dressed( std::string_view s, Dls* dls )
    // Validation is done when setting values
    try
    {
-      le  = s.substr(  0, 2 );
       lsd = s.substr(  3, 2 );
       sc  = s.substr(  6, 2 );
       twp = s.substr(  9, 3 );
       rg  = s.substr( 13, 2 );
       es  = s[18];
+      le = s.substr( 0, 2 );
    }
    catch( exception )
    {
@@ -593,12 +614,12 @@ bool nhill::uwi::dls::is_full_dressed( std::string_view s, Dls* dls )
    // Validation is done when setting values
    try
    {
-      le  = s.substr( 1, 2 );
       lsd = s.substr( 4, 2 );
       sc  = s.substr( 7, 2 );
       twp = s.substr( 10, 3 );
       rg  = s.substr( 14, 2 );
       es  = s[20];
+      le = s.substr( 1, 2 );
    }
    catch( exception )
    {
@@ -618,4 +639,66 @@ bool nhill::uwi::dls::is_full_dressed( std::string_view s, Dls* dls )
    }
 
    return true;
+}
+
+bool nhill::uwi::dls::is_valid_dls( std::string_view str, Dls* dls )
+{
+   if( is_plain( str, dls ) )
+   {
+      return true;
+   }
+   else if( is_full_dressed( str, dls ) )
+   {
+      return true;
+   }
+   else if( is_sort( str, dls ) )
+   {
+      return true;
+   }
+   else if( is_full( str, dls ) )
+   {
+      return true;
+   }
+   else if( is_plain_dressed( str, dls ) )
+   {
+      return true;
+   }
+   else
+   {
+      return false;
+   }
+}
+
+auto nhill::uwi::dls::parse_sort( std::string_view s )->Dls
+{
+	return Dls();
+}
+
+auto nhill::uwi::dls::parse_plain( std::string_view s )->Dls
+{
+	try
+	{
+		Dls dls;
+
+		dls.sc  = s.substr( 4, 2 );
+		dls.twp = s.substr( 6, 3 );
+		dls.rg  = s.substr( 9, 2 );
+		if( s.size() == len_plain_rgd ) // Has range direction
+		{
+			dls.es = s[13];
+		}
+		else
+		{
+			dls.m = s.substr( 11, 1 );
+			dls.es = s[12];
+		}
+		dls.le  = s.substr( 0, 2 );
+		dls.lsd = s.substr( 2, 2 );
+
+		return dls;
+	}
+	catch( exception e)
+	{
+		throw e;
+	}
 }

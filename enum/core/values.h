@@ -8,6 +8,18 @@ namespace nhill
 {
 
 template<typename Enum, std::enable_if_t<std::is_enum_v<Enum>>* = nullptr>
+Enum begin()
+{
+	throw std::exception( "Not implemented.  Must be specialed for each enumeration." );
+}
+
+template<typename Enum, std::enable_if_t<std::is_enum_v<Enum>>* = nullptr>
+Enum end()
+{
+	throw std::exception( "Not implemented.  Must be specialed for each enumeration." );
+}
+
+template<typename Enum, std::enable_if_t<std::is_enum_v<Enum>>* = nullptr>
 /// <summary>The enumeration collection allows iteration over strongly typed enumerations.
 /// <para>The enumeration values must be continuous.</para>
 /// </summary>
@@ -24,7 +36,7 @@ class Values
 public:
    /// <summary>Iterate over all of the enumeration values from the beginning.</summary>
    Values()
-      : start_at( Enum::begin )
+      : start_at( nhill::begin<Enum>() )
    {
    }
    /// <summary>Iterate over all of the enumeration values starting after the given enumeration Value.</summary>
@@ -75,7 +87,7 @@ public:
 
 public:
    typename nhill::Values<Enum>::iterator begin() { return typename nhill::Values<Enum>::iterator( start_at  ); }
-   typename nhill::Values<Enum>::iterator end()   { return typename nhill::Values<Enum>::iterator( Enum::end ); }
+   typename nhill::Values<Enum>::iterator end()   { return typename nhill::Values<Enum>::iterator( nhill::end<Enum>() ); }
 #pragma endregion
 
 private:

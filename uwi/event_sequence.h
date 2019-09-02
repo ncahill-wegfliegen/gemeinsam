@@ -16,15 +16,15 @@ namespace dls
 class NHILL_UWI_PORT_CLASS Event_sequence 
 {
 public:
-	using Str = Strn<1>;
+   using Str = Strn<1>;
 
    Event_sequence();
 
    Event_sequence( char );
    Event_sequence& operator=( char );
 
-	Event_sequence( std::string_view );
-	Event_sequence& operator=( std::string_view );
+   Event_sequence( std::string_view );
+   Event_sequence& operator=( std::string_view );
 
    Event_sequence( int );
    Event_sequence& operator=( int );
@@ -40,8 +40,8 @@ public:
    char value() const;
    void value( char );
 
-	std::string str() const;
-	void value( std::string_view );
+   std::string str() const;
+   void value( std::string_view );
 
    int integer() const;
    void value( int );
@@ -53,7 +53,7 @@ public:
 
 private:
 #pragma warning(suppress:4251)
-	Str s_{};
+   Str s_{};
 };
 
 }

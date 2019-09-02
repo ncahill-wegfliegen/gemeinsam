@@ -11,10 +11,6 @@ enum class System_of_measurement : std::int8_t
    si = 0,  // METRIC,
    api = 1,  // API,
 
-   // used for iteration
-   end,
-   begin = none,
-
    metric = si,
 };
 

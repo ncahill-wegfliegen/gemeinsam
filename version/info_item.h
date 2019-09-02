@@ -20,11 +20,10 @@ enum class Info_item
    product_name,
    product_version,
    special_build,
-
-   end,
-   begin = none,
 };
 
 }
 }
+
+
 

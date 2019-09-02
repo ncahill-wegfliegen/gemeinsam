@@ -11,12 +11,12 @@
 namespace gs
 {
 
-template<class Value, class Host>
+template<class Value_base, class Host>
 class Property
 {
 private:
-   using Getter = Value (Host::*)() const;
-   using Setter = void (Host::*)( const Value& );
+   using Getter = Value_base (Host::*)() const;
+   using Setter = void (Host::*)( const Value_base& );
 
 public:
    Property(Host& host, Getter get, Setter set)
@@ -24,8 +24,8 @@ public:
    { }
 
 public:
-   operator Value() const { return (host.*get)(); }
-   void operator=(const Value& value) { (host.*set)(value); }
+   operator Value_base() const { return (host.*get)(); }
+   void operator=(const Value_base& value) { (host.*set)(value); }
 
 private:
    Host& host;
@@ -34,11 +34,11 @@ private:
 };
 
 
-template<class Value, class Host>
+template<class Value_base, class Host>
 class Property_readonly
 {
 private:
-   using Getter = Value(Host::*)() const;
+   using Getter = Value_base(Host::*)() const;
 
 public:
    Property_readonly( const Host& host, Getter get)
@@ -47,7 +47,7 @@ public:
    }
 
 public:
-   operator Value() const { return (host.*get)(); }
+   operator Value_base() const { return (host.*get)(); }
 
 private:
    const Host& host;

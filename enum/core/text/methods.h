@@ -1,7 +1,9 @@
 #pragma once
 
 #include "bundle_container.h"
+#include "../../../utility/str.h"
 #include <string>
+#include <algorithm>
 
 namespace nhill
 {
@@ -57,7 +59,7 @@ bool from_code( Enum & e, std::string_view value )
    auto item = std::find_if(
       bundles.cbegin(),
       bundles.cend(),
-      [&value]( const auto& p ) { return nhill::str::compare_truncated( p->second.code(), value ) == 0; }
+      [&value]( const auto& p ) { return nhill::str::compare_truncated( p->second.code(), std::string{ value } ) == 0; }
    );
 
    if( item == bundles.cend() )
@@ -75,12 +77,15 @@ bool from_string( Enum& e, std::string_view value )
     const nhill::text::Bundle_container<Enum>& bundles = nhill::text::bundle_container<Enum>();
 
     auto item = std::find_if(
-       bundles.begin(),
-       bundles.end(),
-       [&value]( const auto& p ) { return nhill::str::compare_truncated( p.second.string(), value ) == 0; }
+       bundles.cbegin(),
+       bundles.cend(),
+		 [&value]( const auto& p )
+		 {
+			 return nhill::str::compare_truncated( p.second.string(), std::string{ value } ) == 0;
+		 }
     );
 
-    if( item == bundles.end() )
+    if( item == bundles.cend() )
     {
         return false;
     }
@@ -96,12 +101,12 @@ bool from_description( Enum& e, std::string_view value )
     const nhill::text::Bundle_container<Enum>& bundles = nhill::text::bundle_container<Enum>();
 
     auto item = std::find_if(
-       bundles.begin(),
-       bundles.end(),
-       [&value]( const auto& p ) { return nhill::str::compare_truncated( p->second.description(), value ) == 0; }
+       bundles.cbegin(),
+       bundles.cend(),
+       [&value]( const auto& p ) { return nhill::str::compare_truncated( p->second.description(), std::string{ value } ) == 0; }
     );
 
-    if( item == bundles.end() )
+    if( item == bundles.cend() )
     {
         return false;
     }

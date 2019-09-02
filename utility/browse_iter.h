@@ -43,26 +43,26 @@ private:
 }
 
 #pragma region Definitions
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-nhill::Browse_iter<Value, Iterator, ef>::Browse_iter(  iterator begin,  iterator end )
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+nhill::Browse_iter<Value_base, Iterator, ef>::Browse_iter(  iterator begin,  iterator end )
    : first_{ begin }
    , last_{ --end }
    , current_{ begin }
 {
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-nhill::Browse_iter<Value, Iterator, ef>::~Browse_iter() = default;
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+nhill::Browse_iter<Value_base, Iterator, ef>::~Browse_iter() = default;
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::first() ->typename base::reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::first() ->typename base::reference
 {
    current_ = first_;
    return *first_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::previous() ->typename base::reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::previous() ->typename base::reference
 {
    if( current_ != first_ )
    {
@@ -71,8 +71,8 @@ auto nhill::Browse_iter<Value, Iterator, ef>::previous() ->typename base::refere
    return *current_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::next() ->typename base::reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::next() ->typename base::reference
 {
    if( current_ != last_ )
    {
@@ -81,22 +81,22 @@ auto nhill::Browse_iter<Value, Iterator, ef>::next() ->typename base::reference
    return *current_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::last() ->typename base::reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::last() ->typename base::reference
 {
    current_ = last_;
    return *last_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::cfirst() const ->typename base::const_reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::cfirst() const ->typename base::const_reference
 {
    current_ = first_;
    return *first_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::cprevious() const ->typename base::const_reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::cprevious() const ->typename base::const_reference
 {
    if( current_ != first_ )
    {
@@ -105,8 +105,8 @@ auto nhill::Browse_iter<Value, Iterator, ef>::cprevious() const ->typename base:
    return *current_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::cnext() const ->typename base::const_reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::cnext() const ->typename base::const_reference
 {
    if( current_ != last_ )
    {
@@ -115,21 +115,21 @@ auto nhill::Browse_iter<Value, Iterator, ef>::cnext() const ->typename base::con
    return *current_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-auto nhill::Browse_iter<Value, Iterator, ef>::clast() const ->typename base::const_reference
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+auto nhill::Browse_iter<Value_base, Iterator, ef>::clast() const ->typename base::const_reference
 {
    current_ = last_;
    return *last_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-bool nhill::Browse_iter<Value, Iterator, ef>::is_first() const
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+bool nhill::Browse_iter<Value_base, Iterator, ef>::is_first() const
 {
    return current_ == first_;
 }
 
-template<typename Value, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
-bool nhill::Browse_iter<Value, Iterator, ef>::is_last() const
+template<typename Value_base, typename Iterator, typename std::enable_if_t<std::is_base_of<std::bidirectional_iterator_tag, typename Iterator::iterator_category>::value >* ef> inline
+bool nhill::Browse_iter<Value_base, Iterator, ef>::is_last() const
 {
    return current_ == last_;
 }

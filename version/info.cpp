@@ -3,6 +3,7 @@
 #include "string_table.h"
 #include "translation.h"
 #include "version.h"
+#include "info_item_ex.h"
 #include "../utility/file.h"
 #include "../utility/exception/file_not_found.h"
 #include "../enum/core/values.h"

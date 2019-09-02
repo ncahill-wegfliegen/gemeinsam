@@ -9,34 +9,16 @@
 namespace nhill
 {
 
-enum class Survey_system : std::int16_t
+enum class Survey_system : std::uint8_t
 {
    none,
-   dls,
-   nts,
-   fps,
-   api,
-   ll, // longitude, latitude
-   other,
-
-   // used for iteration
-   end,
-   begin = none,
+   dls, // Dominion Land Survey: AB, SK, MB & Peace River block of BC
+   nts, // National Topographic Series: BC excluding Peace River block
+   fps, // Federal Permit System: Northwest Territory, Yukon Territory, Arctic Offshore, East and West Coast Offshore areas and Hudson Bay and Hudson Straight
+   geo, // Geodetic Coordinates or Latitude and Longitude: ON, QB, and Maratimes
+	api, // American Petroleum Institute: US
+	other,
 };
 
 }
-
-#pragma region Extensions: to_code, to_abbreviation, etc.; stream operators << and >>.
-#include "port.h"
-#include "core/text/bundle_container.h"
-
-#pragma region Specialize bundle_container: do not use directly; use text methods to_code, to_abbreviation, etc. instead.
-template<> NHILL_ENUM_PORT_FUNCTION
-const nhill::text::Bundle_container<nhill::Survey_system>& nhill::text::bundle_container<nhill::Survey_system>();
-#pragma endregion
-
-#include "core/text/methods.h"
-#include "core/text/stream_in.h"
-#include "core/text/stream_out.h"
-#pragma endregion
 

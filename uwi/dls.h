@@ -1,6 +1,7 @@
 #pragma once
 
 #include "port.h"
+#include "uwi.h"
 #include "location_exception.h"
 #include "legal_subdivision.h"
 #include "section.h"
@@ -17,12 +18,13 @@ namespace nhill
 {
 namespace uwi
 {
+enum class Format;
 namespace dls
 {
 enum class Range_direction;
 }
 
-class NHILL_UWI_PORT_CLASS Dls
+class NHILL_UWI_PORT_CLASS Dls /*: public Uwi*/
 {
 public:
    using Location_exception = dls::Location_exception;
@@ -56,20 +58,23 @@ public:
    Event_sequence es;
 #pragma warning(pop)
 
+   //Uwi_type type() const override;
    void clear();
 
    // 1=survey_system, XX=location_exception, LL=legal_subdivision, SS=section, TTT=township, RR=range, D=range_direction (either 'W' or 'E'), M=meridian, 0=padding, E=event_sequence
    
-   // TTTDMRRSSLLXXE  BC > AB > SK > ...
+   // 1DMRRTTTSSLLXXE  BC > AB > SK > ...
    std::string sort() const;
    // XXLLSSTTTRRME or XXLLSSTTTRRDME
-   std::string plain( bool range_direction = false ) const;
+   std::string plain( bool range_direction = true ) const;
    // 1XXLLSSTTTRRDM0E
    std::string full() const;
    // XX/LL-SS-TTT-RRDM/E
    std::string plain_dressed() const;
    // 1XX/LL-SS-TTT-RRDM/0E
    std::string full_dressed() const;
+
+	std::string to_string( Format ) const;
 
    Range_direction range_direction() const;
 
@@ -102,7 +107,7 @@ NHILL_UWI_PORT_CLASS bool operator>=( const Dls& a, const Dls& b );
 namespace dls
 {
 
-constexpr uint8_t len_sort{ 14 };
+constexpr uint8_t len_sort{ 15 };
 constexpr uint8_t len_plain{ 13 }; // without range direction
 constexpr uint8_t len_plain_rgd{ 14 }; // with range direction
 constexpr uint8_t len_full{ 16 };
@@ -114,6 +119,10 @@ NHILL_UWI_PORT_FUNCTION bool is_plain( std::string_view str, Dls* dls = nullptr 
 NHILL_UWI_PORT_FUNCTION bool is_full( std::string_view str, Dls* dls = nullptr );
 NHILL_UWI_PORT_FUNCTION bool is_plain_dressed( std::string_view str, Dls* dls = nullptr );
 NHILL_UWI_PORT_FUNCTION bool is_full_dressed( std::string_view str, Dls* dls = nullptr );
+NHILL_UWI_PORT_FUNCTION bool is_valid_dls( std::string_view str, Dls* dls = nullptr );
+
+NHILL_UWI_PORT_FUNCTION Dls parse_sort( std::string_view s ); // Beware: minimal validation and checking
+NHILL_UWI_PORT_FUNCTION Dls parse_plain( std::string_view s ); // Beware: minimal validation and checking
 
 }
 }

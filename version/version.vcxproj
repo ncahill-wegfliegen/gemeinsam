@@ -35,8 +35,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="version_manager.h" />
     <ClInclude Include="info.h" />
     <ClInclude Include="info_item.h" />
+    <ClInclude Include="info_item_ex.h" />
     <ClInclude Include="port.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="string_table.h" />
@@ -44,6 +46,7 @@
     <ClInclude Include="version.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="version_manager.cpp" />
     <ClCompile Include="info.cpp" />
     <ClCompile Include="string_table.cpp" />
     <ClCompile Include="translation.cpp" />

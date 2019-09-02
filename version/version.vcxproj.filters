@@ -17,12 +17,15 @@
     <ClInclude Include="string_table.h" />
     <ClInclude Include="translation.h" />
     <ClInclude Include="version.h" />
+    <ClInclude Include="info_item_ex.h" />
+    <ClInclude Include="version_manager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="info.cpp" />
     <ClCompile Include="string_table.cpp" />
     <ClCompile Include="translation.cpp" />
     <ClCompile Include="version.cpp" />
+    <ClCompile Include="version_manager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="version.rc">

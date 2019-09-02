@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="dls.h" />
     <ClInclude Include="event_sequence.h" />
+    <ClInclude Include="list_header.h" />
     <ClInclude Include="legal_subdivision.h" />
     <ClInclude Include="location_exception.h" />
     <ClInclude Include="meridian.h" />
@@ -30,10 +31,15 @@
     <ClInclude Include="range_direction_ex.h" />
     <ClInclude Include="section.h" />
     <ClInclude Include="township.h" />
+    <ClInclude Include="uwi.h" />
+    <ClInclude Include="list.h" />
+    <ClInclude Include="format.h" />
+    <ClInclude Include="format_ex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dls.cpp" />
     <ClCompile Include="event_sequence.cpp" />
+    <ClCompile Include="list_header.cpp" />
     <ClCompile Include="legal_subdivision.cpp" />
     <ClCompile Include="location_exception.cpp" />
     <ClCompile Include="meridian.cpp" />
@@ -41,10 +47,19 @@
     <ClCompile Include="range_direction_ex.cpp" />
     <ClCompile Include="section.cpp" />
     <ClCompile Include="township.cpp" />
+    <ClCompile Include="uwi.cpp" />
+    <ClCompile Include="list.cpp" />
+    <ClCompile Include="format_ex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\enum\enum.vcxproj">
       <Project>{042eae2b-5393-48db-939d-cf2ac861463f}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\utility\utility.vcxproj">
+      <Project>{9dbd9374-5b12-40e9-aa1d-14a56894856c}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\version\version.vcxproj">
+      <Project>{068ab899-3da8-43cc-9754-ef499e4f0343}</Project>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Label="Globals">

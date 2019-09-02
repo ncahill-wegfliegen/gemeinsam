@@ -34,16 +34,8 @@ auto nhill::uwi::dls::Location_exception::operator=( int i )->Location_exception
    return *this;
 }
 
-nhill::uwi::dls::Location_exception::Location_exception( const Location_exception& other )
-{
-	s_ = other.s_;
-}
-
-auto nhill::uwi::dls::Location_exception::operator=( const Location_exception& other )->Location_exception &
-{
-	s_ = other.s_;
-	return *this;
-}
+nhill::uwi::dls::Location_exception::Location_exception( const Location_exception& other ) = default;
+auto nhill::uwi::dls::Location_exception::operator=( const Location_exception& other )->Location_exception & = default;
 
 nhill::uwi::dls::Location_exception::Location_exception( Location_exception&& other ) noexcept = default;
 auto nhill::uwi::dls::Location_exception::operator=( Location_exception&& other ) noexcept->Location_exception & = default;
@@ -70,12 +62,12 @@ void nhill::uwi::dls::Location_exception::value( std::string_view s)
    else if (s.length() == 1 )
    {
 		char tmp[3]{ '0', s[0], '\0' };
-		s_ = tmp;
+		set_unchecked(tmp);
    }
    else // must be length 2
    {
 		char tmp[3]{ s[0], s[1], '\0' };
-		s_ = tmp;
+		set_unchecked( tmp );
 	}
 }
 
@@ -86,7 +78,7 @@ int nhill::uwi::dls::Location_exception::integer() const
       throw logic_error( "The location exception '" + string{ value() } +"' cannot is not an integer." );
    }
    
-   return atoi(value().c_str());
+   return stoi(value());
 }
 
 void nhill::uwi::dls::Location_exception::value( int i)
@@ -99,12 +91,12 @@ void nhill::uwi::dls::Location_exception::value( int i)
 
    ostringstream oss;
    oss << setfill( '0' ) << setw( 2 ) << i;
-	s_.assign( oss.str().c_str() );
+	set_unchecked( oss.str() );
 }
 
 void nhill::uwi::dls::Location_exception::clear()
 {
-	s_ = "00";
+	set_unchecked( "00" );
 }
 
 bool nhill::uwi::dls::Location_exception::is_valid( std::string_view s, string* error_msg )
@@ -115,6 +107,15 @@ bool nhill::uwi::dls::Location_exception::is_valid( std::string_view s, string* 
 bool nhill::uwi::dls::Location_exception::is_valid( int i, std::string* error_msg )
 {
    return is_valid_location_exception( i, error_msg );
+}
+
+void nhill::uwi::dls::Location_exception::set_unchecked( std::string_view s )
+{
+	if( s.length() != 2 )
+	{
+		throw invalid_argument( "The string '" + string{ s } +"' is cannot be a DLS location because it is not of length 2." );
+	}
+	s_.assign( s.data(), s.length() );
 }
 
 template<>

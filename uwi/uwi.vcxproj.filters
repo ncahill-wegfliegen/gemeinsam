@@ -7,6 +7,12 @@
     <Filter Include="dls">
       <UniqueIdentifier>{e6b53aee-2241-4b20-9254-95e28b269a68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="uwi">
+      <UniqueIdentifier>{63dd994f-e1f0-40bf-8baa-cbf9f74c2d7e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="survey system">
+      <UniqueIdentifier>{96b09cac-a6be-44ac-8963-7637acdfeb11}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="port.h">
@@ -42,6 +48,21 @@
     <ClInclude Include="range_direction_ex.h">
       <Filter>dls</Filter>
     </ClInclude>
+    <ClInclude Include="uwi.h">
+      <Filter>uwi</Filter>
+    </ClInclude>
+    <ClInclude Include="format.h">
+      <Filter>uwi</Filter>
+    </ClInclude>
+    <ClInclude Include="list.h">
+      <Filter>uwi</Filter>
+    </ClInclude>
+    <ClInclude Include="format_ex.h">
+      <Filter>uwi</Filter>
+    </ClInclude>
+    <ClInclude Include="list_header.h">
+      <Filter>uwi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dls.cpp">
@@ -70,6 +91,18 @@
     </ClCompile>
     <ClCompile Include="range_direction_ex.cpp">
       <Filter>dls</Filter>
+    </ClCompile>
+    <ClCompile Include="uwi.cpp">
+      <Filter>uwi</Filter>
+    </ClCompile>
+    <ClCompile Include="list.cpp">
+      <Filter>uwi</Filter>
+    </ClCompile>
+    <ClCompile Include="format_ex.cpp">
+      <Filter>uwi</Filter>
+    </ClCompile>
+    <ClCompile Include="list_header.cpp">
+      <Filter>uwi</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

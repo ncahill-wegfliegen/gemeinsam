@@ -1,6 +1,6 @@
 #include "uangle.h"
 #include "../utility/chr.h"
-#include <string_view>
+#include <string>
 
 using namespace std;
 
@@ -74,13 +74,13 @@ auto nhill::geometry::to_uangle(  std::string_view str, char* sign_sym_param /*=
    if (arcdeg_pos != string::npos)
    {
       string value{str.substr( 0, arcdeg_pos )};
-      arcdeg = static_cast<Arcdeg_t>(abs( atoi( value.c_str() ) ));
+      arcdeg = static_cast<Arcdeg_t>(abs( stoi( value ) ));
 
       // Extract the arcminute value
       if (arcmin_pos != string::npos)
       {
          value = str.substr( arcdeg_pos + 1, arcmin_pos - arcdeg_pos - 1 );
-         arcmin = static_cast<Arcmin_t>(atoi( value.c_str() ));
+         arcmin = static_cast<Arcmin_t>(stoi( value ));
 
          // Extract the arcsecond 
          if (arcsec_pos != string::npos)
@@ -90,12 +90,12 @@ auto nhill::geometry::to_uangle(  std::string_view str, char* sign_sym_param /*=
             if (period_pos == string::npos)
             {
                // The arcsecond is not a floating point (no milliarcseconds)
-               arcsec = static_cast<Arcsec_t>(atoi( value.c_str() ));
+               arcsec = static_cast<Arcsec_t>(stoi( value ));
             }
             else
             {
                // The arcsecond is a floating point value
-               auto valuef{atof( value.c_str() )};
+               auto valuef{stof( value )};
                // The interger part of the arcsecond floating point value
                arcsec = static_cast<Arcsec_t>(std::floor( valuef ));
                // The decimal part of the arcsecond floating point value

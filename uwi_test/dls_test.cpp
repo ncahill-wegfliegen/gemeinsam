@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../uwi/dls.h"
+#include "../uwi/legal_subdivision.h"
 #include "../enum/core/int.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

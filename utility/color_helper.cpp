@@ -34,17 +34,17 @@ bool nhill::parse( Color& c,  std::string_view s )
 
    if( 0 < sz )
    {
-      c.r = static_cast<uint8_t>( atoi( comp[0].c_str() ) );
+      c.r = static_cast<uint8_t>( stoi( comp[0] ) );
    }
 
    if( 1 < sz )
    {
-      c.g = static_cast<uint8_t>(atoi( comp[1].c_str() ));
+      c.g = static_cast<uint8_t>(stoi( comp[1] ));
    }
 
    if( 2 < sz )
    {
-      c.b = static_cast<uint8_t>(atoi( comp[2].c_str() ));
+      c.b = static_cast<uint8_t>(stoi( comp[2] ));
    }
 
    return true;

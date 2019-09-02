@@ -19,8 +19,10 @@ template<typename Char> inline
 std::vector<std::basic_string<Char>> split( std::basic_string_view<Char> s, Char delimiter )
 {
    std::vector<std::basic_string<Char>> elements;
-   std::basic_stringstream<Char> ss{ s.data() };
+   std::basic_stringstream<Char> ss;
    std::basic_string<Char> item;
+
+	ss << s;
 
    while( std::getline( ss, item, delimiter ) )
    {

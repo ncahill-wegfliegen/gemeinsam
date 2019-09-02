@@ -42,6 +42,10 @@ public:
    }
 };
 
+/// <summary>A generic value type.</summary>
+/// <remarks>Note that the destructor is not virtual.  Therefore, you must be careful to avoid slicing.  Use the Value_base class if you don't want to worry about slicing.
+/// The reason this class does not have a virtual destructor is so that it can be used as the base of a class for which size is an issue,
+/// and you don't want the extra size due to the pointers into a virtual table.</remarks.
 template<typename T, typename Validator = typename Default_value_validator<T> >
 class Value
 {
@@ -66,13 +70,13 @@ public:
    Value( Value&& ) noexcept;
    Value& operator=( Value&& ) noexcept;
 
-   virtual ~Value();
+   ~Value();
 
    operator T() const;
    explicit operator std::string() const;
 
    T value() const;
-	template<typename U = T> typename std::enable_if_t<std::is_arithmetic_v<U>,U> value() const;
+   template<typename U = T> typename std::enable_if_t<std::is_arithmetic_v<U>,U> value() const;
    template<typename U, typename std::enable_if_t<std::is_arithmetic_v<U>>* = nullptr> void value( U );
 
    std::string string() const;
@@ -289,7 +293,7 @@ template<typename T, typename Validator>
 template<typename U>
 inline auto nhill::utility::Value<T, Validator>::value() const ->typename std::enable_if_t<std::is_arithmetic_v<U>, U>
 {
-	return static_cast<U>(value_);
+   return static_cast<U>(value_);
 }
 
 template<typename T, typename Validator>

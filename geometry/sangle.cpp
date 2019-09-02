@@ -1,9 +1,12 @@
 #include "sangle.h"
 #include "../math/sign.h"
 #include "../enum/core/int.h"
+#include <boost/convert.hpp>
+#include <boost/convert/stream.hpp>
+#include <string>
 
 using namespace std;
-
+struct boost::cnv::by_default : boost::cnv::cstream{};
 
 auto nhill::to_sangle( string_view str )->SAngle
 {
@@ -35,7 +38,7 @@ auto nhill::to_sangle( string_view str )->SAngle
    float deg{0};
    if (pos_deg != npos)
    {
-      deg = static_cast<float>(atof( str.substr( offset, pos_deg - offset ).data() ));
+		deg = boost::convert<float>( str.substr( offset, pos_deg - offset ) ).value();
       offset = pos_deg + 1;
    }
 
@@ -45,7 +48,7 @@ auto nhill::to_sangle( string_view str )->SAngle
    float arcmin{0};
    if (pos_arcmin != npos)
    {
-      arcmin = static_cast<float>(atof( str.substr( offset, pos_arcmin - offset ).data() ));
+      arcmin = boost::convert<float>( str.substr( offset, pos_arcmin - offset ) ).value();
       offset = pos_arcmin + 1;
    }
 
@@ -55,7 +58,7 @@ auto nhill::to_sangle( string_view str )->SAngle
    float arcsec{0};
    if (pos_arcsec != npos)
    {
-      arcsec = static_cast<float>(atof( str.substr( offset, pos_arcsec - offset ).data() ));
+      arcsec = boost::convert<float>( str.substr( offset, pos_arcsec - offset ) ).value();
    }
 
    return (deg != 0) ? SAngle{to_int( sign )*deg, arcmin, arcsec} : (arcmin != 0) ? SAngle{0, to_int( sign )*arcmin, arcsec} : SAngle{0, 0, to_int( sign )*arcsec};

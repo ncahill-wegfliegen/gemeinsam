@@ -27,6 +27,15 @@
     <ClCompile Include="dls_test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="survey_system_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="uwi_format_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="list_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">

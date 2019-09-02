@@ -13,10 +13,6 @@ enum class Delim : std::int8_t
    colon,
    semicolon,
    other,
-
-   // used for iteration
-   end,
-   begin = none,
 };
 }
 
@@ -24,10 +20,16 @@ enum class Delim : std::int8_t
 #pragma region Extensions: to_code, to_abbreviation, etc.; stream operators << and >>.
 #include "port.h"
 #include "core/text/bundle_container.h"
+#include "core/values.h"
 
 #pragma region Specialize bundle_container: do not use directly; use text methods to_code, to_abbreviation, etc. instead.
 template<> NHILL_ENUM_PORT_FUNCTION
 const nhill::text::Bundle_container<nhill::Delim>& nhill::text::bundle_container<nhill::Delim>();
+#pragma endregion
+
+#pragma region Values
+template<> inline nhill::Delim nhill::begin() {return Delim::none;}
+template<> inline nhill::Delim nhill::end() { return to_enum<nhill::Delim>( to_int( Delim::other ) + 1 ); }
 #pragma endregion
 
 #include "core/text/methods.h"

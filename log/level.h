@@ -19,10 +19,6 @@ enum class Level
     info,
     debug,
     all,
-
-    end,
-    begin = off,
-    defalt = all,
 };
 
 }

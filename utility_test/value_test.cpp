@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CppUnitTest.h"
-#include "../utility/value.h"
+#include "../utility/value_base.h"
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 using namespace nhill;
@@ -14,8 +14,8 @@ public:
 
    TEST_METHOD( compare_test )
    {
-      Value<int> v1{ 5 };
-      Value<double> v2{ 11.5 };
+      Value_base<int> v1{ 5 };
+      Value_base<double> v2{ 11.5 };
 
       Compare expected{ Compare::less };
       Compare actual{ compare( v1,v2 ) };
@@ -24,8 +24,8 @@ public:
 
    TEST_METHOD( equal_test )
    {
-      Value<int> v1{ 5 };
-      Value<double> v2{ 11.5 };
+      Value_base<int> v1{ 5 };
+      Value_base<double> v2{ 11.5 };
 
       bool expected{ false };
       bool actual{ v1 == v2 };

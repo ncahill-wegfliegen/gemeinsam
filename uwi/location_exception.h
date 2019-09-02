@@ -51,6 +51,10 @@ public:
    static bool is_valid( std::string_view s, std::string* error_msg = nullptr);
    static bool is_valid( int i, std::string* error_msg = nullptr );
 
+	/// <summary>Beware! No checking and no validation.<para>Only use this if you are absolutely certian that the string is a valid two character DLS location exception.</para></summary>
+	/// <exception cref="std::invalid_argument">Thrown if the length of the string is greater than two characters.</exception>
+	void set_unchecked( std::string_view s ); 
+
 private:
 #pragma warning(suppress:4251)
 	Str s_{};

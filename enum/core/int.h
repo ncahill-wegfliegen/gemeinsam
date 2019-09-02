@@ -26,7 +26,7 @@ constexpr int to_int( Enum e ) noexcept
 }
 
 /// <summary>Convert an integer to the corresponding strongly typed enumeration.</summary>
-/// <param name="i">The integer to be converted.</para>
+/// <param name="i">The integer to be converted.</param>
 /// <returns>The stronly typed enumeration corresponding to the given integer.</returns>
 template<typename Enum, std::enable_if_t<std::is_enum_v<Enum>>* = nullptr> inline
 constexpr Enum to_enum( int i ) noexcept

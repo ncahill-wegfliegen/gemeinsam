@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../utility/value.h"
+#include "../utility/value_base.h"
 #include "puom.h"
 
 namespace nhill
@@ -13,10 +13,10 @@ double convert( Prefix dst_prefix, Uom dst_uom, double src_value, Prefix src_pre
 
 
 template<typename Uom, typename T = double>
-class Quantity : public utility::Value<T>, Prefixed_uom<Uom>
+class Quantity : public utility::Value_base<T>, Prefixed_uom<Uom>
 {
 public:
-   using base_value = utility::Value<T>;
+   using base_value = utility::Value_base<T>;
    using base_puom  = Prefixed_uom<Uom>;
 
    Quantity( Prefix prefix, Uom uom, T value = {} );

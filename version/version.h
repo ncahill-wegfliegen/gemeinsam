@@ -24,7 +24,7 @@ public:
    Version( int major, int minor, int build, int revision );
    Version( const std::string& s );
    Version( const Version& ) = default;
-   Version( Version&& other ) = default;
+   Version( Version&& other ) noexcept = default;
    ~Version() = default;
 #pragma endregion
 
@@ -32,7 +32,7 @@ public:
 public:
    Version& operator=( const std::string& s );
    Version& operator=( const Version& other ) = default;
-   Version& operator=( Version&& other ) = default;
+   Version& operator=( Version&& other ) noexcept = default;
 #pragma endregion
 
 #pragma region Properties

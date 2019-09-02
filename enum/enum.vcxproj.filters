@@ -71,15 +71,15 @@
     <ClInclude Include="province.h" />
     <ClInclude Include="province_container.h" />
     <ClInclude Include="sort_order.h" />
-    <ClInclude Include="survey_system.h" />
     <ClInclude Include="som.h" />
+    <ClInclude Include="survey_system.h" />
+    <ClInclude Include="survey_system_ex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="delim.cpp" />
     <ClCompile Include="month.cpp" />
     <ClCompile Include="product.cpp" />
     <ClCompile Include="sort_order.cpp" />
-    <ClCompile Include="survey_system.cpp" />
     <ClCompile Include="province.cpp" />
     <ClCompile Include="math\coord_cart2.cpp">
       <Filter>math</Filter>
@@ -101,6 +101,7 @@
       <Filter>core\text</Filter>
     </ClCompile>
     <ClCompile Include="som.cpp" />
+    <ClCompile Include="survey_system_ex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="enum.rc">

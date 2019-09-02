@@ -2,7 +2,7 @@
 
 #include "puom_ratio.h"
 #include "quantity.h"
-#include "../utility/value.h"
+#include "../utility/value_base.h"
 #include <memory>
 #include <string>
 #include <sstream>
@@ -13,10 +13,10 @@ namespace uom
 {
 
 template<typename Uom_numerator, typename Uom_denominator, typename T = double>
-class Quantity_ratio : public nhill::utility::Value<T>, public Prefixed_uom_ratio<Uom_numerator, Uom_denominator>
+class Quantity_ratio : public nhill::utility::Value_base<T>, public Prefixed_uom_ratio<Uom_numerator, Uom_denominator>
 {
 public:
-   using base_value = nhill::utility::Value<T>;
+   using base_value = nhill::utility::Value_base<T>;
    using base_puom  = Prefixed_uom_ratio<Uom_numerator, Uom_denominator>;
 
    Quantity_ratio( const Prefixed_uom_ratio<Uom_numerator, Uom_denominator>& puom, T value = {} );

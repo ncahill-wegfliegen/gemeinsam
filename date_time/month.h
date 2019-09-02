@@ -19,9 +19,6 @@ enum class Month : std::int8_t
    oct,
    nov,
    dec,
-
-   end,
-   begin = jan,
 };
 
 }
@@ -29,10 +26,22 @@ enum class Month : std::int8_t
 #pragma region Extensions: to_code, to_abbreviation, etc.; stream operators << and >>.
 #include "port.h"
 #include "../enum/core/text/bundle_container.h"
+#include "../enum/core/values.h"
 
 #pragma region Specialize bundle_container: do not use directly; use text methods to_code, to_abbreviation, etc. instead.
 template<> NHILL_DATETIME_PORT_FUNCTION
 const nhill::text::Bundle_container<nhill::Month>& nhill::text::bundle_container<nhill::Month>();
+#pragma endregion
+
+#pragma region Values
+template<> inline nhill::Month nhill::begin()
+{
+	return Month::jan;
+}
+template<> inline nhill::Month nhill::end()
+{
+	return to_enum<nhill::Month>( to_int( Month::dec ) + 1 );
+}
 #pragma endregion
 
 #include "../enum/core/text/methods.h"
