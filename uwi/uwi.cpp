@@ -84,7 +84,7 @@ auto nhill::Uwi::survey_system() const->Survey_system
 	}
 	else
 	{
-		return to_enum<Survey_system>( buf_[0] + '0' );
+		return to_enum<Survey_system>( buf_[0] - '0' );
 	}
 }
 

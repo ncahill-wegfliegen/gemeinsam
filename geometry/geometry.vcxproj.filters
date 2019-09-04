@@ -161,5 +161,8 @@
     <ClInclude Include="pnt_container.h">
       <Filter>point</Filter>
     </ClInclude>
+    <ClInclude Include="pnt3_container.h">
+      <Filter>point</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

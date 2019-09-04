@@ -1,0 +1,23 @@
+#pragma once
+
+#include "port.h"
+#include "core\make_element.h"
+#include "core\from_handle.h"
+#include "core\from_parent_handle.h"
+#include "core\read.h"
+#include "core\write.h"
+#include "../date_time/date.h"
+
+namespace nhill
+{
+namespace xml
+{
+
+template<> GS_XML_PORT_FUNCTION
+tinyxml2::XMLElement* make_element( tinyxml2::XMLDocument& doc, const nhill::Date& date, std::string element_name );
+
+template<> GS_XML_PORT_FUNCTION
+tinyxml2::XMLError from_handle( std::unique_ptr<nhill::Date>& date, tinyxml2::XMLHandle handle );
+
+}
+}

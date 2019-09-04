@@ -5,7 +5,7 @@
   <PropertyGroup>
     <OutDir>$(SolutionDir)bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>bin\$(Platform)\$(Configuration)\</IntDir>
-    <IncludePath>$(SolutionDir)..\..\GSL-master\include;C:\boost_1_71_0;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)..\..\other\GSL-master\include;C:\boost_1_71_0;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)bin\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>

@@ -39,6 +39,7 @@
     <ClCompile Include="buffer_helper.cpp" />
     <ClCompile Include="color_helper.cpp" />
     <ClCompile Include="convert_file_bin_to_ascii.cpp" />
+    <ClCompile Include="event_args.cpp" />
     <ClCompile Include="ini.cpp" />
     <ClCompile Include="str_query.cpp" />
   </ItemGroup>

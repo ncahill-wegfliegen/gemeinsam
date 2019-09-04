@@ -67,6 +67,7 @@
     <ClInclude Include="milliarcsecond.h" />
     <ClInclude Include="pnt.h" />
     <ClInclude Include="pnt3.h" />
+    <ClInclude Include="pnt3_container.h" />
     <ClInclude Include="pnt_container.h" />
     <ClInclude Include="polar.h" />
     <ClInclude Include="polygon.h" />

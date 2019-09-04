@@ -7,6 +7,7 @@
     <ClCompile Include="str_query.cpp" />
     <ClCompile Include="buffer_helper.cpp" />
     <ClCompile Include="buffer.cpp" />
+    <ClCompile Include="event_args.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="module">

@@ -10,7 +10,7 @@ namespace geometry
 template<typename T>
 struct Rect;
 
-template<typename T>
+template<typename T = double>
 using RectT_container = std::vector<Rect<T>>;
 
 using Rect_container = RectT_container<double>;

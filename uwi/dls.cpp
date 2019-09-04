@@ -671,7 +671,26 @@ bool nhill::uwi::dls::is_valid_dls( std::string_view str, Dls* dls )
 
 auto nhill::uwi::dls::parse_sort( std::string_view s )->Dls
 {
-	return Dls();
+	// 1DMRRTTTSSLLXXE  
+	// 012345678901234
+
+	try
+	{
+		Dls dls;
+
+		dls.lsd = s.substr( 10, 2 );
+		dls.sc = s.substr( 8, 2 );
+		dls.twp = s.substr( 5, 3 );
+		dls.rg = s.substr( 3, 2 );
+		dls.es = s[14];
+		dls.le = s.substr( 12, 2 );
+
+		return dls;
+	}
+	catch( exception e)
+	{
+		throw e;
+	}
 }
 
 auto nhill::uwi::dls::parse_plain( std::string_view s )->Dls

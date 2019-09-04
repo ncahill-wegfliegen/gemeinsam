@@ -5,7 +5,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <iomanip>
-#include <gsl\gsl_assert>
+#include <gsl/gsl_assert>
 
 using namespace std;
 

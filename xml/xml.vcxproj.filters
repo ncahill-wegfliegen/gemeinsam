@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="xml">
+      <UniqueIdentifier>{d2bad978-26ad-4d81-8142-31e89ed9c8ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{d1c86f7e-9b5a-4bb6-9f23-e9fcc5c45dd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="geometry">
+      <UniqueIdentifier>{cacf9db9-22bb-4f39-8bae-db7c8af44bd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="date_time">
+      <UniqueIdentifier>{c562e6a3-62f7-4cd5-8206-6beaedbe7aba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uom">
+      <UniqueIdentifier>{82447b9f-2bb4-40b0-9056-b19c5afef8a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="writer">
+      <UniqueIdentifier>{2ed6830a-9820-44d4-bbac-fe302985b2c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="builder">
+      <UniqueIdentifier>{943bf804-57ff-4aa1-a7b0-d0ead1440cab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="targetver.h">
+      <Filter>xml</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>xml</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\include\gs\xml\polygon.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>xml</Filter>
+    </ClInclude>
+    <ClInclude Include="builder.h">
+      <Filter>builder</Filter>
+    </ClInclude>
+    <ClInclude Include="port.h">
+      <Filter>xml</Filter>
+    </ClInclude>
+    <ClInclude Include="attribute.h">
+      <Filter>writer</Filter>
+    </ClInclude>
+    <ClInclude Include="attribute_container.h">
+      <Filter>writer</Filter>
+    </ClInclude>
+    <ClInclude Include="element.h">
+      <Filter>writer</Filter>
+    </ClInclude>
+    <ClInclude Include="ostream.h">
+      <Filter>writer</Filter>
+    </ClInclude>
+    <ClInclude Include="parent_element.h">
+      <Filter>writer</Filter>
+    </ClInclude>
+    <ClInclude Include="writer.h">
+      <Filter>writer</Filter>
+    </ClInclude>
+    <ClInclude Include="date.h">
+      <Filter>date_time</Filter>
+    </ClInclude>
+    <ClInclude Include="day.h">
+      <Filter>date_time</Filter>
+    </ClInclude>
+    <ClInclude Include="year.h">
+      <Filter>date_time</Filter>
+    </ClInclude>
+    <ClInclude Include="core\from_handle.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\from_parent_handle.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\kernel.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\make_element.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\read.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="core\write.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="pnt.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="pnt_container.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="pnt3.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="pnt3_container.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="polygon.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="polygon_container.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="rect.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="rect_container.h">
+      <Filter>geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="puom.h">
+      <Filter>uom</Filter>
+    </ClInclude>
+    <ClInclude Include="puom_ratio.h">
+      <Filter>uom</Filter>
+    </ClInclude>
+    <ClInclude Include="quantity.h">
+      <Filter>uom</Filter>
+    </ClInclude>
+    <ClInclude Include="quantity_ratio.h">
+      <Filter>uom</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>xml</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>xml</Filter>
+    </ClCompile>
+    <ClCompile Include="core\make_element.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="core\from_handle.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="pnt.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="pnt_container.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="pnt3.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="pnt3_container.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="rect.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="rect_container.cpp">
+      <Filter>geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="day.cpp">
+      <Filter>date_time</Filter>
+    </ClCompile>
+    <ClCompile Include="year.cpp">
+      <Filter>date_time</Filter>
+    </ClCompile>
+    <ClCompile Include="date.cpp">
+      <Filter>date_time</Filter>
+    </ClCompile>
+    <ClCompile Include="kernel.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="writer.cpp">
+      <Filter>writer</Filter>
+    </ClCompile>
+    <ClCompile Include="attribute.cpp">
+      <Filter>writer</Filter>
+    </ClCompile>
+    <ClCompile Include="element.cpp">
+      <Filter>writer</Filter>
+    </ClCompile>
+    <ClCompile Include="parent_element.cpp">
+      <Filter>writer</Filter>
+    </ClCompile>
+    <ClCompile Include="ostream.cpp">
+      <Filter>writer</Filter>
+    </ClCompile>
+    <ClCompile Include="builder.cpp">
+      <Filter>builder</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="xml.rc">
+      <Filter>xml</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
