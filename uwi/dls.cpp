@@ -682,6 +682,7 @@ auto nhill::uwi::dls::parse_sort( std::string_view s )->Dls
 		dls.sc = s.substr( 8, 2 );
 		dls.twp = s.substr( 5, 3 );
 		dls.rg = s.substr( 3, 2 );
+		dls.m = s.substr( 2, 1 );
 		dls.es = s[14];
 		dls.le = s.substr( 12, 2 );
 

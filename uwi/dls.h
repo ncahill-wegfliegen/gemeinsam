@@ -74,7 +74,7 @@ public:
    // 1XX/LL-SS-TTT-RRDM/0E
    std::string full_dressed() const;
 
-	std::string to_string( Format ) const;
+   std::string to_string( Format ) const;
 
    Range_direction range_direction() const;
 

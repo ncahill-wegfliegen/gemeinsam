@@ -8,7 +8,6 @@
 #include <locale>
 #include <sstream>
 #include <ostream>
-#include <string_view>
 
 namespace nhill
 {
@@ -377,6 +376,30 @@ typename std::basic_string<Char>::size_type find_whitespace(const std::basic_str
    };
 
    return pos;
+}
+
+inline std::string to_string( const std::wstring& wstr )
+{
+	if( wstr.length() == 0 )
+	{
+		return {};
+	}
+
+	size_t sz{ wstr.length() * 4 + 10 };
+	char* s{ new char[sz] };
+	std::fill( s, s + sz, '\0' );
+	size_t retval{0};
+	::wcstombs_s( &retval, s, sz, wstr.c_str(), sz );
+	std::string str{ s };
+	delete[]s;
+	s = nullptr;
+
+	return str;
+}
+
+inline std::wstring to_wstring( const std::string& str )
+{
+	return { str.cbegin(), str.cend() };
 }
 
 }

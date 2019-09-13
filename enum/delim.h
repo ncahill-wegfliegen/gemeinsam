@@ -29,7 +29,7 @@ const nhill::text::Bundle_container<nhill::Delim>& nhill::text::bundle_container
 
 #pragma region Values
 template<> inline nhill::Delim nhill::begin() {return Delim::none;}
-template<> inline nhill::Delim nhill::end() { return to_enum<nhill::Delim>( to_int( Delim::other ) + 1 ); }
+template<> inline nhill::Delim nhill::end()   { return to_enum<Delim>( to_int( Delim::other ) + 1 ); }
 #pragma endregion
 
 #include "core/text/methods.h"

@@ -38,7 +38,7 @@ auto nhill::to_sangle( string_view str )->SAngle
    float deg{0};
    if (pos_deg != npos)
    {
-		deg = boost::convert<float>( str.substr( offset, pos_deg - offset ) ).value();
+      deg = boost::convert<float>( str.substr( offset, pos_deg - offset ) ).value();
       offset = pos_deg + 1;
    }
 
