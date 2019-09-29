@@ -13,7 +13,7 @@ namespace xml
 {
 
 /// <summary>Instead of containing text, the parent element contains other elements.</summary>
-class GS_XML_PORT_CLASS Parent_element
+class NHILL_XML_PORT_CLASS Parent_element
 {
 public:
    Parent_element( const std::string& name );

@@ -20,7 +20,7 @@ namespace nhill
 namespace xml
 {
 
-class GS_XML_PORT_CLASS Builder
+class NHILL_XML_PORT_CLASS Builder
 {
 protected:
    using Element_container = std::vector<tinyxml2::XMLElement*>;

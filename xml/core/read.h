@@ -25,7 +25,7 @@ tinyxml2::XMLError read( Object& object, const std::string& path, std::string ro
    if( root_name.empty() )
       root_name = type::to_name<Object>();
 
-   XMLDocument doc;
+	tinyxml2::XMLDocument doc;
    XMLError error = make_document( doc, path );
    if( error != XMLError::XML_NO_ERROR )
    {
@@ -56,7 +56,7 @@ tinyxml2::XMLError read( std::unique_ptr<Object>& uptr_object, const std::string
    if( root_name.empty() )
       root_name = type::to_name<Object>();
 
-   XMLDocument doc;
+	tinyxml2::XMLDocument doc;
    XMLError error = make_document( doc, path );
    if( error != XMLError::XML_SUCCESS )
    {

@@ -13,7 +13,7 @@ namespace xml
 ///   <para>&lt;note date="2018-01-01"&gt;Buy milk&lt;/note&gt;</para>
 ///   <para>&lt;date day="1" month="3" year="1963" /&gt;</para>
 /// </summary>
-class GS_XML_PORT_CLASS Element : public Parent_element
+class NHILL_XML_PORT_CLASS Element : public Parent_element
 {
 public:
    template<typename Value> Element( const std::string& name, const Value& value );
@@ -49,7 +49,7 @@ private:
 using Element_container = std::vector<Element>;
 
 
-GS_XML_PORT_FUNCTION std::ostream& operator<<( std::ostream& out, const Element& element );
+NHILL_XML_PORT_FUNCTION std::ostream& operator<<( std::ostream& out, const Element& element );
 
 }
 }

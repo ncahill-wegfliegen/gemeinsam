@@ -59,8 +59,11 @@ tinyxml2::XMLElement* make_element( tinyxml2::XMLDocument& doc, const Object& ob
 }
 
 /// <summary>Specialization for boolean.</summary>
-template<> GS_XML_PORT_FUNCTION
+template<> NHILL_XML_PORT_FUNCTION
 tinyxml2::XMLElement* make_element<bool>( tinyxml2::XMLDocument& doc, const bool& boolean, std::string element_name );
+
+template<> NHILL_XML_PORT_FUNCTION
+tinyxml2::XMLElement* make_element<std::wstring>( tinyxml2::XMLDocument& doc, const std::wstring& wstr, std::string element_name );
 
 }
 }

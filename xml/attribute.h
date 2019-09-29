@@ -10,7 +10,7 @@ namespace nhill
 namespace xml
 {
 
-class GS_XML_PORT_CLASS Attribute 
+class NHILL_XML_PORT_CLASS Attribute 
 {
 protected:
    using Pair = std::pair<std::string, std::string>;
@@ -43,7 +43,7 @@ private:
    Pair* pair_;
 };
 
-GS_XML_PORT_FUNCTION std::ostream& operator<<( std::ostream& out, const Attribute& attr );
+NHILL_XML_PORT_FUNCTION std::ostream& operator<<( std::ostream& out, const Attribute& attr );
 
 }
 }

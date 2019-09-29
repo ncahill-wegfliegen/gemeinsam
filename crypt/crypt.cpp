@@ -14,7 +14,7 @@ string nhill::crypt::encrypt( string_view s )
 {
 	string output{ s };
 
-	for( int i = 0; i < s.length(); i++ )
+	for( size_t i = 0; i < s.length(); i++ )
 	{
 		output[i] = s[i] ^ key[i % key_length];
 	}

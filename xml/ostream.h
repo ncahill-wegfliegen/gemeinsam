@@ -10,7 +10,7 @@ namespace nhill
 namespace xml
 {
 
-class GS_XML_PORT_CLASS OStream
+class NHILL_XML_PORT_CLASS OStream
 {
 public:
    OStream( std::ostream& out );

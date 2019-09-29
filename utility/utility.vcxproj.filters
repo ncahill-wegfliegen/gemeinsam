@@ -21,9 +21,6 @@
     <ClInclude Include="resource.h">
       <Filter>module</Filter>
     </ClInclude>
-    <ClInclude Include="array.h" />
-    <ClInclude Include="array_const_iterator.h" />
-    <ClInclude Include="array_iterator.h" />
     <ClInclude Include="browse.h" />
     <ClInclude Include="browse_container.h" />
     <ClInclude Include="browse_iter.h" />
@@ -67,6 +64,11 @@
     <ClInclude Include="value.h" />
     <ClInclude Include="buffer_helper.h" />
     <ClInclude Include="buffer.h" />
+    <ClInclude Include="vector_view.h" />
+    <ClInclude Include="array2d.h" />
+    <ClInclude Include="array_iterator.h" />
+    <ClInclude Include="array_const_iterator.h" />
+    <ClInclude Include="array.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="utility.rc">

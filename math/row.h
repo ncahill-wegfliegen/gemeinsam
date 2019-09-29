@@ -8,7 +8,7 @@ namespace math
 {
 
 template<typename T, typename enable_if::is_math_type<T>* = nullptr>
-using Row = Array<T>;
+using Row = FArray<T>;
 
 }
 }

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "..\port.h"
+#include "../port.h"
 #include "../../log/log.h"
 #include "../../utility/enable_if.h"
 #include "../../utility/type.h"
 #include "../../../../other/TiXml2/tinyxml2.h"
-#include "../../../../other/TiXml2/tinyxml2.h"
 #include <iostream>
+#include <string>
 
 namespace nhill
 {
@@ -64,11 +64,16 @@ tinyxml2::XMLError from_handle( Object& obj, tinyxml2::XMLHandle handle )
 
 /// <summary>Specialization for string.</summary>
 /// <remarks> The stream will stop when it reaches white space. So use this specialization for reading text with whitespace in it.</remarks>
-template<> GS_XML_PORT_FUNCTION
+template<> NHILL_XML_PORT_FUNCTION
 tinyxml2::XMLError from_handle<std::string>( std::string& str, tinyxml2::XMLHandle handle );
 
+/// <summary>Specialization for wstring.</summary>
+/// <remarks> The stream will stop when it reaches white space. So use this specialization for reading text with whitespace in it.</remarks>
+template<> NHILL_XML_PORT_FUNCTION
+tinyxml2::XMLError from_handle<std::wstring>( std::wstring& wstr, tinyxml2::XMLHandle handle );
+
 /// <summary>Specialization for bool.</summary>
-template<> GS_XML_PORT_FUNCTION
+template<> NHILL_XML_PORT_FUNCTION
 tinyxml2::XMLError from_handle<bool>( bool& boolean, tinyxml2::XMLHandle handle );
 
 template<typename Object, typename nhill::enable_if::is_not_enum_type<Object>* = nullptr>

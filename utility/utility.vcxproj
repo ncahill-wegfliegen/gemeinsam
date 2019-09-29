@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array.h" />
+    <ClInclude Include="array2d.h" />
     <ClInclude Include="array_const_iterator.h" />
     <ClInclude Include="array_iterator.h" />
     <ClInclude Include="browse.h" />
@@ -81,6 +82,7 @@
     <ClInclude Include="unique_ptr.h" />
     <ClInclude Include="value.h" />
     <ClInclude Include="value_base.h" />
+    <ClInclude Include="vector_view.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="utility.rc" />

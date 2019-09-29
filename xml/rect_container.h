@@ -13,10 +13,10 @@ namespace nhill
 namespace xml
 {
 
-template<> GS_XML_PORT_FUNCTION
+template<> NHILL_XML_PORT_FUNCTION
 tinyxml2::XMLElement* make_element( tinyxml2::XMLDocument& doc, const nhill::geometry::Rect_container& rects, std::string element_name );
 
-template<> GS_XML_PORT_FUNCTION
+template<> NHILL_XML_PORT_FUNCTION
 tinyxml2::XMLError from_handle( nhill::geometry::Rect_container& rects, tinyxml2::XMLHandle handle );
 
 }

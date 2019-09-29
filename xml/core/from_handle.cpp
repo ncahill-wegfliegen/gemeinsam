@@ -2,6 +2,8 @@
 #include "../../log/log.h"
 #include <sstream>
 
+using namespace std;
+
 /// <summary>Specialization for string.</summary>
 template<>
 tinyxml2::XMLError nhill::xml::from_handle<std::string>( std::string& str, tinyxml2::XMLHandle handle )
@@ -29,6 +31,18 @@ tinyxml2::XMLError nhill::xml::from_handle<std::string>( std::string& str, tinyx
    str = text_value;
 
    return XMLError::XML_SUCCESS;
+}
+
+template<>
+tinyxml2::XMLError nhill::xml::from_handle<std::wstring>( std::wstring& wstr, tinyxml2::XMLHandle handle )
+{
+	string str;
+	tinyxml2::XMLError error{ from_handle<std::string>( str, handle ) };
+	if( error == tinyxml2::XML_NO_ERROR )
+	{
+		wstr = { str.cbegin(), str.cend() };
+	}
+	return error;
 }
 
 /// <summary>Specialization for boolean.</summary>

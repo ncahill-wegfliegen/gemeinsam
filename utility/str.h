@@ -385,22 +385,86 @@ inline std::string to_string( const std::wstring& wstr )
 		return {};
 	}
 
-	size_t sz{ wstr.length() * 4 + 10 };
-	char* s{ new char[sz] };
-	std::fill( s, s + sz, '\0' );
-	size_t retval{0};
-	::wcstombs_s( &retval, s, sz, wstr.c_str(), sz );
-	std::string str{ s };
-	delete[]s;
-	s = nullptr;
+	using facet_type = std::codecvt<wchar_t, char, std::mbstate_t>;
+
+	std::locale mylocale;
+	const facet_type& myfacet{ std::use_facet<facet_type>( mylocale ) };
+	std::wstring::size_type length{ wstr.length() };
+
+	// prepare objects to be filled by codecvt::out:
+	char* pstr{ new char[length + 1]{} };				// the destintaiton buffer (might be too short)
+	std::mbstate_t mystate{ std::mbstate_t{} };	// the shift state object
+	const wchar_t* pwc{ nullptr };					// from_next
+	char* pc{ nullptr };									// to_next
+
+	// translate the characters
+	facet_type::result myresult{
+		myfacet.out(
+			mystate,
+			wstr.c_str(),
+			wstr.c_str() + length + 1,
+			pwc,
+			pstr,
+			pstr + length + 1,
+			pc
+		)
+	};
+
+	std::string str{ pstr };
+
+	delete[] pstr;
+	pstr = nullptr;
 
 	return str;
 }
 
 inline std::wstring to_wstring( const std::string& str )
 {
-	return { str.cbegin(), str.cend() };
+	if( str.length() == 0 )
+	{
+		return {};
+	}
+
+	using facet_type = std::codecvt<wchar_t, char, std::mbstate_t>;
+	
+	std::locale mylocale;
+	const facet_type& myfacet{ std::use_facet<facet_type>( mylocale ) };
+	std::string::size_type length{ str.length() };
+
+	// prepare objects to be filled by codecvt::in:
+	wchar_t* pwstr{ new wchar_t[length + 1]{} };	// the destination buffer (might be too short)
+	std::mbstate_t mystate{ std::mbstate_t{} };	// the shift state object
+	const char* pc{ nullptr };							// from_next
+	wchar_t* pwc{ nullptr };							// to_next
+
+	// translate the characters
+	facet_type::result myresult{
+		myfacet.in(
+			mystate,
+			str.c_str(),
+			str.c_str() + length + 1,
+			pc,
+			pwstr,
+			pwstr + length + 1,
+			pwc
+		)
+	};
+
+	std::wstring wstr{ pwstr };
+
+	delete[] pwstr;
+	pwstr = nullptr;
+
+	return wstr;
 }
 
+template<typename ... Args>
+std::string string_format( const std::string& format, Args ... args )
+{
+	size_t size = snprintf( nullptr, 0, format.c_str(), args ... ) + 1; // Extra space for '\0'
+	std::unique_ptr<char[]> buf( new char[size] );
+	snprintf( buf.get(), size, format.c_str(), args ... );
+	return std::string( buf.get(), buf.get() + size - 1 ); // We don't want the '\0' inside
+}
 }
 }
