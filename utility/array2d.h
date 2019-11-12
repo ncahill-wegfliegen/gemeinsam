@@ -57,6 +57,7 @@ public:
 	const T& operator[]( index_type col ) const;
 
 	index_type col_count() const;
+	index_type row() const;
 
 private:
 	Array2D<T>& arr_;
@@ -75,6 +76,7 @@ public:
 	const T& operator[]( index_type row ) const;
 
 	index_type row_count() const;
+	index_type col() const;
 
 private:
 	Array2D<T>& arr_;
@@ -226,6 +228,12 @@ auto nhill::Row2D<T>::col_count() const->index_type
 {
 	return arr_.col_count();
 }
+
+template<typename T> inline 
+auto nhill::Row2D<T>::row() const->index_type
+{
+	return row_;
+}
 #pragma endregion
 
 #pragma region Col2D Definitions
@@ -253,6 +261,11 @@ template<typename T> inline
 auto nhill::Col2D<T>::row_count() const->index_type
 {
 	return arr_.row_count();
+}
+template<typename T> inline 
+auto nhill::Col2D<T>::col() const->index_type
+{
+	return col_;
 }
 #pragma endregion 
 

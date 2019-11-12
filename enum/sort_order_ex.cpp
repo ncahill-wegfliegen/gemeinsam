@@ -1,4 +1,4 @@
-#include "sort_order.h"
+#include "sort_order_ex.h"
 
 template<>
 const nhill::text::Bundle_container<nhill::Sort_order>& nhill::text::bundle_container<nhill::Sort_order>()

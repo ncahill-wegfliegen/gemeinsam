@@ -60,6 +60,9 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="som.h" />
     <ClInclude Include="sort_order.h" />
+    <ClInclude Include="sort_order_ex.h" />
+    <ClInclude Include="config_source.h" />
+    <ClInclude Include="config_source_ex.h" />
     <ClInclude Include="survey_system.h" />
     <ClInclude Include="survey_system_ex.h" />
   </ItemGroup>
@@ -76,7 +79,8 @@
     <ClCompile Include="month.cpp" />
     <ClCompile Include="product.cpp" />
     <ClCompile Include="som.cpp" />
-    <ClCompile Include="sort_order.cpp" />
+    <ClCompile Include="sort_order_ex.cpp" />
+    <ClCompile Include="config_source_ex.cpp" />
     <ClCompile Include="survey_system_ex.cpp" />
   </ItemGroup>
   <ItemGroup>

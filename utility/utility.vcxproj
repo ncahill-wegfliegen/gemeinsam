@@ -42,6 +42,7 @@
     <ClCompile Include="event_args.cpp" />
     <ClCompile Include="ini.cpp" />
     <ClCompile Include="str_query.cpp" />
+    <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="array.h" />
@@ -66,6 +67,7 @@
     <ClInclude Include="exception\message.h" />
     <ClInclude Include="exception\not_implemented.h" />
     <ClInclude Include="file.h" />
+    <ClInclude Include="get_string.h" />
     <ClInclude Include="ini.h" />
     <ClInclude Include="link_library.h" />
     <ClInclude Include="multi_pnt.h" />
@@ -80,6 +82,7 @@
     <ClInclude Include="str_query.h" />
     <ClInclude Include="type.h" />
     <ClInclude Include="unique_ptr.h" />
+    <ClInclude Include="user.h" />
     <ClInclude Include="value.h" />
     <ClInclude Include="value_base.h" />
     <ClInclude Include="vector_view.h" />

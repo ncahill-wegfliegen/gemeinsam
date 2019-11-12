@@ -398,17 +398,17 @@ inline std::string to_string( const std::wstring& wstr )
 	char* pc{ nullptr };									// to_next
 
 	// translate the characters
-	facet_type::result myresult{
-		myfacet.out(
-			mystate,
-			wstr.c_str(),
-			wstr.c_str() + length + 1,
-			pwc,
-			pstr,
-			pstr + length + 1,
-			pc
-		)
-	};
+	//facet_type::result myresult{
+	myfacet.out(
+		mystate,
+		wstr.c_str(),
+		wstr.c_str() + length + 1,
+		pwc,
+		pstr,
+		pstr + length + 1,
+		pc
+	);
+	//};
 
 	std::string str{ pstr };
 
@@ -438,17 +438,17 @@ inline std::wstring to_wstring( const std::string& str )
 	wchar_t* pwc{ nullptr };							// to_next
 
 	// translate the characters
-	facet_type::result myresult{
-		myfacet.in(
-			mystate,
-			str.c_str(),
-			str.c_str() + length + 1,
-			pc,
-			pwstr,
-			pwstr + length + 1,
-			pwc
-		)
-	};
+	//facet_type::result myresult{
+	myfacet.in(
+		mystate,
+		str.c_str(),
+		str.c_str() + length + 1,
+		pc,
+		pwstr,
+		pwstr + length + 1,
+		pwc
+	);
+	//};
 
 	std::wstring wstr{ pwstr };
 

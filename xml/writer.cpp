@@ -36,7 +36,7 @@ string nhill::xml::Writer::path() const
 
 void nhill::xml::Writer::path( const string & value )
 {
-   namespace fs = experimental::filesystem::v1;
+   namespace fs = filesystem;// experimental::filesystem::v1;
 
    // Check to make sure that the path has valid format
 

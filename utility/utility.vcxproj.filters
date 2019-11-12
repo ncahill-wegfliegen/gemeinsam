@@ -8,6 +8,7 @@
     <ClCompile Include="buffer_helper.cpp" />
     <ClCompile Include="buffer.cpp" />
     <ClCompile Include="event_args.cpp" />
+    <ClCompile Include="user.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="module">
@@ -69,6 +70,8 @@
     <ClInclude Include="array_iterator.h" />
     <ClInclude Include="array_const_iterator.h" />
     <ClInclude Include="array.h" />
+    <ClInclude Include="user.h" />
+    <ClInclude Include="get_string.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="utility.rc">
