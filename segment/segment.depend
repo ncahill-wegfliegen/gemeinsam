@@ -1,0 +1,155 @@
+# depslib dependency file v1.0
+1514140574 source:d:\bemühen\dev\gemeinsam\segment\main.cpp
+	"main.h"
+
+1514140574 d:\bemühen\dev\gemeinsam\segment\main.h
+	<windows.h>
+
+1514140574 source:g:\bemühen\dev\gemeinsam\segment\main.cpp
+	"main.h"
+
+1514140574 g:\bemühen\dev\gemeinsam\segment\main.h
+	<windows.h>
+
+1565716024 source:g:\bemühen\dev\gemeinsam\segment\segment_indexed.cpp
+	"segment_indexed.h"
+	"../geometry/pnt.h"
+	"../math/compare.h"
+	"../utility/exception/message.h"
+
+1564154994 g:\bemühen\dev\gemeinsam\segment\segment_indexed.h
+	"port.h"
+	"segment_base.h"
+	"segment_types.h"
+
+1565018690 g:\bemühen\dev\gemeinsam\segment\port.h
+
+1565018692 g:\bemühen\dev\gemeinsam\segment\segment_base.h
+	"port.h"
+	"segment_types.h"
+	"../geometry/interval.h"
+	"../geometry/pnt_container.h"
+	"../math/compare.h"
+
+1573771084 g:\bemühen\dev\gemeinsam\segment\segment_types.h
+	"../geometry/pnt.h"
+	"../geometry/pnt_container.h"
+	<vector>
+	<memory>
+	<map>
+	<type_traits>
+	<functional>
+
+1565018690 g:\bemühen\dev\gemeinsam\geometry\pnt.h
+	"../math/compare.h"
+	<cmath>
+	<cstdint>
+
+1566688702 g:\bemühen\dev\gemeinsam\math\compare.h
+	"precision.h"
+	"sign.h"
+	"../utility/enable_if.h"
+	<algorithm>
+	<limits>
+
+1565018690 g:\bemühen\dev\gemeinsam\math\precision.h
+	"pow_of_ten.h"
+	"../utility/enable_if.h"
+
+1565018690 g:\bemühen\dev\gemeinsam\math\pow_of_ten.h
+	"../utility/enable_if.h"
+	<cmath>
+
+1566688312 g:\bemühen\dev\gemeinsam\utility\enable_if.h
+	<type_traits>
+	<cstdint>
+	<iterator>
+
+1561841698 g:\bemühen\dev\gemeinsam\math\sign.h
+	<cstdint>
+
+1567550050 g:\bemühen\dev\gemeinsam\geometry\pnt_container.h
+	<vector>
+
+1563991294 g:\bemühen\dev\gemeinsam\geometry\interval.h
+	"interval_interface.h"
+	"endpoint.h"
+	<functional>
+	<sstream>
+	<stdexcept>
+
+1565018690 g:\bemühen\dev\gemeinsam\geometry\interval_interface.h
+	"../math/compare.h"
+	<sstream>
+	<vector>
+
+1565018690 g:\bemühen\dev\gemeinsam\geometry\endpoint.h
+
+1567388946 g:\bemühen\dev\gemeinsam\utility\exception\message.h
+	"../../enum/core/values.h"
+	"../chr.h"
+	<string_view>
+	<string>
+	<ostream>
+	<sstream>
+	<map>
+	<algorithm>
+
+1567388996 g:\bemühen\dev\gemeinsam\enum\core\values.h
+	"int.h"
+	<iterator>
+	<type_traits>
+
+1567391228 g:\bemühen\dev\gemeinsam\enum\core\int.h
+	<type_traits>
+
+1573765344 g:\bemühen\dev\gemeinsam\utility\chr.h
+	"enable_if.h"
+	"exception/not_implemented.h"
+	<filesystem>
+
+1561235046 g:\bemühen\dev\gemeinsam\utility\exception\not_implemented.h
+	<stdexcept>
+
+1565716024 source:g:\bemühen\dev\gemeinsam\segment\segment_stepped.cpp
+	"segment_stepped.h"
+	"../geometry/pnt.h"
+	"../math/compare.h"
+	"../utility/exception/message.h"
+	<cmath>
+
+1565716024 g:\bemühen\dev\gemeinsam\segment\segment_stepped.h
+	"port.h"
+	"segment_base.h"
+
+1565018690 source:g:\bemühen\dev\gemeinsam\segment\curve.cpp
+	"curve.h"
+	"../geometry/pnt.h"
+	"../geometry/interval_helper.h"
+	"../utility/exception/message.h"
+	"../utility/unique_ptr.h"
+
+1564161002 g:\bemühen\dev\gemeinsam\segment\curve.h
+	"port.h"
+	"segment_base.h"
+	"segment_indexed.h"
+	"segment_stepped.h"
+	"segment_types.h"
+
+1573823232 g:\bemühen\dev\gemeinsam\geometry\interval_helper.h
+	"interval.h"
+	<sstream>
+	<stdexcept>
+	<vector>
+	<algorithm>
+
+1560620882 g:\bemühen\dev\gemeinsam\utility\unique_ptr.h
+	<memory>
+
+1573823302 source:g:\bemühen\dev\gemeinsam\segment\segment_base.cpp
+	"segment_base.h"
+	"segment_stepped.h"
+	"segment_indexed.h"
+	"../utility/exception/message.h"
+	<exception>
+

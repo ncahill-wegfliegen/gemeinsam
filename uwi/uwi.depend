@@ -1,0 +1,255 @@
+# depslib dependency file v1.0
+1573585694 source:g:\bemühen\dev\gemeinsam\uwi\dls.cpp
+	"dls.h"
+	"range_direction_helper.h"
+	"format.h"
+	<string>
+	<sstream>
+	<iomanip>
+	<algorithm>
+
+1567611888 g:\bemühen\dev\gemeinsam\uwi\dls.h
+	"port.h"
+	"uwi.h"
+	"location_exception.h"
+	"legal_subdivision.h"
+	"section.h"
+	"township.h"
+	"range.h"
+	"meridian.h"
+	"event_sequence.h"
+	"../utility/compare.h"
+	<cstdint>
+	<string>
+	<string_view>
+
+1566655242 g:\bemühen\dev\gemeinsam\uwi\port.h
+
+1573827740 g:\bemühen\dev\gemeinsam\uwi\uwi.h
+	"port.h"
+	"../compare.h"
+	"../utility/buffer.h"
+	"../enum/survey_system.h"
+	<string_view>
+	<ostream>
+	<istream>
+
+1573827626 g:\bemühen\dev\gemeinsam\utility\buffer.h
+	"port.h"
+	"../compare.h"
+	"../enum/core/int.h"
+	<string_view>
+	<ostream>
+	<cstring>
+
+1565018690 g:\bemühen\dev\gemeinsam\utility\port.h
+
+1566686344 g:\bemühen\dev\gemeinsam\compare.h
+	<type_traits>
+
+1567391228 g:\bemühen\dev\gemeinsam\enum\core\int.h
+	<type_traits>
+
+1567388694 g:\bemühen\dev\gemeinsam\enum\survey_system.h
+	<cstdint>
+
+1573580012 g:\bemühen\dev\gemeinsam\uwi\location_exception.h
+	"port.h"
+	"../utility/strn.h"
+	"../utility/compare.h"
+	<string>
+	<string_view>
+	<ostream>
+	<istream>
+	<memory>
+
+1567290308 g:\bemühen\dev\gemeinsam\uwi\legal_subdivision.h
+	"port.h"
+	"../utility/value.h"
+	<cstdint>
+	<string>
+	<ostream>
+	<iomanip>
+
+1567290308 g:\bemühen\dev\gemeinsam\uwi\section.h
+	"port.h"
+	"../utility/value.h"
+	<cstdint>
+	<string>
+	<ostream>
+	<iomanip>
+
+1567290308 g:\bemühen\dev\gemeinsam\uwi\township.h
+	"port.h"
+	"../utility/value.h"
+	<cstdint>
+	<string>
+	<ostream>
+	<iomanip>
+
+1567290308 g:\bemühen\dev\gemeinsam\uwi\range.h
+	"port.h"
+	"../utility/value.h"
+	<cstdint>
+	<string>
+	<ostream>
+	<iomanip>
+
+1567290308 g:\bemühen\dev\gemeinsam\uwi\meridian.h
+	"port.h"
+	"range_direction.h"
+	"../utility/value.h"
+	<cstdint>
+	<string>
+	<ostream>
+
+1573585694 g:\bemühen\dev\gemeinsam\uwi\range_direction.h
+
+1573579934 g:\bemühen\dev\gemeinsam\uwi\event_sequence.h
+	"port.h"
+	"../utility/strn.h"
+	"../utility/compare.h"
+	<ostream>
+	<string>
+
+1573585694 g:\bemühen\dev\gemeinsam\uwi\range_direction_helper.h
+	"port.h"
+	"range_direction.h"
+
+1567447778 g:\bemühen\dev\gemeinsam\uwi\format.h
+
+1573581288 source:g:\bemühen\dev\gemeinsam\uwi\event_sequence.cpp
+	"event_sequence.h"
+	"../enum/core/int.h"
+	<algorithm>
+	<string>
+
+1566843240 source:g:\bemühen\dev\gemeinsam\uwi\legal_subdivision.cpp
+	"legal_subdivision.h"
+	<stdexcept>
+	<iomanip>
+
+1573593642 source:g:\bemühen\dev\gemeinsam\uwi\list_header.cpp
+	"list_header.h"
+	"../version/version_manager.h"
+	"../enum/format_ex.h"
+
+1567449110 g:\bemühen\dev\gemeinsam\uwi\list_header.h
+	"port.h"
+	"format.h"
+	"../version/version.h"
+	<ostream>
+	<istream>
+
+1567449074 g:\bemühen\dev\gemeinsam\version\version.h
+	"port.h"
+	"../utility/object.h"
+	<ostream>
+	<istream>
+	<cstdint>
+
+1565018692 g:\bemühen\dev\gemeinsam\version\port.h
+
+1567448396 g:\bemühen\dev\gemeinsam\version\version_manager.h
+	"port.h"
+	"version.h"
+
+1573599422 g:\bemühen\dev\gemeinsam\enum\format_ex.h
+	"../uwi/format.h"
+	"port.h"
+	"../enum/core/text/bundle_container.h"
+	"../enum/core/values.h"
+	"../enum/core/text/methods.h"
+	"../enum/core/text/stream_in.h"
+	"../enum/core/text/stream_out.h"
+
+1565018690 g:\bemühen\dev\gemeinsam\enum\port.h
+
+1565018690 g:\bemühen\dev\gemeinsam\enum\core\text\bundle_container.h
+	"bundle.h"
+	"../../../utility/exception/not_implemented.h"
+	<map>
+	<initializer_list>
+	<string_view>
+
+1565018690 g:\bemühen\dev\gemeinsam\enum\core\text\bundle.h
+	"../../port.h"
+	"../text.h"
+	<string_view>
+	<map>
+	<initializer_list>
+
+1563032872 g:\bemühen\dev\gemeinsam\enum\core\text.h
+
+1567388996 g:\bemühen\dev\gemeinsam\enum\core\values.h
+	"int.h"
+	<iterator>
+	<type_traits>
+
+1567445882 g:\bemühen\dev\gemeinsam\enum\core\text\methods.h
+	"bundle_container.h"
+	"../../../utility/str.h"
+	<string>
+	<algorithm>
+
+1563563430 g:\bemühen\dev\gemeinsam\enum\core\text\stream_in.h
+	"methods.h"
+	<istream>
+
+1567444900 g:\bemühen\dev\gemeinsam\enum\core\text\stream_out.h
+	"methods.h"
+	<ostream>
+
+1573580012 source:g:\bemühen\dev\gemeinsam\uwi\location_exception.cpp
+	"location_exception.h"
+	"../enum/core/int.h"
+	<sstream>
+	<iomanip>
+	<algorithm>
+	<gsl/gsl_assert>
+
+1560400068 g:\bemühen\other\gsl-master\include\gsl\gsl_assert
+	<exception>
+	<stdexcept>
+	<intrin.h>
+
+1514140574 source:g:\bemühen\dev\gemeinsam\uwi\main.cpp
+	"main.h"
+
+1514140574 g:\bemühen\dev\gemeinsam\uwi\main.h
+	<windows.h>
+
+1566836872 source:g:\bemühen\dev\gemeinsam\uwi\meridian.cpp
+	"meridian.h"
+	<stdexcept>
+
+1566836872 source:g:\bemühen\dev\gemeinsam\uwi\range.cpp
+	"range.h"
+	<stdexcept>
+
+1573585694 source:g:\bemühen\dev\gemeinsam\uwi\range_direction_helper.cpp
+	"range_direction_helper.h"
+
+1566836872 source:g:\bemühen\dev\gemeinsam\uwi\section.cpp
+	"section.h"
+	<stdexcept>
+
+1566836872 source:g:\bemühen\dev\gemeinsam\uwi\township.cpp
+	"township.h"
+	<stdexcept>
+
+1573579638 source:g:\bemühen\dev\gemeinsam\uwi\uwi.cpp
+	"uwi.h"
+	"../enum/survey_system_ex.h"
+	"dls.h"
+	<algorithm>
+
+1567447544 g:\bemühen\dev\gemeinsam\enum\survey_system_ex.h
+	"survey_system.h"
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/values.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+

@@ -1,7 +1,7 @@
 #include <windows.h>
 #include "ini.h"
-#include "file.h"
-#include "exception/Invalid_path.h"
+#include "../file.h"
+#include "../exception/Invalid_path.h"
 #include <sstream>
 
 nhill::Ini::Ini( const std::string& path /*= ""*/, const std::string& section /*= ""*/, const std::string& key /*= ""*/ )
@@ -57,7 +57,7 @@ std::string nhill::Ini::read( const std::string& path, const std::string& sectio
    const DWORD value_size{ 2048 };
    char value[value_size]{};
 
-   // Get the Value string out of the Ini file. 
+   // Get the Value string out of the Ini file.
    ::GetPrivateProfileStringA(
       section.c_str(),
       key.c_str(),

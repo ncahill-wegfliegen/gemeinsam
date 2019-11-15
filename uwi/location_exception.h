@@ -1,8 +1,8 @@
 #pragma once
 
 #include "port.h"
-#include "../utility/strn.h"
-#include "../utility/compare.h"
+#include "../strn.h"
+#include "../compare.h"
 #include <string>
 #include <string_view>
 #include <ostream>

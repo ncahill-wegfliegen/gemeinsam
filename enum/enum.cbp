@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="enum" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/enum" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-g" />
+					<Add option="-DBUILD_DLL" />
+				</Compiler>
+				<Linker>
+					<Add library="user32" />
+					<Add directory="../text/bin/Debug" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/enum" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-Wall" />
+					<Add option="-DBUILD_DLL" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="user32" />
+					<Add directory="../text/bin/Release" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-DNHILL_ENUM_EXPORT=1" />
+		</Compiler>
+		<Linker>
+			<Add library="text" />
+		</Linker>
+		<Unit filename="config_source.h" />
+		<Unit filename="config_source_ex.h" />
+		<Unit filename="core/increment.h" />
+		<Unit filename="core/int.h" />
+		<Unit filename="core/text.h" />
+		<Unit filename="core/text/bundle.cpp" />
+		<Unit filename="core/text/bundle.h" />
+		<Unit filename="core/text/bundle_container.h" />
+		<Unit filename="core/text/methods.h" />
+		<Unit filename="core/text/stream_in.h" />
+		<Unit filename="core/text/stream_out.h" />
+		<Unit filename="core/values.h" />
+		<Unit filename="delim.cpp" />
+		<Unit filename="delim.h" />
+		<Unit filename="delimiter.cpp" />
+		<Unit filename="delimiter.h" />
+		<Unit filename="format_ex.cpp" />
+		<Unit filename="format_ex.h" />
+		<Unit filename="log_level.cpp" />
+		<Unit filename="log_level.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="month.cpp" />
+		<Unit filename="month.h" />
+		<Unit filename="port.h" />
+		<Unit filename="product.cpp" />
+		<Unit filename="product.h" />
+		<Unit filename="province.cpp" />
+		<Unit filename="province.h" />
+		<Unit filename="province_container.h" />
+		<Unit filename="range_direction_ex.cpp" />
+		<Unit filename="range_direction_ex.h" />
+		<Unit filename="resource.h" />
+		<Unit filename="som.cpp" />
+		<Unit filename="som.h" />
+		<Unit filename="sort_order.h" />
+		<Unit filename="sort_order_ex.cpp" />
+		<Unit filename="sort_order_ex.h" />
+		<Unit filename="survey_system.h" />
+		<Unit filename="survey_system_ex.cpp" />
+		<Unit filename="survey_system_ex.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

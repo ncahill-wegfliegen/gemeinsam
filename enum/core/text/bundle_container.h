@@ -1,7 +1,7 @@
 #pragma once
 
 #include "bundle.h"
-#include "../../../utility/exception/not_implemented.h"
+#include "../../../exception/not_implemented.h"
 #include <map>
 #include <initializer_list>
 #include <string_view>
@@ -17,7 +17,7 @@ class Bundle_container
 public:
    using Inner_container = std::map<Enum, nhill::text::Bundle>;
 
-   
+
    Bundle_container();
    Bundle_container( Enum e, std::string_view string );
    Bundle_container( std::initializer_list<std::pair<const Enum, nhill::text::Bundle>> init_list );
@@ -55,7 +55,7 @@ const std::string nhill::text::Bundle_container<Enum, ef>::empty_string_{ "" };
 template<typename Enum, std::enable_if_t<std::is_enum_v<Enum>>* ef> inline
 nhill::text::Bundle_container<Enum, ef>::Bundle_container() = default;
 
-template<typename Enum, std::enable_if_t<std::is_enum_v<Enum>>* ef> inline 
+template<typename Enum, std::enable_if_t<std::is_enum_v<Enum>>* ef> inline
 nhill::text::Bundle_container<Enum, ef>::Bundle_container( Enum e, std::string_view string )
    : cont_{ {{e, string}} }
 {

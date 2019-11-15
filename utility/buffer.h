@@ -1,7 +1,7 @@
 #pragma once
 
 #include "port.h"
-#include "compare.h"
+#include "../compare.h"
 #include "../enum/core/int.h"
 #include <string_view>
 #include <ostream>

@@ -1,5 +1,5 @@
 #include "color_helper.h"
-#include "str.h"
+#include "../str.h"
 #include <sstream>
 #include <cmath>
 

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+	<Workspace title="Gemeinsam">
+		<Project filename="utility/utility.cbp" />
+		<Project filename="enum/enum.cbp">
+			<Depends filename="text/text.cbp" />
+		</Project>
+		<Project filename="text/text.cbp" />
+		<Project filename="uwi/uwi.cbp">
+			<Depends filename="utility/utility.cbp" />
+			<Depends filename="enum/enum.cbp" />
+			<Depends filename="version/version.cbp" />
+		</Project>
+		<Project filename="version/version.cbp" />
+		<Project filename="date_time/date_time.cbp">
+			<Depends filename="enum/enum.cbp" />
+		</Project>
+		<Project filename="crypt/crypt.cbp" />
+		<Project filename="som/som.cbp" />
+		<Project filename="math/math.cbp" />
+		<Project filename="geometry/geometry.cbp">
+			<Depends filename="math/math.cbp" />
+		</Project>
+		<Project filename="segment/segment.cbp">
+			<Depends filename="utility/utility.cbp" />
+			<Depends filename="geometry/geometry.cbp" />
+		</Project>
+	</Workspace>
+</CodeBlocks_workspace_file>

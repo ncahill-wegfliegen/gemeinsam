@@ -1,0 +1,219 @@
+# depslib dependency file v1.0
+1573593032 source:g:\bemühen\dev\gemeinsam\enum\core\text\bundle.cpp
+	"bundle.h"
+	<algorithm>
+	<ctype.h>
+	<stdexcept>
+
+1565018690 g:\bemühen\dev\gemeinsam\enum\core\text\bundle.h
+	"../../port.h"
+	"../text.h"
+	<string_view>
+	<map>
+	<initializer_list>
+
+1565018690 g:\bemühen\dev\gemeinsam\enum\port.h
+
+1563032872 g:\bemühen\dev\gemeinsam\enum\core\text.h
+
+1563563430 source:g:\bemühen\dev\gemeinsam\enum\delim.cpp
+	"delim.h"
+
+1568008148 g:\bemühen\dev\gemeinsam\enum\delim.h
+	<cstdint>
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/values.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+	"../utility/chr.h"
+
+1573827772 g:\bemühen\dev\gemeinsam\enum\core\text\bundle_container.h
+	"bundle.h"
+	"../../../exception/not_implemented.h"
+	<map>
+	<initializer_list>
+	<string_view>
+
+1561235046 g:\bemühen\dev\gemeinsam\exception\not_implemented.h
+	<stdexcept>
+
+1567388996 g:\bemühen\dev\gemeinsam\enum\core\values.h
+	"int.h"
+	<iterator>
+	<type_traits>
+
+1567391228 g:\bemühen\dev\gemeinsam\enum\core\int.h
+	<type_traits>
+
+1567445882 g:\bemühen\dev\gemeinsam\enum\core\text\methods.h
+	"bundle_container.h"
+	"../../../utility/str.h"
+	<string>
+	<algorithm>
+
+1563563430 g:\bemühen\dev\gemeinsam\enum\core\text\stream_in.h
+	"methods.h"
+	<istream>
+
+1567444900 g:\bemühen\dev\gemeinsam\enum\core\text\stream_out.h
+	"methods.h"
+	<ostream>
+
+1563556682 source:g:\bemühen\dev\gemeinsam\enum\delimiter.cpp
+	"delimiter.h"
+
+1563563430 g:\bemühen\dev\gemeinsam\enum\delimiter.h
+	"port.h"
+	"delim.h"
+
+1567448032 source:g:\bemühen\dev\gemeinsam\enum\format_ex.cpp
+	"format_ex.h"
+
+1573599422 g:\bemühen\dev\gemeinsam\enum\format_ex.h
+	"../uwi/format.h"
+	"port.h"
+	"../enum/core/text/bundle_container.h"
+	"../enum/core/values.h"
+	"../enum/core/text/methods.h"
+	"../enum/core/text/stream_in.h"
+	"../enum/core/text/stream_out.h"
+
+1567447778 g:\bemühen\dev\gemeinsam\uwi\format.h
+
+1563563430 source:g:\bemühen\dev\gemeinsam\enum\log_level.cpp
+	"log_level.h"
+
+1565018690 g:\bemühen\dev\gemeinsam\enum\log_level.h
+	"../log/level.h"
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+
+1567390240 g:\bemühen\dev\gemeinsam\log\level.h
+
+1514140574 source:g:\bemühen\dev\gemeinsam\enum\main.cpp
+	"main.h"
+
+1514140574 g:\bemühen\dev\gemeinsam\enum\main.h
+	<windows.h>
+
+1573593494 source:g:\bemühen\dev\gemeinsam\enum\month.cpp
+	"month.h"
+	"core/int.h"
+	"../utility/str.h"
+	"../math/compare.h"
+	<ctime>
+
+1566239364 g:\bemühen\dev\gemeinsam\enum\month.h
+	<cstdint>
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+	"../utility/compare.h"
+
+1566688702 g:\bemühen\dev\gemeinsam\math\compare.h
+	"precision.h"
+	"sign.h"
+	"../utility/enable_if.h"
+	<algorithm>
+	<limits>
+
+1565018690 g:\bemühen\dev\gemeinsam\math\precision.h
+	"pow_of_ten.h"
+	"../utility/enable_if.h"
+
+1565018690 g:\bemühen\dev\gemeinsam\math\pow_of_ten.h
+	"../utility/enable_if.h"
+	<cmath>
+
+1561841698 g:\bemühen\dev\gemeinsam\math\sign.h
+	<cstdint>
+
+1563563430 source:g:\bemühen\dev\gemeinsam\enum\product.cpp
+	"product.h"
+
+1567390240 g:\bemühen\dev\gemeinsam\enum\product.h
+	<cstdint>
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/values.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+
+1563563430 source:g:\bemühen\dev\gemeinsam\enum\province.cpp
+	"province.h"
+
+1567390240 g:\bemühen\dev\gemeinsam\enum\province.h
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/values.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+
+1573585674 source:g:\bemühen\dev\gemeinsam\enum\range_direction_ex.cpp
+	"range_direction_ex.h"
+
+1573588544 g:\bemühen\dev\gemeinsam\enum\range_direction_ex.h
+	"../uwi/range_direction.h"
+	"port.h"
+	"../enum/core/text/bundle_container.h"
+	"../enum/core/text/methods.h"
+	"../enum/core/text/stream_in.h"
+	"../enum/core/text/stream_out.h"
+
+1573585694 g:\bemühen\dev\gemeinsam\uwi\range_direction.h
+
+1563563614 source:g:\bemühen\dev\gemeinsam\enum\som.cpp
+	"som.h"
+
+1565018690 g:\bemühen\dev\gemeinsam\enum\som.h
+	<cstdint>
+	"../som/som.h"
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+	"../utility/exception/not_implemented.h"
+
+1567390240 g:\bemühen\dev\gemeinsam\som\som.h
+	<cstdint>
+
+1570986718 source:g:\bemühen\dev\gemeinsam\enum\sort_order_ex.cpp
+	"sort_order_ex.h"
+
+1570986720 g:\bemühen\dev\gemeinsam\enum\sort_order_ex.h
+	"sort_order.h"
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/values.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+
+1570986720 g:\bemühen\dev\gemeinsam\enum\sort_order.h
+	<cstdint>
+
+1567387952 source:g:\bemühen\dev\gemeinsam\enum\survey_system_ex.cpp
+	"survey_system_ex.h"
+
+1567447544 g:\bemühen\dev\gemeinsam\enum\survey_system_ex.h
+	"survey_system.h"
+	"port.h"
+	"core/text/bundle_container.h"
+	"core/values.h"
+	"core/text/methods.h"
+	"core/text/stream_in.h"
+	"core/text/stream_out.h"
+
+1567388694 g:\bemühen\dev\gemeinsam\enum\survey_system.h
+	<cstdint>
+

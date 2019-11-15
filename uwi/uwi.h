@@ -1,7 +1,7 @@
 #pragma once
 
 #include "port.h"
-#include "../utility/compare.h"
+#include "../compare.h"
 #include "../utility/buffer.h"
 #include "../enum/survey_system.h"
 #include <string_view>

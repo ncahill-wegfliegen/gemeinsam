@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="text" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/text" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-DBUILD_DLL" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="user32" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/text" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-DBUILD_DLL" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="user32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-DNHILL_TEXT_EXPORT=1" />
+		</Compiler>
+		<Unit filename="abbreviated.cpp" />
+		<Unit filename="abbreviated.h" />
+		<Unit filename="abbreviation.cpp" />
+		<Unit filename="abbreviation.h" />
+		<Unit filename="code.cpp" />
+		<Unit filename="code.h" />
+		<Unit filename="coded.cpp" />
+		<Unit filename="coded.h" />
+		<Unit filename="described.cpp" />
+		<Unit filename="described.h" />
+		<Unit filename="description.cpp" />
+		<Unit filename="description.h" />
+		<Unit filename="label.cpp" />
+		<Unit filename="label.h" />
+		<Unit filename="labeled.cpp" />
+		<Unit filename="labeled.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="name.cpp" />
+		<Unit filename="name.h" />
+		<Unit filename="named.cpp" />
+		<Unit filename="named.h" />
+		<Unit filename="port.h" />
+		<Unit filename="resource.h" />
+		<Unit filename="string.cpp" />
+		<Unit filename="string.h" />
+		<Unit filename="string_getable.cpp" />
+		<Unit filename="string_getable.h" />
+		<Unit filename="string_setable.cpp" />
+		<Unit filename="string_setable.h" />
+		<Unit filename="stringed.cpp" />
+		<Unit filename="stringed.h" />
+		<Unit filename="title.cpp" />
+		<Unit filename="title.h" />
+		<Unit filename="titled.cpp" />
+		<Unit filename="titled.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

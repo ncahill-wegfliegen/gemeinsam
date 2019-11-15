@@ -1,12 +1,12 @@
 #pragma once
 
 #include "port.h"
-#include "color.h"
+#include "../color.h"
 #include <cstdint>
 #include <string>
 #include <string_view>
 
-#pragma 
+#pragma
 namespace nhill
 {
 

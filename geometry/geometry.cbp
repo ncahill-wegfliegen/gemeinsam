@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="geometry" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/geometry" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-DBUILD_DLL" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="user32" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/geometry" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-Wall" />
+					<Add option="-DBUILD_DLL" />
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="user32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-DNHILL_GEOMETRY_EXPORT=1" />
+			<Add option="-D_USE_MATH_DEFINES=1" />
+			<Add directory="../../../other/GSL-master/include" />
+		</Compiler>
+		<Linker>
+			<Add library="m" />
+		</Linker>
+		<Unit filename="Line_param.h" />
+		<Unit filename="angle.cpp" />
+		<Unit filename="angle.h" />
+		<Unit filename="arcdegree.h" />
+		<Unit filename="arcminute.cpp" />
+		<Unit filename="arcminute.h" />
+		<Unit filename="arcsecond.h" />
+		<Unit filename="convert.cpp" />
+		<Unit filename="convert.h" />
+		<Unit filename="convert_pnt.h" />
+		<Unit filename="convert_vector.h" />
+		<Unit filename="cylindrical.h" />
+		<Unit filename="degree.h" />
+		<Unit filename="endpoint.h" />
+		<Unit filename="interval.h" />
+		<Unit filename="interval_helper.h" />
+		<Unit filename="interval_interface.h" />
+		<Unit filename="latitude.cpp" />
+		<Unit filename="latitude.h" />
+		<Unit filename="line_cartesian.h" />
+		<Unit filename="line_polar.h" />
+		<Unit filename="longitude.cpp" />
+		<Unit filename="longitude.h" />
+		<Unit filename="magnitude.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Unit filename="milliarcsecond.cpp" />
+		<Unit filename="milliarcsecond.h" />
+		<Unit filename="pnt.h" />
+		<Unit filename="pnt3.h" />
+		<Unit filename="pnt3_container.h" />
+		<Unit filename="pnt_container.h" />
+		<Unit filename="polar.h" />
+		<Unit filename="polygon.h" />
+		<Unit filename="polygon_container.h" />
+		<Unit filename="port.h" />
+		<Unit filename="radian.h" />
+		<Unit filename="rect.h" />
+		<Unit filename="rect_container.h" />
+		<Unit filename="sangle.cpp" />
+		<Unit filename="sangle.h" />
+		<Unit filename="spherical.h" />
+		<Unit filename="uangle.cpp" />
+		<Unit filename="uangle.h" />
+		<Unit filename="vector.h" />
+		<Unit filename="vector3.h" />
+		<Unit filename="vector_algebra.h" />
+		<Unit filename="vector_polar.h" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
