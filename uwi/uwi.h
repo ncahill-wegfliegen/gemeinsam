@@ -20,10 +20,10 @@ class NHILL_UWI_PORT_CLASS Uwi
 {
 public:
 	Uwi();
-	
+
 	Uwi( const uwi::Dls& dls );
 	Uwi& operator=( const uwi::Dls& dls );
-	
+
 	//Uwi( const Nts& nts );
 	//Uwi& operator=( const Nts& nts );
 
@@ -50,7 +50,7 @@ public:
 	/// <summary>The number of characters (not including null terminator).</summary>
 	size_t length() const;
 	/// <summary>The size of internal buffer (including null terminator): size = length + 1.</summary>
-	size_t size() const; 
+	size_t size() const;
 
 	///  <summary>This method does NOT validate the string.
 	///     <para>You have to be absolutely certain that the string is a valid uwi sort format.</para>
@@ -68,7 +68,7 @@ namespace nhill
 {
 
 template<> NHILL_UWI_PORT_FUNCTION
-Compare compare( const Uwi& a, const Uwi& b );
+Compare compare( const Uwi& a, const Uwi& b ) noexcept;
 
 NHILL_UWI_PORT_FUNCTION bool operator==( const Uwi& a, const Uwi& b );
 NHILL_UWI_PORT_FUNCTION bool operator!=( const Uwi& a, const Uwi& b );

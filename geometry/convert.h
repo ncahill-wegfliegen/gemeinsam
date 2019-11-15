@@ -1,8 +1,9 @@
-﻿#pragma once
+#pragma once
 
 #include "port.h"
 #include "../math/constants.h"
 #include <string>
+#include <tuple>
 
 namespace nhill
 {
@@ -14,7 +15,7 @@ P cartesian_to_polar_r( C x_, C y_ )
 {
    static_assert(std::is_floating_point_v<P>, "The radian parameter must be a floating point type: float, double, or long double.");
    static_assert(std::is_arithmetic_v<C>    , "The cartesian parameters must be an arithmetic type (i.e., either integral or floating point type).");
-   
+
    using namespace std;
 
    P x{static_cast<P>(x_)};
@@ -26,7 +27,7 @@ P cartesian_to_polar_r( C x_, C y_ )
 }
 
 template<typename P, typename C> inline
-P cartesian_to_polar_θ( C x_, C y_ )
+P cartesian_to_polar_theta( C x_, C y_ )
 {
    static_assert(std::is_floating_point_v<P>, "The radian parameter must be a floating point type: float, double, or long double.");
    static_assert(std::is_arithmetic_v<C>, "The cartesian parameters must be an arithmetic type (i.e., either integral or floating point type).");
@@ -36,9 +37,9 @@ P cartesian_to_polar_θ( C x_, C y_ )
    P x{static_cast<P>(x_)};
    P y{static_cast<P>(y_)};
 
-   P θ{atan2<P,P>( x, y )};
+   P theta{atan2<P,P>( x, y )};
 
-   return θ;
+   return theta;
 }
 
 template<typename P, typename C> inline
@@ -53,9 +54,9 @@ std::tuple<P, P> cartesian_to_polar( C x_, C y_ )
    P y{static_cast<P>(y_)};
 
    P r{hypot<P,P>( x, y )};
-   P θ{atan2<P,P>( x, y )};
+   P theta{atan2<P,P>( x, y )};
 
-   return make_tuple( r, θ );
+   return make_tuple( r, theta );
 }
 
 
@@ -65,25 +66,25 @@ std::tuple<P, P> cartesian_to_polar( C x_, C y_ )
 
 
 template<typename C, typename P, std::enable_if_t<std::is_floating_point_v<C>>* = nullptr>
-C polar_to_cartesian_x( P r, P θ )
+C polar_to_cartesian_x( P r, P theta )
 {
    static_assert(std::is_floating_point_v<P>, "The polar parameters must be a floating point type: float, double, or long double.");
 
    using namespace std;
 
-   P x{r * cos( θ )};
+   P x{r * cos( theta )};
 
    return static_cast<C>(x);
 }
 
 template<typename C, typename P, std::enable_if_t<std::is_integral_v<C>>* = nullptr>
-C polar_to_cartesian_x( P r, P θ )
+C polar_to_cartesian_x( P r, P theta )
 {
    static_assert(std::is_floating_point_v<P>, "The polar parameters must be a floating point type: float, double, or long double.");
 
    using namespace std;
 
-   P x{r * cos( θ )};
+   P x{r * cos( theta )};
 
    x = round( x );
 
@@ -91,25 +92,25 @@ C polar_to_cartesian_x( P r, P θ )
 }
 
 template<typename C, typename P, std::enable_if_t<std::is_floating_point_v<C>>* = nullptr>
-C polar_to_cartesian_y( P r, P θ )
+C polar_to_cartesian_y( P r, P theta )
 {
    static_assert(std::is_floating_point_v<P>, "The polar parameters must be a floating point type: float, double, or long double.");
-   
+
    using namespace std;
 
-   P y{r * sin( θ )};
+   P y{r * sin( theta )};
 
    return static_cast<C>(y);
 }
 
 template<typename C, typename P, std::enable_if_t<std::is_integral_v<C>>* = nullptr>
-C polar_to_cartesian_y( P r, P θ )
+C polar_to_cartesian_y( P r, P theta )
 {
    static_assert(std::is_floating_point_v<P>, "The polar parameters must be a floating point type: float, double, or long double.");
-   
+
    using namespace std;
 
-   P y{r * sin( θ )};
+   P y{r * sin( theta )};
 
    y = round( y );
 
@@ -117,27 +118,27 @@ C polar_to_cartesian_y( P r, P θ )
 }
 
 template<typename C, typename P, std::enable_if_t<std::is_floating_point_v<C>>* = nullptr>
-std::tuple<C, C> polar_to_cartesian( P r, P θ )
+std::tuple<C, C> polar_to_cartesian( P r, P theta )
 {
    static_assert(std::is_floating_point_v<P>, "The polar type must be a floating point type: float, double, or long double.");
 
    using namespace std;
 
-   P x{r * cos( θ )};
-   P y{r * sin( θ )};
+   P x{r * cos( theta )};
+   P y{r * sin( theta )};
 
    return std::make_tuple( static_cast<C>(x), static_cast<C>(y) );
 }
 
 template<typename C, typename P, std::enable_if_t<std::is_integral_v<C>>* = nullptr>
-std::tuple<C, C> polar_to_cartesian( P r, P θ )
+std::tuple<C, C> polar_to_cartesian( P r, P theta )
 {
    static_assert(std::is_floating_point_v<P>, "The polar type must be a floating point type: float, double, or long double.");
-  
+
    using namespace std;
 
-   P x{r * cos( θ )};
-   P y{r * sin( θ )};
+   P x{r * cos( theta )};
+   P y{r * sin( theta )};
 
    x = round( x );
    y = round( y );

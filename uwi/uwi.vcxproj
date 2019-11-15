@@ -28,13 +28,12 @@
     <ClInclude Include="port.h" />
     <ClInclude Include="range.h" />
     <ClInclude Include="range_direction.h" />
-    <ClInclude Include="range_direction_ex.h" />
+    <ClInclude Include="range_direction_helper.h" />
     <ClInclude Include="section.h" />
     <ClInclude Include="township.h" />
     <ClInclude Include="uwi.h" />
     <ClInclude Include="list.h" />
     <ClInclude Include="format.h" />
-    <ClInclude Include="format_ex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dls.cpp" />
@@ -44,12 +43,11 @@
     <ClCompile Include="location_exception.cpp" />
     <ClCompile Include="meridian.cpp" />
     <ClCompile Include="range.cpp" />
-    <ClCompile Include="range_direction_ex.cpp" />
+    <ClCompile Include="range_direction_helper.cpp" />
     <ClCompile Include="section.cpp" />
     <ClCompile Include="township.cpp" />
     <ClCompile Include="uwi.cpp" />
     <ClCompile Include="list.cpp" />
-    <ClCompile Include="format_ex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\enum\enum.vcxproj">

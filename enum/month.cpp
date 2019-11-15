@@ -3,7 +3,7 @@
 #include "../utility/str.h"
 #include "../math/compare.h"
 #include <ctime>
-#include <locale>
+//#include <locale>
 
 using namespace std;
 
@@ -20,7 +20,8 @@ string label( Month month )
    tm.tm_mday = 1;
 
    char label[12]{};
-   ::_strftime_l( &label[0], sizeof label,"%b", &tm, ::_get_current_locale() );
+//   ::_strftime_l( &label[0], sizeof label,"%b", &tm, ::_get_current_locale() );
+   ::strftime( &label[0], sizeof label,"%b", &tm);
 
    return &label[0];
 }
@@ -40,7 +41,8 @@ string description( Month month )
    tm.tm_mday = 1;
 
    char desc[32]{};
-   ::_strftime_l( &desc[0], sizeof desc, "%B", &tm, ::_get_current_locale() );
+//   ::_strftime_l( &desc[0], sizeof desc, "%B", &tm, ::_get_current_locale() );
+   ::strftime( &desc[0], sizeof desc, "%B", &tm );
 
    return &desc[0];
 }
@@ -99,7 +101,7 @@ nhill::Month nhill::current_month()
    errno_t err{ ::localtime_s( &today, &tt ) };
    if( err != 0 )
    {
-      throw std::exception( "Cannot get the current month." );
+      throw std::logic_error( "Cannot get the current month." );
    }
 
    return from_umonth(today.tm_mon + 1 );

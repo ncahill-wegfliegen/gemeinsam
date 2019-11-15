@@ -45,9 +45,6 @@
     <ClInclude Include="range_direction.h">
       <Filter>dls</Filter>
     </ClInclude>
-    <ClInclude Include="range_direction_ex.h">
-      <Filter>dls</Filter>
-    </ClInclude>
     <ClInclude Include="uwi.h">
       <Filter>uwi</Filter>
     </ClInclude>
@@ -57,11 +54,11 @@
     <ClInclude Include="list.h">
       <Filter>uwi</Filter>
     </ClInclude>
-    <ClInclude Include="format_ex.h">
-      <Filter>uwi</Filter>
-    </ClInclude>
     <ClInclude Include="list_header.h">
       <Filter>uwi</Filter>
+    </ClInclude>
+    <ClInclude Include="range_direction_helper.h">
+      <Filter>dls</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -89,20 +86,17 @@
     <ClCompile Include="event_sequence.cpp">
       <Filter>dls</Filter>
     </ClCompile>
-    <ClCompile Include="range_direction_ex.cpp">
-      <Filter>dls</Filter>
-    </ClCompile>
     <ClCompile Include="uwi.cpp">
       <Filter>uwi</Filter>
     </ClCompile>
     <ClCompile Include="list.cpp">
       <Filter>uwi</Filter>
     </ClCompile>
-    <ClCompile Include="format_ex.cpp">
-      <Filter>uwi</Filter>
-    </ClCompile>
     <ClCompile Include="list_header.cpp">
       <Filter>uwi</Filter>
+    </ClCompile>
+    <ClCompile Include="range_direction_helper.cpp">
+      <Filter>dls</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

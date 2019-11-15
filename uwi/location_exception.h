@@ -16,7 +16,7 @@ namespace uwi
 namespace dls
 {
 
-class NHILL_UWI_PORT_CLASS Location_exception 
+class NHILL_UWI_PORT_CLASS Location_exception
 {
 public:
 	using Str = Strn<2>;
@@ -53,7 +53,7 @@ public:
 
 	/// <summary>Beware! No checking and no validation.<para>Only use this if you are absolutely certian that the string is a valid two character DLS location exception.</para></summary>
 	/// <exception cref="std::invalid_argument">Thrown if the length of the string is greater than two characters.</exception>
-	void set_unchecked( std::string_view s ); 
+	void set_unchecked( std::string_view s );
 
 private:
 #pragma warning(suppress:4251)
@@ -67,7 +67,7 @@ private:
 namespace nhill
 {
 template<> NHILL_UWI_PORT_FUNCTION inline
-Compare compare( const uwi::dls::Location_exception& a, const uwi::dls::Location_exception& b );
+Compare compare( const uwi::dls::Location_exception& a, const uwi::dls::Location_exception& b ) noexcept;
 
 namespace uwi
 {

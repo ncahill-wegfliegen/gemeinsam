@@ -104,7 +104,7 @@ Angle to_angle(geometry::Degree<T> deg)
 
    // The value of the floating point degree,
    // adjusted to be in the interval [0,360).
-   geometry::adjust_c0_o360(deg);
+   geometry::adjust_degree_c0_o360(deg);
    T value{ deg.value() };
 
    // Determine the arcdegree

@@ -169,7 +169,7 @@ template<typename C>
 template<typename P> inline
 P nhill::geometry::Vector<C>::θ() const
 {
-   return cartesian_to_polar_θ<P, C>( x_, y_ );
+   return cartesian_to_polar_theta<P, C>( x_, y_ );
 }
 
 template<typename C>

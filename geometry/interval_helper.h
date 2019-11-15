@@ -106,7 +106,7 @@ void sort_increasing( Interval_interface_uptr_container<T>& intervals )
 template<typename T, template <typename, typename> class A_compare, template <typename, typename> class B_compare>
 void sort_increasing( Interval_container<T, A_compare, B_compare>& intervals )
 {
-   std::sort( intervals.begin(), intervals.end(), nhill::less<T> );
+   std::sort( intervals.begin(), intervals.end(), less<T> );
 }
 
 template<typename T, template <typename, typename> class A_compare, template <typename, typename> class B_compare>
@@ -141,7 +141,7 @@ bool disjoint( typename Interval_interface<T>::cref i1, typename Interval_interf
       // 'a' of interval 1 is less than 'a' of interval 2
 
       // case            A           B           C           D               E
-      // interval 1   |-----|     |-----|     |-----|     |-----|         |-----| 
+      // interval 1   |-----|     |-----|     |-----|     |-----|         |-----|
       // interval 2     |--|        |---|       |-----|         |---|             |---|
 
       // Compare 'b' of interval 1 to 'a' of interval '2'
@@ -164,7 +164,7 @@ bool disjoint( typename Interval_interface<T>::cref i1, typename Interval_interf
 
       // case            A           B           C           D               E
       // interval 1     |--|        |---|       |-----|         |---|             |---|
-      // interval 2   |-----|     |-----|     |-----|     |-----|         |-----| 
+      // interval 2   |-----|     |-----|     |-----|     |-----|         |-----|
 
       // Compare 'a' of interval 1 to 'b' of interval 2
       int cmp_ab = compare<T, T>( i1.a(), i2.b() );
@@ -253,7 +253,7 @@ bool subset( typename Interval_interface<T>::cref i1, typename Interval_interfac
       // 'a' of interval 1 is less than 'a' of interval 2
 
       // case            A           B           C           D               E
-      // interval 1   |-----|     |-----|     |-----|     |-----|         |-----| 
+      // interval 1   |-----|     |-----|     |-----|     |-----|         |-----|
       // interval 2     |--|        |---|       |-----|         |---|             |---|
 
       is_subset = false; // interval 1 cannot be a subset of interval 2
@@ -274,7 +274,7 @@ bool subset( typename Interval_interface<T>::cref i1, typename Interval_interfac
 
       // case            A           B           C           D               E
       // interval 1     |--|        |---|       |-----|         |---|             |---|
-      // interval 2   |-----|     |-----|     |-----|     |-----|         |-----| 
+      // interval 2   |-----|     |-----|     |-----|     |-----|         |-----|
 
       is_subset = (cmp_bb <= 0); // true for cases A and B; false for cases C, D and E
    }

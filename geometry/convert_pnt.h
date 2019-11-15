@@ -49,7 +49,7 @@ P to_polar_r( const Pnt<C>& p )
 template<typename P, typename C>
 P to_polar_θ( const Pnt<C>& p )
 {
-   return cartesian_to_polar_θ<P, C>( p.x, p.y );
+   return cartesian_to_polar_theta<P, C>( p.x, p.y );
 }
 
 }

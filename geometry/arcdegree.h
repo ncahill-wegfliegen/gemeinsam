@@ -149,7 +149,7 @@ T adjust_arcdegree_c0_180c(T value)
    Ensures((math::greater_or_equal<T, uint8_t>(value, 0) && math::less_or_equal<T, uint16_t>(value, 180U)));
    return value;
 }
-#pragma endregion 
+#pragma endregion
 
 #pragma region Adjust Degree [-90,90]
 /// <summary>Take any <paramref name="value"/> and adjust it so that it is in the range [-90,90].</summary>
@@ -291,7 +291,7 @@ template<typename Adjust>
 using Arcdegree_enable_if_type = std::enable_if_t< std::is_base_of_v<Adjust_arcdegree, Adjust> >;
 
 /// <summary>A dgree value in the range determined by the adjust method.</summary>
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr >
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr >
 class Arcdegree
 {
 public:
@@ -327,7 +327,7 @@ public:
    value_type value() const;
 
    /// <summary>The <paramref name="value"/> is adjusted so that it is in the range determined by the adjust method.</summary>
-   template<typename U> 
+   template<typename U>
    void value( U value );
 #pragma endregion
 
@@ -358,52 +358,52 @@ using Arcdegree90  = Arcdegree<Adjust_arcdegree_cn90_90c >;
 namespace nhill
 {
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 Arcdegree<Adjust> operator+( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    return {a.value() + b.value()};
 }
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 Arcdegree<Adjust> operator-( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    return {a.value() - b.value()};
 }
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 bool operator==( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    using T = typename Arcdegree<Adjust>::value_type;
    return nhill::math::equal<T, T>( a.value(), b.value() );
 }
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 bool operator!=( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    return !(a == b);
 }
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 bool operator>( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    using T = typename Arcdegree<Adjust>::value_type;
    return math::greater<T,T>( a.value(), b.value() );
 }
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 bool operator<( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    using T = typename Arcdegree<Adjust>::value_type;
    return math::less<T, T>( a.value(), b.value() );
 }
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 bool operator>=( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    return (a > b) || (a == b);
 }
 
-template<typename Adjust, typename Arcdegree_enable_if_type<Adjust>* = nullptr>
+template<typename Adjust, Arcdegree_enable_if_type<Adjust>* = nullptr>
 bool operator<=( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexcept
 {
    return (a < b) || (a == b);
@@ -414,13 +414,13 @@ bool operator<=( const Arcdegree<Adjust>& a, const Arcdegree<Adjust>& b ) noexce
 #pragma endregion
 
 #pragma region Definitions
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 nhill::Arcdegree<Adjust, ef>::Arcdegree()
    : value_{0}
 {
 }
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef>
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef>
 template<typename U> inline
 nhill::Arcdegree<Adjust, ef>::Arcdegree( U value )
    : value_{0}
@@ -428,7 +428,7 @@ nhill::Arcdegree<Adjust, ef>::Arcdegree( U value )
    this->value<U>( value );
 }
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef>
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef>
 template<typename U> inline
 auto nhill::Arcdegree<Adjust, ef>::operator=( U value )->Arcdegree &
 {
@@ -436,40 +436,40 @@ auto nhill::Arcdegree<Adjust, ef>::operator=( U value )->Arcdegree &
    return *this;
 }
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 nhill::Arcdegree<Adjust, ef>::Arcdegree( const Arcdegree & ) = default;
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 auto nhill::Arcdegree<Adjust, ef>::operator=( const Arcdegree & )->Arcdegree & = default;
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 nhill::Arcdegree<Adjust, ef>::Arcdegree( Arcdegree && ) noexcept = default;
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 auto nhill::Arcdegree<Adjust, ef>::operator=( Arcdegree && ) noexcept->Arcdegree & = default;
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 nhill::Arcdegree<Adjust, ef>::~Arcdegree() = default;
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 nhill::Arcdegree<Adjust, ef>::operator value_type() const
 {
    return value();
 }
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 auto nhill::Arcdegree<Adjust, ef>::value() const->value_type
 {
    return value_;
 }
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef> inline
 void nhill::Arcdegree<Adjust, ef>::clear()
 {
    value_ = 0;
 }
 
-template<typename Adjust, typename nhill::Arcdegree_enable_if_type<Adjust>* ef>
+template<typename Adjust, nhill::Arcdegree_enable_if_type<Adjust>* ef>
 template<typename U> inline
 void nhill::Arcdegree<Adjust, ef>::value( U value )
 {

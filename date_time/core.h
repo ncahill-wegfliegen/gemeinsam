@@ -2,6 +2,7 @@
 
 #include "port.h"
 #include <string>
+#include <ctime>
 
 namespace nhill
 {
@@ -129,7 +130,7 @@ NHILL_DATETIME_PORT_FUNCTION int current_hour();
 #pragma endregion
 
 #pragma region Time
-struct STime 
+struct STime
 {
    int hr;
    int min;

@@ -36,9 +36,9 @@ using Point = nhill::geometry::Pnt<double>;
 using Point_container = nhill::geometry::Pnt_container<double>;
 
 template<typename Id_>
-struct Types 
+struct Types
 {
-   using Id = typename Id_;
+   using Id = Id_;
    using Id_container = std::vector<Id_>;
    using Table = nhill::segment::Table<Id_>;
 };

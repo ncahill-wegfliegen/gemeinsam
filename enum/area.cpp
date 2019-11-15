@@ -1,9 +1,9 @@
-#include "nhill\enum\province.h"
+#include "province.h"
 
 using namespace std;
 
 
-template<> 
+template<>
 const nhill::text::Bundle_container<nhill::Province>& nhill::text::bundle_container<nhill::Province>()
 {
    static const Bundle_container<Province> bundles{

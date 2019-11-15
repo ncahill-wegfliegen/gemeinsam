@@ -46,6 +46,7 @@
     <ClInclude Include="core\values.h" />
     <ClInclude Include="delim.h" />
     <ClInclude Include="delimiter.h" />
+    <ClInclude Include="format_ex.h" />
     <ClInclude Include="log_level.h" />
     <ClInclude Include="math\coord_cart2.h" />
     <ClInclude Include="math\coord_cart3.h" />
@@ -57,6 +58,7 @@
     <ClInclude Include="product.h" />
     <ClInclude Include="province.h" />
     <ClInclude Include="province_container.h" />
+    <ClInclude Include="range_direction_ex.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="som.h" />
     <ClInclude Include="sort_order.h" />
@@ -68,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="core\text\bundle.cpp" />
+    <ClCompile Include="format_ex.cpp" />
     <ClCompile Include="log_level.cpp" />
     <ClCompile Include="math\coord_cart2.cpp" />
     <ClCompile Include="math\coord_cart3.cpp" />
@@ -78,6 +81,7 @@
     <ClCompile Include="delim.cpp" />
     <ClCompile Include="month.cpp" />
     <ClCompile Include="product.cpp" />
+    <ClCompile Include="range_direction_ex.cpp" />
     <ClCompile Include="som.cpp" />
     <ClCompile Include="sort_order_ex.cpp" />
     <ClCompile Include="config_source_ex.cpp" />

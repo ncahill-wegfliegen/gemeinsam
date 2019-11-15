@@ -16,7 +16,7 @@ bool is_empty_or_all_whitespace( string_view s )
    }
    else
    {
-      auto itr{ find_if_not( s.cbegin(), s.cend(), isspace ) };
+      auto itr{ find_if_not( s.cbegin(), s.cend(), ::isspace ) };
       return itr == s.cend(); // if we reach the end, then every character is whitespace
    }
 }

@@ -9,8 +9,8 @@ namespace
 {
 
 bool unchecked_is_integer( string_view s )
-{ 
-	auto itr{ find_if_not( s.cbegin(), s.cend(), isdigit ) };
+{
+	auto itr{ find_if_not( s.cbegin(), s.cend(), ::isdigit ) };
 	return itr == s.cend();
 }
 

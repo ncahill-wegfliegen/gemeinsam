@@ -13,7 +13,7 @@ namespace uwi
 namespace dls
 {
 
-class NHILL_UWI_PORT_CLASS Event_sequence 
+class NHILL_UWI_PORT_CLASS Event_sequence
 {
 public:
    using Str = Strn<1>;
@@ -64,7 +64,7 @@ namespace nhill
 {
 
 template<> NHILL_UWI_PORT_FUNCTION inline
-Compare compare( const uwi::dls::Event_sequence& a, const uwi::dls::Event_sequence& b );
+Compare compare( const uwi::dls::Event_sequence& a, const uwi::dls::Event_sequence& b ) noexcept;
 
 namespace uwi
 {

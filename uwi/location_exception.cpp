@@ -77,7 +77,7 @@ int nhill::uwi::dls::Location_exception::integer() const
    {
       throw logic_error( "The location exception '" + string{ value() } +"' cannot is not an integer." );
    }
-   
+
    return stoi(value());
 }
 
@@ -119,7 +119,7 @@ void nhill::uwi::dls::Location_exception::set_unchecked( std::string_view s )
 }
 
 template<>
-auto nhill::compare( const uwi::dls::Location_exception& a, const uwi::dls::Location_exception& b )->Compare
+auto nhill::compare( const uwi::dls::Location_exception& a, const uwi::dls::Location_exception& b ) noexcept->Compare
 {
 	return to_enum<Compare>( a.value().compare( b.value() ) );
 }
@@ -189,7 +189,7 @@ bool nhill::uwi::dls::is_valid_location_exception( std::string_view s, std::stri
    {
       if( 'A' <= c0 && c0 <= 'H' )
       {
-         // The first character is okay.  
+         // The first character is okay.
          // Check the second character.
          if( 'A' <= c1 && c1 <= 'Z' )
          {

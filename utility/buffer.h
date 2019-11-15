@@ -2,8 +2,10 @@
 
 #include "port.h"
 #include "compare.h"
+#include "../enum/core/int.h"
 #include <string_view>
 #include <ostream>
+#include <cstring>
 
 namespace nhill
 {
@@ -101,8 +103,12 @@ private:
 namespace nhill
 {
 
-template<> NHILL_UTIL_PORT_FUNCTION inline
-Compare compare( const Buffer& a, const Buffer& b );
+template<> inline
+Compare compare( const Buffer& a, const Buffer& b ) noexcept
+{
+	return to_enum<Compare>( strcmp( a.c_str(), b.c_str() ) );
+}
+
 
 NHILL_UTIL_PORT_FUNCTION bool operator==( const Buffer& a, const Buffer& b );
 NHILL_UTIL_PORT_FUNCTION bool operator!=( const Buffer& a, const Buffer& b );

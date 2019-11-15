@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 #include "../uwi/list_header.h"
-#include "../uwi/format_ex.h"
+#include "../enum/format_ex.h"
 #include <sstream>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

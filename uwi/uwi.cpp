@@ -13,7 +13,7 @@ using namespace nhill::uwi;
 /// <summary>This assumes that the test for 'plain' has already been done.</summary>
 bool is_valid_dls( string_view str, Dls& dls )
 {
-   
+
    if( dls::is_full( str, &dls ) )
    {
       return true;
@@ -130,7 +130,7 @@ void nhill::Uwi::set_unchecked( std::string_view s)
 
 
 template<>
-auto nhill::compare( const Uwi& a, const Uwi& b )->Compare
+auto nhill::compare( const Uwi& a, const Uwi& b ) noexcept->Compare
 {
 	return to_enum<Compare>( strcmp( a.value(), b.value() ) );
 }

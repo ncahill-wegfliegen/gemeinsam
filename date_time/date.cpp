@@ -163,7 +163,7 @@ auto nhill::current_date()->Date
    errno_t err{::localtime_s( &tm, &tt )};
    if (err != 0)
    {
-      throw exception("Cannot get the current date.");
+      throw logic_error("Cannot get the current date.");
    }
 
    return { tm.tm_mday, tm.tm_mon + 1, tm.tm_year + 1900 };
@@ -188,7 +188,7 @@ string nhill::to_string(const Date& date, const locale & locale /*= default_loca
 
    (void)ss.imbue(locale); //set locale of the stream
    ss << put_time(&tm, "x");
-   
+
    return ss.str();
 }
 

@@ -1,5 +1,5 @@
 #include "dls.h"
-#include "range_direction_ex.h"
+#include "range_direction_helper.h"
 #include "format.h"
 #include <string>
 #include <sstream>
@@ -50,7 +50,7 @@ bool is_valid_range_direction_and_meridian( std::string_view s, Dls::Meridian& m
       // Validate the meridian
       m = i;
    }
-   catch( exception )
+   catch( const exception& )
    {
       return false;
    }
@@ -105,7 +105,7 @@ string nhill::uwi::Dls::sort() const
    oss << lsd;
    oss << le;
    oss << es;
-   
+
    return oss.str();
 }
 
@@ -278,7 +278,7 @@ bool nhill::uwi::operator==( const Dls& a, const Dls& b )
       && a.sc == b.sc
       && a.twp == b.twp
       && a.rg == b.rg
-      && a.m  == b.m 
+      && a.m  == b.m
       && a.es == b.es;
 }
 
@@ -320,7 +320,7 @@ bool nhill::uwi::dls::is_sort( std::string_view s, Dls* dls )
       return false;
    }
 
-	// 1DMRRTTTSSLLXXE  
+	// 1DMRRTTTSSLLXXE
 	// 012345678901234
 
 	if( s[0] != '1' )
@@ -351,7 +351,7 @@ bool nhill::uwi::dls::is_sort( std::string_view s, Dls* dls )
       es  = s[14];
       le = s.substr( 12, 2 );
    }
-   catch( exception )
+   catch( const exception& )
    {
       return false;
    }
@@ -424,7 +424,7 @@ bool nhill::uwi::dls::is_plain( std::string_view s, Dls* dls )
       }
       le = s.substr( 0, 2 );
    }
-   catch( exception )
+   catch( const exception& )
    {
       return false;
    }
@@ -488,7 +488,7 @@ bool nhill::uwi::dls::is_full( std::string_view s, Dls* dls )
       es  = s[15];
       le = s.substr( 1, 2 );
    }
-   catch( exception )
+   catch( const exception& )
    {
       return false;
    }
@@ -554,7 +554,7 @@ bool nhill::uwi::dls::is_plain_dressed( std::string_view s, Dls* dls )
       es  = s[18];
       le = s.substr( 0, 2 );
    }
-   catch( exception )
+   catch( const exception& )
    {
       return false;
    }
@@ -621,7 +621,7 @@ bool nhill::uwi::dls::is_full_dressed( std::string_view s, Dls* dls )
       es  = s[20];
       le = s.substr( 1, 2 );
    }
-   catch( exception )
+   catch( const exception& )
    {
       return false;
    }
@@ -671,7 +671,7 @@ bool nhill::uwi::dls::is_valid_dls( std::string_view str, Dls* dls )
 
 auto nhill::uwi::dls::parse_sort( std::string_view s )->Dls
 {
-	// 1DMRRTTTSSLLXXE  
+	// 1DMRRTTTSSLLXXE
 	// 012345678901234
 
 	try
@@ -688,7 +688,7 @@ auto nhill::uwi::dls::parse_sort( std::string_view s )->Dls
 
 		return dls;
 	}
-	catch( exception e)
+	catch( const exception& e)
 	{
 		throw e;
 	}
@@ -717,7 +717,7 @@ auto nhill::uwi::dls::parse_plain( std::string_view s )->Dls
 
 		return dls;
 	}
-	catch( exception e)
+	catch( const exception& e)
 	{
 		throw e;
 	}

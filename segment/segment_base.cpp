@@ -35,7 +35,7 @@ auto nhill::segment::Segment_base::operator=( Segment_base && other )->Segment_b
       throw logic_error( NHILL_EXCEPTION_MESSAGE( "Invalid segment types.", "The segments types must be the same in order to move." ) );
    }
 
-   key_ = move( other.key_ ); 
+   key_ = move( other.key_ );
 
    return *this;
 }
@@ -63,8 +63,8 @@ auto nhill::segment::Segment_base::make_unique( Type type )->Segment_base::uptr
    {
    case nhill::segment::Type::stepped: return std::make_unique<Segment_stepped>();
    case nhill::segment::Type::indexed: return std::make_unique<Segment_indexed>();
-   default: throw std::exception( "Invalid segment type." );
    }
+   throw std::invalid_argument( "Invalid segment type." );
 }
 
 double nhill::segment::Segment_base::a() const

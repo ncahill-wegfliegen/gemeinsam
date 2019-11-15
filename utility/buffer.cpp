@@ -1,8 +1,8 @@
 #include "buffer.h"
 #include "buffer_helper.h"
-#include "../enum/core/int.h"
 #include <stdexcept>
 #include <string>
+
 
 using namespace std;
 
@@ -246,11 +246,11 @@ bool nhill::Buffer::is_valid( size_type pos ) const
 
 
 
-template<> inline
-auto nhill::compare( const Buffer& a, const Buffer& b )->Compare
-{
-	return to_enum<Compare>( strcmp( a.c_str(), b.c_str() ) );
-}
+//template<> inline
+//auto nhill::compare( const Buffer& a, const Buffer& b ) noexcept->Compare
+//{
+//	return to_enum<Compare>( strcmp( a.c_str(), b.c_str() ) );
+//}
 
 bool nhill::operator==( const Buffer& a, const Buffer& b )
 {

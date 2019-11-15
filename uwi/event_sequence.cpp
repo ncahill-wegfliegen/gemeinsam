@@ -105,7 +105,7 @@ void nhill::uwi::dls::Event_sequence::value( int i)
       throw invalid_argument( "The integer '" + to_string( i ) + "' is not a valid event sequence: it must be either 0 or between 2 and 9" );
    }
 
-	char c{ '0' + static_cast<char>(i)};
+	char c{static_cast<char>( '0' + static_cast<char>(i) )};
 	value( c );
 }
 
@@ -121,7 +121,7 @@ bool nhill::uwi::dls::Event_sequence::is_valid( int i )
 }
 
 template<>
-auto nhill::compare( const uwi::dls::Event_sequence& a, const uwi::dls::Event_sequence& b )->Compare
+auto nhill::compare( const uwi::dls::Event_sequence& a, const uwi::dls::Event_sequence& b ) noexcept->Compare
 {
    if( a.value() < b.value() )
    {

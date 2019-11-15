@@ -95,7 +95,7 @@ nhill::Month nhill::current_month()
    errno_t err{::localtime_s( &today, &tt )};
    if( err != 0)
    {
-      throw exception( "Cannot get the current month." );
+      throw logic_error( "Cannot get the current month." );
    }
 
    return umonth_to_month(today.tm_mon + 1 );

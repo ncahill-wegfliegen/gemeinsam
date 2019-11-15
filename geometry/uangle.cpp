@@ -1,6 +1,7 @@
 #include "uangle.h"
 #include "../utility/chr.h"
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -10,7 +11,7 @@ auto nhill::geometry::to_uangle(  std::string_view str, char* sign_sym_param /*=
    using Arcdeg_t  = unsigned int; // arcdegree type
    using Arcmin_t  = unsigned int; // arcminute type
    using Arcsec_t  = unsigned int; // arcsecond type
-   using Marcsec_t = unsigned int; // milliarcsecond type
+//   using Marcsec_t = unsigned int; // milliarcsecond type
 
    constexpr auto period{chr::period<char>()}; // Period
    constexpr auto plus {chr::plus <char>()}; // Plus sign
@@ -28,7 +29,7 @@ auto nhill::geometry::to_uangle(  std::string_view str, char* sign_sym_param /*=
    Arcdeg_t  arcdeg {0}; // arcdegree value
    Arcmin_t  arcmin {0}; // arcminute value
    Arcsec_t  arcsec {0}; // arcsecond value
-   Marcsec_t marcsec{0}; // milliarcsecond value
+//   Marcsec_t marcsec{0}; // milliarcsecond value
 
    if (sign_sym_param != nullptr) // Initialize the sign symbol output parameter
    {
@@ -82,7 +83,7 @@ auto nhill::geometry::to_uangle(  std::string_view str, char* sign_sym_param /*=
          value = str.substr( arcdeg_pos + 1, arcmin_pos - arcdeg_pos - 1 );
          arcmin = static_cast<Arcmin_t>(stoi( value ));
 
-         // Extract the arcsecond 
+         // Extract the arcsecond
          if (arcsec_pos != string::npos)
          {
             value = str.substr( arcmin_pos + 1, arcsec_pos - arcmin_pos - 1 );
@@ -101,7 +102,7 @@ auto nhill::geometry::to_uangle(  std::string_view str, char* sign_sym_param /*=
                // The decimal part of the arcsecond floating point value
                valuef -= arcsec;
                // Extract the milliarcsecond value
-               marcsec = static_cast<Marcsec_t>(std::round( valuef * 1000 ));
+   //            marcsec = static_cast<Marcsec_t>(std::round( valuef * 1000 ));
             }
          }
       }

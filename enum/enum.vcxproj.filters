@@ -77,6 +77,8 @@
     <ClInclude Include="sort_order_ex.h" />
     <ClInclude Include="config_source.h" />
     <ClInclude Include="config_source_ex.h" />
+    <ClInclude Include="format_ex.h" />
+    <ClInclude Include="range_direction_ex.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="delim.cpp" />
@@ -106,6 +108,8 @@
     <ClCompile Include="survey_system_ex.cpp" />
     <ClCompile Include="sort_order_ex.cpp" />
     <ClCompile Include="config_source_ex.cpp" />
+    <ClCompile Include="format_ex.cpp" />
+    <ClCompile Include="range_direction_ex.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="enum.rc">

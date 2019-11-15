@@ -2,6 +2,7 @@
 
 #include <cmath>
 
+
 namespace nhill
 {
 namespace math
@@ -14,10 +15,10 @@ public:
    static_assert(std::is_floating_point_v<T>, "The template parameter must be a floating point type: float, double, or long double.");
 
    static constexpr T e        () noexcept; // e          2.71828182845904523536
-   static constexpr T log2e    () noexcept; // log2(e)    1.44269504088896340736 
-   static constexpr T log10e   () noexcept; // log10(e)   0.434294481903251827651 
-   static constexpr T ln2      () noexcept; // ln(2)      0.693147180559945309417  
-   static constexpr T ln10     () noexcept; // ln(10)     2.30258509299404568402 
+   static constexpr T log2e    () noexcept; // log2(e)    1.44269504088896340736
+   static constexpr T log10e   () noexcept; // log10(e)   0.434294481903251827651
+   static constexpr T ln2      () noexcept; // ln(2)      0.693147180559945309417
+   static constexpr T ln10     () noexcept; // ln(10)     2.30258509299404568402
    static constexpr T pi       () noexcept; // pi         3.14159265358979323846
    static constexpr T pi_2     () noexcept; // pi/2       1.57079632679489661923
    static constexpr T pi_4     () noexcept; // pi/4       0.785398163397448309616

@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <chrono>
 #include <ctime>
+#include <cmath>
+#include <cstring>
 #include <stdexcept>
 #include <sstream>
 #include <iomanip>
@@ -239,7 +241,7 @@ int nhill::current_uday()
 	errno_t err{::localtime_s( &today, &tt )};
    if( err != 0 )
    {
-      throw exception( "Cannot get the current day." );
+      throw logic_error( "Cannot get the current day." );
    }
 
    return today.tm_mday;
@@ -304,11 +306,11 @@ int nhill::decrement_zday( int zday, int umonth, bool leap_year )
 
 #pragma region Month
 
-NHILL_DATETIME_PORT_PARAMETER const int nhill::zmonth_min{ 0 };
-NHILL_DATETIME_PORT_PARAMETER const int nhill::zmonth_max{ 11 };
+constexpr int nhill::zmonth_min{ 0 };
+constexpr int nhill::zmonth_max{ 11 };
 
-NHILL_DATETIME_PORT_PARAMETER const int nhill::umonth_min{ 1 };
-NHILL_DATETIME_PORT_PARAMETER const int nhill::umonth_max{ 12 };
+constexpr int nhill::umonth_min{ 1 };
+constexpr int nhill::umonth_max{ 12 };
 
 bool nhill::is_valid_zmonth( int zmonth ) noexcept
 {
@@ -361,7 +363,7 @@ int nhill::current_umonth()
 	errno_t err{::localtime_s( &today, &tt )};
    if( err != 0 )
    {
-      throw exception( "Cannot get the current month." );
+      throw logic_error( "Cannot get the current month." );
    }
 
    return today.tm_mon + 1;
@@ -391,7 +393,7 @@ int nhill::current_iyear()
 	errno_t err{::localtime_s( &today, &tt )};
    if( err != 0 )
    {
-      throw exception( "Cannot get the current year." );
+      throw logic_error( "Cannot get the current year." );
    }
 
    return today.tm_year + 1900;
@@ -458,7 +460,7 @@ auto nhill::double_to_date( double value )->SDate
    double fraction = value - year; // fractional part of the value
    double dys_in_yr = days_in_year( leap_year );
    double dd = fraction * dys_in_yr;
-   int zdy_of_yr = static_cast<int>(round( dd ));
+   int zdy_of_yr = static_cast<int>(std::round( dd ));
 
    zday_of_year_to_date( zdy_of_yr, uday, umonth, leap_year );
 
@@ -586,11 +588,11 @@ int nhill::current_second()
    auto now{ chrono::system_clock::now() };
    auto tt{ chrono::system_clock::to_time_t(now) };
 	struct tm today{};
-	
+
 	errno_t err{::localtime_s( &today, &tt )};
 	if( err != 0 )
 	{
-		throw exception( "Cannot get the current second." );
+		throw logic_error( "Cannot get the current second." );
 	}
 
    return today.tm_sec;
@@ -654,7 +656,7 @@ int nhill::current_minute()
 	errno_t err{::localtime_s( &today, &tt )};
 	if( err != 0 )
 	{
-		throw exception( "Cannot get the current minute." );
+		throw logic_error( "Cannot get the current minute." );
 	}
 
    return today.tm_min;
@@ -710,7 +712,7 @@ int nhill::current_hour()
 	errno_t err{::localtime_s( &today, &tt )};
 	if( err != 0 )
 	{
-		throw exception( "Cannot get the current hour." );
+		throw logic_error( "Cannot get the current hour." );
 	}
 
    return today.tm_hour;
@@ -742,34 +744,34 @@ bool nhill::convert(double & dst, const STime & src)
    dst = src.hr;
    dst += static_cast<double>(src.min) / 60;
    dst += static_cast<double>(src.sec) / 3600;
-   
+
    return true;
 }
 
 bool nhill::convert(STime & dst, double src)
 {
    dst.hr = static_cast<int>(src);
-   
+
    double min{ src - dst.hr };
    min *= 60;
    dst.min = static_cast<int>(min);
-   
+
    double sec{ min - dst.min };
    sec *= 60;
    dst.sec = static_cast<int>(sec);
 
    bool success{ is_valid(dst) };
-   if (!success) 
+   if (!success)
    {
       clear(dst);
    }
-   
+
    return success;
 }
 
 bool nhill::convert(tm & dst, const STime & src)
 {
-   ::memset(&dst, 0, sizeof tm);
+   ::memset(&dst, 0, sizeof(tm) );
 
    dst.tm_hour = src.hr;
    dst.tm_min = src.min;
@@ -876,7 +878,7 @@ auto nhill::current_time()->STime
 	errno_t err{::localtime_s( &today, &tt )};
 	if( err != 0 )
 	{
-		throw exception( "Cannot get current time." );
+		throw logic_error( "Cannot get current time." );
 	}
 
    return { today.tm_hour, today.tm_min, today.tm_sec };

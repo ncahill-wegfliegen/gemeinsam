@@ -108,9 +108,9 @@ auto nhill::segment::Segment_stepped::at( std::size_t pos ) const->Point
 int nhill::segment::Segment_stepped::pos( double x ) const
 {
    validate_x( x, __FILE__, __func__, __LINE__ );
-   
+
    double n{std::round( std::floor( (x - start()) / step() ) )};
-   
+
    return static_cast<int>(n);
 }
 
@@ -168,7 +168,7 @@ void nhill::segment::Segment_stepped::validate( float step, double start, const 
 auto nhill::segment::Segment_stepped::sub_segment( size_t pos_beg, size_t pos_end )->Segment_stepped
 {
    // Adjust the end position if necessary
-   if( pos_end == -1 )
+   if( pos_end == static_cast<size_t>(-1) )
    {
       pos_end = size() - 1;
    }

@@ -110,14 +110,14 @@ template<typename T> inline
 auto operator+=( Degree<T>& a, const Degree<T>& b ) noexcept->Degree<T> &
 {
    a = (a.value() + b.value());
-   return *this;
+   return a;
 }
 
 template<typename T> inline
 auto operator-=( Degree<T>& a, const Degree<T>& b ) noexcept->Degree<T> &
 {
    a = (a.value() - b.value());
-   return *this;
+   return a;
 }
 
 template<typename T> inline
